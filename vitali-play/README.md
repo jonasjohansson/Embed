@@ -1,6 +1,6 @@
 # Embed Play
 
-This is the initial playground with a few components, which is not aimed to be the master project. The aim was to develop the responsive stage view and to test some interactions. Please note that all content is dummy and that the controlled does not load real experiences.
+This is the initial playground with a few components. This is not aimed to be the master project. The goal is to develop the responsive stage view for basic HTML content and to test some interactions. Please note that all content is dummy and that the controller does not load real experiences.
 
 This folder consists of the following elements:
 
@@ -22,6 +22,16 @@ This folder consists of the following elements:
 * Set center projector dimensions – this is to not generate unnecessary pixels 
 * Has some dummy content in an iframe
 * Has an interactive element
+
+
+#  Stage Placeholders
+
++ Top
++ Left
++ Center
++ Right
++ Panorama X
++ Panorama Y
 
 
 #  Controller Features
