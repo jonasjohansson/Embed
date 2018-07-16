@@ -1,0 +1,187 @@
+/* Font-face */
+
+@font-face {
+    font-family: 'Grot';
+    src: url('../fonts/Grot.woff2') format('woff2'),
+        url('../fonts/Grot.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Grot-SemiBold';
+    src: url('../fonts/Grot-SemiBold.woff2') format('woff2'),
+        url('../fonts/Grot-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Grot-Bold';
+    src: url('../fonts/Grot-Bold.woff2') format('woff2'),
+        url('../fonts/Grot-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/* Typography */
+
+body {
+	font-family: 'Grot';
+	font-size: 14px;
+	line-height: 1.2;
+}
+
+b, bold, .bold, strong {
+	font-weight: normal;
+	font-family: 'Grot-SemiBold'; 
+}
+
+.verybold {
+	font-family: 'Grot-Bold'; 
+}
+
+p {
+	font-size: 20px;
+	&.line {
+		line-height: 24px;
+	}
+	&.small {
+		font-size: 16px;
+		line-height: 1.4;	
+		max-width: 640px;
+	}
+	&.caption {
+		font-size: 12px;
+		a {
+			font-family: 'Grot-SemiBold'; 
+			&:hover {
+				color: $grey;
+			}	
+		}
+	}
+	&.section-title {
+		padding: 16px 16px;
+		line-height: 24px;
+		font-size: 14px;
+		color: white;
+	}
+	&.list-title {
+		font-family: 'Grot-SemiBold';
+		line-height: 24px;
+		font-size: 14px;
+		color: $grey_light;
+	}
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+	font-family: 'Grot-SemiBold';
+	&.normal {
+		font-family: 'Grot';	
+	}
+}
+
+h1 {
+	font-size: 62px;
+	line-height: 62px;
+	@include breakpoint(mobile) {
+		font-size: 32px;
+		line-height: 32px
+	}	
+}
+
+
+h2 {
+	font-size: 48px;
+	line-height: 52px;
+	@include breakpoint(mobile) {
+		font-size: 32px;
+		line-height: 36px
+	}		
+}
+
+h3 {
+	font-size: 32px;
+}
+
+h4 {
+	font-size: 14px;
+	&.zone {
+		@include basicfloat();	
+		margin-bottom: 24px;
+		font-family: 'Grot';
+		@include breakpoint(mobile) {
+			font-size: 16px;
+		}			
+	}
+}
+
+
+// Material
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+/* Inputs */
+
+label {	
+	font-size: 10px;
+	color: $grey_light;	
+	&.text {
+		@include basicfloat;
+		margin-bottom: 4px;	
+	}
+}
+
+input[type="text"], input[type="number"] {
+	@include basicfloat();
+	height: 32px;
+	display: block;
+	background-color: $grey_light;
+	border: 1px solid $grey;
+	padding: 8px 8px;
+	line-height: 16px;
+	font-size: 12px;
+	font-family: 'Grot';
+	color: $black;	
+	max-width: 320px;
+	border-radius: 4px;
+	margin-bottom: 16px;
+	&:focus, &:hover {
+		border: 1px solid $black;
+		@include boxshadow;
+	}
+}
+
+
+
+

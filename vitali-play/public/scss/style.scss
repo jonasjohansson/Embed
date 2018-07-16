@@ -1,0 +1,228 @@
+@import "defaults";
+@import "variables";
+@import "typography";
+@import "highlight";
+@import "controller";
+@import "creatorcontent";
+
+
+/*
+	General
+*/
+
+
+	body {
+		background-color:$grey;
+		&.walls {
+			//background-color: $grey;
+		}
+	}
+	.overflow_off {
+		overflow: hidden;
+	}
+
+
+/*
+	Header
+*/
+
+	header {
+		@include basicfloat;
+		position: fixed;
+		z-index: 200;
+		padding: 16px 0;
+		top: 0;
+		@include breakpoint(tablet) {
+			//position: relative;
+		}		
+
+		.logo {
+			background-image: url(../img/logo-yellow.svg);
+			height: 48px;
+			width: 128px;
+			margin-left: 16px;
+			float: left;
+			@include breakpoint(mobile) {
+				padding: 0 12px;
+				margin-left: 8px;
+			}				
+		}
+
+			
+	}
+
+
+/*
+	Stage Settings
+*/
+
+.stage-settings {
+	position: fixed;
+	top: 16px;
+	left: 16px;
+	z-index: 1100;
+
+	
+	overflow: hidden;
+	width: 240px;
+
+	padding-top: 0;
+
+	.list-title {
+		padding: 8px 16px;
+		background-color: $black;
+		@include boxshadow;
+		@include basicfloat;
+	}
+	.form-wrap {
+		padding: 24px 16px;
+		display: none;	
+		@include basicfloat;	
+	}
+
+	&:hover {
+		background-color: #333;
+		width: 240px;
+		overflow: visible;
+		height: auto;
+		@include boxshadow;	
+		.form-wrap {
+			display: block;		
+		}		
+		i {
+			//display: none;
+		}
+	}
+}	
+
+
+
+
+/*
+	The Stage
+*/
+
+.stage {
+	position: absolute;
+	width: 3840px;
+	height: auto;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	padding-right: 1px;
+	z-index: 100;
+	
+	.surface {
+		position: relative;
+		color: white;
+		float: left;
+		//background-color: black;
+		z-index: 15;
+
+		&.x-panorama, &.y-panorama {
+			background-color: transparent;
+			position: absolute;
+			top: 0;
+			z-index: 10;
+		}
+				
+		
+		.specs {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			padding: 8px;
+			color: black;
+			z-index: 200;
+			display: none;
+			border: 1px solid rgb(20, 20, 20);
+			pointer-events: none;
+			p {
+				font-size: 8px;	
+				line-height: 16px;
+				padding: 0 4px;
+				background-color: $grey;
+				float: left;				
+			}
+			
+			.size {
+				position: relative;
+				margin-left: 1px;
+				background-color: $grey;
+				
+			}
+		}	
+
+		
+		// Specs styling
+		&.left .specs{
+			border-right: none;
+			//background-color: $grey_light;
+		}
+		&.right .specs{
+			border-left: none;
+			//background-color: $grey_light;
+		}		
+		&.center .specs{
+			//border-left: none;
+			//border-right: none;
+			//background-color: $grey_light;
+		}	
+		&.top .specs {
+			border-bottom: none;
+		}
+		
+
+		&.x-panorama {
+			.specs {
+				border: 1px solid red;
+				padding: 48px 8px;
+			}
+		}
+		
+		&.y-panorama {
+			.specs {
+				border: 1px solid blue;
+				padding: 48px 8px;
+			}
+		}		
+
+		//User content placeholder
+		.user-content {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: 100;
+			iframe {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;		
+				border: none;
+				outline: none;		
+			}
+		}			
+						
+	}
+	
+	// Turn on specs
+	&.specs_on {
+		.surface .specs {
+			display: block;
+		}
+	}
+	
+
+	
+}	
+
+
+
+
+
+
+	

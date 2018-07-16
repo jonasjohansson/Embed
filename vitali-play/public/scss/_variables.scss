@@ -1,0 +1,77 @@
+// Dimensions
+
+// Colors
+$c_white: #FFFFFF;
+$c_black: #000000;
+$c_black_zero: rgba(0, 0, 0, 0);
+$black: $c_black;
+
+$grey: #666666;
+$grey_light: #999999;
+$grey_light_zero: rgba(153, 153, 153, 0);
+$white: #FFFFFF;
+$white_zero: rgba(255, 255, 255, 0);
+$yellow: #F4EE19;
+
+$light: #F0F0F0;
+
+// Layout
+@mixin basicfloat() {
+	position: relative;
+	width: 100%;
+	float: left;
+}
+
+@mixin basiccover() {
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+@mixin boxshadow() {
+	box-shadow:8px 8px 16px rgba(0, 0, 0, .2);
+}
+
+@mixin unselectable() {
+	-webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;     
+	  user-select: none;  
+}
+
+
+
+.top_m {
+	margin-top: 16px;
+}
+
+// Max Width
+
+$maxwidth: 1170px;
+$maxwidth-grid: 1200px;
+$maxwidth-large: 1270px;
+
+// Responsive breakpoints
+
+@mixin breakpoint($point) {
+  @if $point == mobile {
+    @media (max-width: 640px) { @content; }
+  }
+  @else if $point == tablet {
+    @media (max-width: 960px) { @content; }
+  } 
+  @else if $point == maxwidth {
+    @media (max-width: 1280px) { @content; }
+  }      
+}
+
+
+@mixin linearGradient($top, $bottom){
+    background: $top; /* Old browsers */
+    background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta charset=utf-8>
+		
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+	</head>	
+	<body class="controller">
+		
+		<div class="permanent-header">
+		
+			<!-- Temp – Refresh all pages with socket -->
+			<!--<a id="#open-reset" class="temp-refresh button"><i class="material-icons">refresh</i></a>-->
+		
+			<!-- System on/off -->
+			<div class="onoff-wrap">
+				<i class="material-icons">power_settings_new</i>
+				<label class="switch">
+				  <input type="checkbox">
+				  <span class="slider round"></span>
+				</label>
+			</div>	
+			
+			<!-- Volume Control -->
+			<div class="volume-wrap">
+				<i class="material-icons">volume_up</i>
+				<input type="range" id="volume-slider" class="rangeslider" data-rangeslider value="0" min="0" max="100">
+			</div>		
+		
+			<!-- Dynamic Controls -->
+			<div class="close-interactions back-button"><i class="material-icons">arrow_back</i><span>Back</span></div>
+		
+		</div>
+		
+		
+		<!-- Experiences -->
+		
+
+		<div class="current-experience">
+			<div class="cover" style="background-image: url('/img/examples/jonas.png')"></div>
+			<!-- Optional Interactive Controlls -->
+			<div class="case-credits">
+				<p class="section-title">Now Playing</p>
+				<h3>Dummy Case</h3>	
+			</div>
+			<div class="interactive-controls">
+				<div class="open-interactive open-arrows">Interact</div>
+				<div class="open-interactive open-cursor">Cursor Demo</div>
+			</div>	
+			<!-- Optional Controlls -->
+		
+		</div>
+		
+		<div class="playlist-feed">
+			<p class="section-title">Playlist</p>
+			<ul class="playlist">
+				<li class="active">
+					<div class="cover" style="background-image: url('/img/examples/jonas.png')"></div>
+					<p class="bold">Experience A</p>
+				</li>
+				<li>
+					<div class="cover"></div>
+					<p class="bold">Experience B</p>
+				</li>
+				<li>
+					<div class="cover"></div>
+					<p class="bold">Experience C</p>
+				</li>
+				<li>
+					<div class="cover"></div>
+					<p class="bold">Experience D</p>
+				</li>
+				<li>
+					<div class="cover"></div>
+					<p class="bold">Experience E</p>
+				</li>
+				<li>
+					<div class="cover"></div>
+					<p class="bold">Experience F</p>
+				</li>					
+			</ul>
+	
+		
+		
+		<!-- Interacive Controls -->
+		
+		<div class="interact-wrapper interact-cursor">
+			<div class="section">
+				<h2>Touch Pad</h2>	
+				<div class="touch-area-wrap">
+					<div class="touch-area">
+						<div class="finger"></div>
+						<div class="helper">Touch to move cursor</div>
+					</div>
+					<div class="touch-click">Click</div>
+				</div>	
+			</div>
+		</div>		
+		
+		<div class="interact-wrapper interact-arrows">
+				<div class="interact–arrows-container">
+					<div class="interact-button" id="int-arrow-back"><i class="material-icons">subdirectory_arrow_left</i></div>
+					<div class="interact-button" id="int-arrow-ok"><span>OK</span></div>
+					<div class="interact-button" id="int-arrow-up"><i class="material-icons">keyboard_arrow_up</i></div>
+					<div class="interact-button" id="int-arrow-right"><i class="material-icons">keyboard_arrow_right</i></div>
+					<div class="interact-button" id="int-arrow-left"><i class="material-icons">keyboard_arrow_left</i></div>
+					<div class="interact-button" id="int-arrow-down"><i class="material-icons">keyboard_arrow_down</i></div>
+				</div>
+		</div>			
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/TweenMax.min.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/debounce.js"></script>
+		<script src="js/rangeslider.min.js"></script>
+		
+		
+		<script src="js/script.js"></script>
+		<script src="js/embed-controller.js"></script>
+		
+
+		<!--<script src="{process.env.BROWSER_REFRESH_URL}"></script>-->
+	</body>
+</html>

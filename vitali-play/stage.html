@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Embed Stage</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  </head>
+	<body>
+		
+		<div class="logo"></div>
+		
+		<div id="current"></div>
+	
+		
+		<div class="stage-settings">
+			<p class="list-title">Stage Settings</p>
+			<div class="form-wrap">
+				<label class="text">Room Width (mm)</label>
+				<input type="number" id="setting-width" value="30">
+				<label class="text">Room Height (mm)</label>
+				<input type="number" id="setting-height" value="25">
+				<label class="text">Room Depth (mm)</label>
+				<input type="number" id="setting-depth" value="20">
+				<label class="text">Center Projection Resolution X (px)</label>
+				<input type="number" id="setting-proj-width" value="640">	
+				<label class="text">Center Projection Resolution Y (px)</label>
+				<input type="number" id="setting-proj-height" value="400">
+				<div>
+					<input type="checkbox" id="setting-show-guides" checked>
+					<label for="setting-show-guides">Show guides</label>	
+	  		</div>	
+  		</div>		
+		</div>		
+
+		
+
+		<div class="stage specs_on">
+			<div class="surface top">
+				<div class="specs">
+					<p>Top</p>
+					<p class="size"></p>	
+				</div>
+				<div class="user-content">
+					<!-- Artist content goes here -->
+
+					<!-- -->
+				</div>
+			</div>
+			<span class="clear"></span>
+			<div class="surface left">
+				<div class="specs">
+					<p>Left</p>
+					<p class="size"></p>
+				</div>	
+				<div class="user-content">
+					<!-- Artist content goes here -->
+					
+					<!-- -->
+				</div>				
+			</div>
+			<div class="surface center">
+				<div class="specs">
+					<p>Center</p>
+					<p class="size"></p>	
+				</div>
+				<div class="user-content">
+					<!-- Artist content goes here -->	
+						<div class="demo-click embed-touch-clickable"></div>			
+					<!-- -->					
+				</div>
+			</div>			
+			<div class="surface right">
+				<div class="specs">
+					<p>Right</p>
+					<p class="size"></p>	
+				</div>
+				<div class="user-content">
+					<!-- Artist content goes here -->
+					<!-- -->					
+				</div>
+			</div>
+
+			<div class="surface y-panorama">
+				<div class="specs">
+					<p>Y-Panorama</p>
+					<p class="size"></p>	
+				</div>
+				<div class="user-content">
+					<!-- Artist content goes here -->
+					
+					<!-- -->					
+				</div>
+			</div>	
+			
+			<div class="surface x-panorama">
+				<div class="specs">
+					<p>X-Panorama</p>
+					<p class="size"></p>	
+				</div>
+				<div class="user-content">
+					<!-- Artist content goes here -->
+					
+					<iframe src="https://funyard.fashion"></iframe>					
+					<!-- -->					
+				</div>
+			</div>	
+								
+		</div>
+
+		<!--
+			Controller Output
+		-->	
+		
+		<div class="touchpad_output"></div>
+
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/TweenMax.min.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/debounce.js"></script>
+		<script src="js/rangeslider.min.js"></script>
+		
+		
+		<script src="js/script.js"></script>
+		<script src="js/embed-controller.js"></script>
+
+		</script>
+
+  </body>
+</html>

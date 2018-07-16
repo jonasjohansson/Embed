@@ -1,0 +1,558 @@
+/*
+	Embed Controller – Modules
+*/
+	
+	// Basic Styling
+
+	body.controller, body.controller * {
+		@include unselectable();
+	}
+
+	body.controller {
+		background-color: $grey;
+		overflow: hidden;
+	}	
+	
+	
+	.controller {
+		color: $white;
+		h2 {
+			font-size: 18px;
+			padding-bottom: 16px;
+			padding-left: 16px;
+		}
+		.section {
+			@include basicfloat();
+			padding: 24px 0;
+			border-bottom: 1px solid $white;
+			.inner-padding {
+				@include basicfloat();	
+				padding: 0 16px;
+			}
+		}
+	}
+
+
+/*
+	Permanent Header
+*/	
+
+	.permanent-header {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 1000;
+		height: 56px;
+		padding: 16px;	
+		background-color: black;	
+		
+		.onoff-wrap, .volume-wrap {
+			i {
+				float: left;
+				height: 24px;
+				width: 24px;
+				line-height: 24px;
+				font-size: 12px;
+				text-align: center;
+				color: $grey_light;
+			}
+		}
+	}
+
+
+/*
+	Temp
+*/
+
+	.temp-refresh	{
+		float: left;
+		cursor: pointer;
+	}
+
+
+/*
+	Back buttons
+*/
+	.back-button {
+		position: absolute;
+		top: 0;
+		height: 56px;
+		padding: 16px 0;
+		width: auto;
+		background-color: black;
+		cursor: pointer;
+		display: none;
+		
+		i, span {
+			float: left;
+			height: 24px;
+			line-height: 24px;
+		}
+		span {
+			font-family: 'Grot-Bold'; 
+			font-size: 20px;
+			margin-left: 8px;
+		}
+		
+		.close-interactions {
+		
+		}
+	}
+
+
+/*
+	ON/OFF Switch
+*/
+
+
+
+	.onoff-wrap {
+		
+		position: relative;
+		top: 0;
+		float: right;
+		max-width: 120px;
+	
+
+		/* The switch - the box around the slider */
+		.switch {
+		  position: relative;
+		  display: inline-block;
+		  width: 48px;
+		  height: 24px;
+		}
+		
+		/* Hide default HTML checkbox */
+		.switch input {display:none;}
+		
+		/* The slider */
+		.slider {
+		  position: absolute;
+		  cursor: pointer;
+		  top: 10px;
+		  left: 0;
+		  right: 0;
+		  display: block;
+		  bottom: 0;
+		  border: 1px solid $grey;
+		  -webkit-transition: .4s;
+		  transition: .4s;
+		  border-radius: 4px;
+		  height: 4px;		
+		}
+		
+		.slider:before {
+		  position: absolute;
+		  content: "";
+		  height: 24px;
+		  width: 24px;
+		  left: -1px;
+		  top: -11px;
+		  border: 1px solid $black;
+		  background-color: $grey_light;		  
+		  -webkit-transition: .4s;
+		  transition: .4s;
+		  border-radius: 50%;
+		}
+		
+		input:checked + .slider {
+		  background-color: $grey_light;
+		  border: 1px solid $grey_light;
+		}
+	
+		
+		input:checked + .slider:before {
+		  -webkit-transform: translateX(24px);
+		  -ms-transform: translateX(24px);
+		  transform: translateX(24px);
+		}
+		
+	}	
+
+
+/*
+	Volume Control
+*/
+
+	.volume-wrap {
+		
+		position: relative;
+		top: 0;
+		float: right;
+		margin-right: 16px;
+		opacity: 0;
+
+		#volume-slider {
+			@include basicfloat();
+			display: none;
+			
+		}
+
+		.rangeslider,
+		.rangeslider__fill {
+			float: left;
+			position: relative;
+			width: 96px;
+		  display: block;
+		  -moz-border-radius: 4px;
+		  -webkit-border-radius: 4px;
+		  border-radius: 4px;
+		}
+		
+		.rangeslider {
+		  //background: #e6e6e6;
+		  position: relative;
+		  border: 1px solid $grey_light;
+		}
+		
+		.rangeslider--horizontal {
+		  height: 4px;
+		  top: 10px;
+		}
+
+		.rangeslider--disabled {
+		  opacity: 0.4;
+		}
+		
+		.rangeslider__fill {
+		  background: $grey_light;
+		  position: absolute;
+		}
+		.rangeslider--horizontal .rangeslider__fill {
+		  top: 0;
+		  height: 100%;
+		}
+		
+		.rangeslider__handle {
+		  background: white;
+		  border: 1px solid $black;
+		  background-color: $grey_light;
+		  cursor: pointer;
+		  display: inline-block;
+		  width: 24px;
+		  height: 24px;
+		  position: absolute;
+		  border-radius: 50%;
+		  margin-top: -11px;
+		  margin-left: -1px;
+		}
+		.rangeslider__handle:active, .rangeslider--active .rangeslider__handle {
+		  //background-color: $yellow;
+		}
+		
+	}	
+
+
+/*
+	Experiences Feed
+*/
+
+		
+	.current-experience {
+		position: fixed;
+		top: 56px;
+		bottom: 128px;
+		overflow: hidden;
+		left: 0;
+		right: 0;
+		background-color: $black;
+		//background-color: yellow;
+		.cover {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			
+			@include basiccover();
+			opacity: 0.5;
+			z-index: 10;
+		}	
+		.case-credits {
+			position: relative;
+			padding: 0 16px;
+			z-index: 20;
+			.section-title {
+				padding: 16px 0;
+			}
+		}
+		.interactive-controls {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 16px;
+			z-index: 20;
+			.open-interactive {
+				float: left;
+				display: block;
+				height: 24px;
+				line-height: 24px;
+				font-size: 12px;
+				background-color: $grey;
+				color: $white;
+				text-transform: uppercase;
+				margin-right: 8px;
+				padding: 0 8px;
+				cursor: pointer;
+				@include boxshadow();
+			}
+		}
+	}
+
+	
+	.playlist-feed {
+		position: fixed;
+		height: 128px;
+		background-color: $black;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		
+		.section-title {
+			padding: 8px 16px;
+		}
+		
+		ul.playlist {
+			position: relative;
+			height: 112px;
+			display: flex;
+			flex-wrap: nowrap;
+			overflow-x: auto;
+			padding-left: 16px;
+			li {
+				flex: 0 0 auto;
+				width: 100px;
+				height: 80px;
+				margin: 0;
+				padding: 0;
+				zoom:1;
+				margin-right: 8px;
+				
+				&.active {
+					.cover {
+						border: 1px solid $yellow;
+						opacity: 1;
+						&:before {
+							content: "playing";
+							background-color: $yellow;
+							color: $black;
+							text-transform: uppercase;
+							font-size: 8px;
+							line-height: 10px;
+							padding: 0 2px;
+							position: absolute;
+							right: 4px;
+							top: 4px;
+						}
+					}
+				}
+				
+				.cover {
+					@include basicfloat();
+					@include basiccover();
+					height: 56px;
+					background-color: $yellow;
+					background-image: url('/img/buzz.gif');
+					opacity: 0.5;
+				}
+				
+				p {
+					@include basicfloat();	
+					font-size: 12px;
+					color: $light;
+					line-height: 24px;
+				}
+			}
+		}
+	}
+
+
+		
+/*
+	Interact
+*/
+	
+
+	// Interact – Placeholders
+	.interact-wrapper {
+		position: fixed;
+		top: 56px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+		display: none;
+		background-color: black;
+		
+		&.interact-arrows {
+			//display: block;
+		}
+		
+		.close-interactions {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 24px;
+			height: 24px;
+			background-color: yellow;
+			cursor: pointer;
+			z-index: 1100;
+		}
+	}	
+
+
+
+	// Globals
+	.interact-button {
+		
+	}
+	
+	
+	// Touch Area
+	.touch-area-wrap {
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+		z-index: 200;
+		.touch-area {
+			@include basicfloat();
+			height: 100vw;
+			background-color: $grey_light;
+			z-index: 200;
+			bottom: 0;
+			overflow: hidden;
+			&.touch-area-fixed {
+				position: fixed;
+				top: 0;
+			}	
+			// The finger
+			.finger {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 24px;
+				height: 24px;
+				left: -12px;
+				top: -12px;
+				background-color: white;
+				border-radius: 50%;
+				box-shadow: 0px 0px 24px 24px white;
+				opacity: 0;
+				z-index: 10;
+			}			
+			.helper {
+				position: absolute;
+				pointer-events: none;
+				top: 50%;
+				line-height: 50px;
+				margin-top: -25px;
+				text-align: center;
+				width: 100%;
+				left: 0;
+				color: $grey;
+				text-transform: uppercase;
+				z-index: 5;
+			}
+		}
+		.touch-click {
+			@include basicfloat();
+			background-color: $grey_light;
+			border-top: 1px solid $black;	
+			height: 72px;
+			line-height: 72px;
+			color: $grey;
+			text-align: center;
+			text-transform: uppercase;			
+		}
+	}	
+	
+	// Touch – Output
+	.touchpad_output {	
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 8px;
+		height: 8px;
+		left: -4px;
+		top: -4px;
+		background-color: white;
+		border-radius: 50%;
+		//box-shadow: 0px 0px 16px 8px white;	
+		z-index: 1000;
+		border: 1px solid $black;		
+		opacity: 1;
+	}
+	
+	
+	// Arrows
+	
+	.interact–arrows-container {
+		position: absolute;
+		height: 100vw;
+		width: 100%;
+		padding: 0;
+		bottom: 0;
+		background-color: $grey;
+		//background-color: red;	
+
+		
+		.interact-button {
+			position: absolute;
+			display: block;
+			cursor: pointer;
+			z-index: 100;
+			background-color: none;
+			
+			i, span {
+				position: absolute;
+				width: 48px;
+				height: 24px;
+				color: $black;
+				left: 50%;
+				top: 50%;
+				margin-left: -24px;
+				margin-top: -12px;
+				text-align: center;
+				font-size: 24px;
+			}
+			span {
+				font-size: 20px;
+				
+			}
+			
+			&#int-arrow-back {
+				width: 33.3%;
+				height: 33.3%;
+				top: 0;
+				left: 0%;
+				z-index: 110;
+				display: none;
+			}	
+			&#int-arrow-ok {
+				width: 33.3%;
+				height: 33.3%;
+				top: 33.3%;
+				left: 33.3%;
+				z-index: 80;
+			}	
+			&#int-arrow-up {
+				width: 100%;
+				height: 33.3%;
+			}		
+			&#int-arrow-down {
+				bottom: 0;
+				width: 100%;
+				height: 33.3%;
+			}
+			&#int-arrow-left {
+				width: 33.3%;
+				height: 100%;
+			}
+			&#int-arrow-right {
+				width: 33.3%;
+				height: 100%;
+				right: 0;
+			}																
+		}
+	}
