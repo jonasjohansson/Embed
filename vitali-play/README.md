@@ -2,6 +2,8 @@
 
 This is the initial playground with a few components. This is not aimed to be the master project. The goal is to develop the responsive stage view for basic HTML content and to test some interactions. Please note that all content is dummy and that the controller does not load real experiences.
 
+*note: all front-end is demo and not pixel-perfect*
+
 This folder consists of the following elements:
 
 * index.js – node app
@@ -14,6 +16,7 @@ This folder consists of the following elements:
 * Install node_modules (ignored)
 * run node index.js
 * open the controller localaddress:3000/controller
+* add the controller to the home screen for a better experience.
 
 
 #  Stage Features
