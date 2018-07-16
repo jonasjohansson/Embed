@@ -1,0 +1,10 @@
+{
+  "name": "embed-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "mongoose": "^5.0.3",
+    "serve": "^6.4.11",
+    "socket.io": "^2.0.4"
+  }
+}

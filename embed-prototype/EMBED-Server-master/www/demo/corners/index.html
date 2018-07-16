@@ -1,0 +1,153 @@
+<html>
+	<head>
+		<script src='/lib/embed.js'></script>
+		<style>
+			.full {
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100vw;
+				height: 100vh;
+				background-color: black;
+				color: white;
+				font-size: 3vw;
+			}
+			.red {
+				color: red;
+			}
+			.blue {
+				color: blue;
+			}
+			.green {
+				color: green;
+			}
+			.white {
+				color: white;
+			}
+			.border {
+				box-sizing: border-box;
+				border: solid 1px;
+			}
+			.quadrant {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+ 				grid-template-rows: repeat(2, 1fr);
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class='full quadrant'>
+			<div class='red quadrant'>
+				<div class='quadrant'>
+					<div class="border">TL 1</div>
+					<div class="border">TL 2</div>
+					<div class="border">TL 3</div>
+					<div class="border">TL 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">TR 1</div>
+					<div class="border">TR 2</div>
+					<div class="border">TR 3</div>
+					<div class="border">TR 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">BL 1</div>
+					<div class="border">BL 2</div>
+					<div class="border">BL 3</div>
+					<div class="border">BL 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">BR 1</div>
+					<div class="border">BR 2</div>
+					<div class="border">BR 3</div>
+					<div class="border">BR 4</div>
+				</div>
+			</div>
+			<div class='green quadrant'>
+				<div class='quadrant'>
+					<div class="border">TL 1</div>
+					<div class="border">TL 2</div>
+					<div class="border">TL 3</div>
+					<div class="border">TL 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">TR 1</div>
+					<div class="border">TR 2</div>
+					<div class="border">TR 3</div>
+					<div class="border">TR 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">BL 1</div>
+					<div class="border">BL 2</div>
+					<div class="border">BL 3</div>
+					<div class="border">BL 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">BR 1</div>
+					<div class="border">BR 2</div>
+					<div class="border">BR 3</div>
+					<div class="border">BR 4</div>
+				</div>
+			</div>
+			<div class='blue quadrant'>
+				<div class='quadrant'>
+					<div class="border">TL 1</div>
+					<div class="border">TL 2</div>
+					<div class="border">TL 3</div>
+					<div class="border">TL 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">TR 1</div>
+					<div class="border">TR 2</div>
+					<div class="border">TR 3</div>
+					<div class="border">TR 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">BL 1</div>
+					<div class="border">BL 2</div>
+					<div class="border">BL 3</div>
+					<div class="border">BL 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">BR 1</div>
+					<div class="border">BR 2</div>
+					<div class="border">BR 3</div>
+					<div class="border">BR 4</div>
+				</div>
+			</div>
+			<div class='white quadrant'>
+				<div class='quadrant'>
+					<div class="border">TL 1</div>
+					<div class="border">TL 2</div>
+					<div class="border">TL 3</div>
+					<div class="border">TL 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">TR 1</div>
+					<div class="border">TR 2</div>
+					<div class="border">TR 3</div>
+					<div class="border">TR 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">BL 1</div>
+					<div class="border">BL 2</div>
+					<div class="border">BL 3</div>
+					<div class="border">BL 4</div>
+				</div>
+				<div class='quadrant'>
+					<div class="border">BR 1</div>
+					<div class="border">BR 2</div>
+					<div class="border">BR 3</div>
+					<div class="border">BR 4</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			// Even if this not animated, we need to define a onplay handler
+			EMBED.onplay = () => {}
+			// There's nothing to load or setup, so we are ready already!
+			EMBED.ready()
+		</script>
+	</body>
+</html>

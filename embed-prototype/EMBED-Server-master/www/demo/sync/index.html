@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<script src='/lib/embed.js'></script>
+		<style>
+			body {
+				background-color: white;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			#timestamp {
+				font-family: monospace;
+				font-size: 10vw;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="timestamp"></div>
+		<script>
+			// Define a onplay handler to control the start of the animation
+			EMBED.onplay = () => {
+				// Store the timestamp of the start of the animation
+				const start = Date.now()
+				const render = () => {
+					const diff = Date.now() - start
+					document.getElementById('timestamp').innerHTML = diff
+					// Repeat!
+					requestAnimationFrame(render)
+				}
+				// Start the render process
+				requestAnimationFrame(render)
+			}
+			// There's nothing to load or setup, so we are ready already!
+			EMBED.ready()
+		</script>
+	</body>
+</html>

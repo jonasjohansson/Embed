@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script src='/lib/embed.js'></script>
+	</head>
+	<body>
+		<script>
+			// Define a onplay handler to control the start of the animation
+			EMBED.onplay = () => {
+				// Store the timestamp of the start of the animation
+				const start = Date.now()
+				const render = () => {
+					// Use the difference of the current time and the start of
+					// the animation to calculate the hue
+					const hue = ((Date.now() - start) * 0.01) % 360
+					document.body.style.backgroundColor = `hsl(${hue},100%,50%)`
+
+					// Repeat!
+					requestAnimationFrame(render)
+				}
+				// Start the render process
+				requestAnimationFrame(render)
+			}
+			// There's nothing to load or setup, so we are ready already!
+			EMBED.ready()
+		</script>
+	</body>
+</html>

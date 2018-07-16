@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<!-- Load the EMBED library as soon as possible -->
+		<script src='https://github.com/eberryfubiz/EMBED-Lib/releases/download/1.0.0/embed.js'></script>
+
+		<!-- Stylesheet to make the video fullscreen -->
+		<style>
+			#video {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: auto;
+				height: auto;
+				transform: translateX(-50%) translateY(-50%);
+			}
+			@media (min-aspect-ratio: 16/9) {
+				#video {
+					max-width: 100%;
+				}
+			}
+			@media (max-aspect-ratio: 16/9) {
+				#video {
+					max-height: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Video element, with the "preload" attribute -->
+		<video id="video" preload src="video.mp4"></video>
+
+		<!-- Your custom code (can be in external file) -->
+		<script>
+			// Once the page is fully loaded (including the video), we are ready
+			// to start.
+			window.onload = () => {
+				EMBED.ready()
+			}
+
+			// Start playing the video on the EMBED.onplay event
+			EMBED.onplay = () => {
+				// Store the timestamp of the start of the animation
+				const start = Date.now()
+
+				// Get a reference of the video element and start playing it
+				const video = document.getElementById('video')
+				video.loop = true
+				video.play()
+
+				// On every frame we check if the video is sync
+				const sync = () => {
+					// Calculate the difference of the reference time and the
+					// video time
+					const referenceTime = ((Date.now() - start) / 1000) % video.duration
+					const videoTime = video.currentTime
+					const timeDiff = Math.abs(referenceTime - videoTime)
+
+					// If the difference is grather than 0.2 second, resync
+					if (timeDiff >= 0.2) {
+						video.currentTime = referenceTime
+					}
+					requestAnimationFrame(sync)
+				}
+				requestAnimationFrame(sync)
+			}
+		</script>
+	</body>
+</html>

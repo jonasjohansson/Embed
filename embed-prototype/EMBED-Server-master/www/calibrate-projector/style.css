@@ -1,0 +1,37 @@
+* {
+	-webkit-touch-callout: none;
+	user-select: none;
+}
+input, textarea {
+	-webkit-touch-callout: default !important;
+	user-select: text !important;
+}
+
+body {
+	font-size: 16px;
+}
+.container {
+	padding: 10px 20px;
+	display: flex;
+	flex-direction: column;
+}
+.container:nth-child(odd){
+	background-color: #EEEEEE;
+}
+.container .title {
+	margin: 0;
+	font-family: monospace;
+}
+.container > * {
+	margin: 10px 0;
+}
+.container  button {
+	background-color: yellow;
+	height: 20px;
+}
+
+.container input[type=number],
+.container select {
+	font-size: 16px;
+	font-family: monospace;
+}
