@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2",
+    "express": "^4.16.3",
     "jquery": "^3.3.1",
     "jsdom": "^11.11.0",
     "loudness-http": "^0.1.0",
