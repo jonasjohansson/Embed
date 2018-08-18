@@ -13,6 +13,7 @@ const setupEmbedCamera = (scene = null, renderer = null) => {
     embedRenderer = renderer;
 
 	let embedCamera = new THREE.CubeCamera( 0.1, 200000, 128 );
+    embedCamera.rotation.x = Math.PI;
 
     let i = 0;
 
