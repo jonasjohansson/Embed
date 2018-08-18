@@ -1,6 +1,7 @@
 var scene, renderer;
 var sphere;
 var clock = new THREE.Clock();
+let embedCamera = null;
 
 window.onload = () => {
 
@@ -30,15 +31,16 @@ window.onload = () => {
 
 	scene.add(sphere);
 
-	setupEmbedCamera(scene, false);
+	embedCamera = setupEmbedCamera(scene, renderer);
 	
 	render();
 
 }
 
 function render() {
-  angle = clock.getElapsedTime()*0.5;
+    angle = clock.getElapsedTime()*0.5;
 	sphere.position.set(650*Math.cos(angle), 650*Math.cos(angle), 650*Math.sin(angle));
-	renderEmbedCamera();
+    embedCamera.rotation.set( Math.PI, 0, 0 );
+	renderEmbedCamera( embedCamera );
 	requestAnimationFrame( render );
-}	
+}

@@ -9,55 +9,79 @@ todo:
 
 */
 
-var embedCamera = null;
+var embedRenderer = null;
 
-const setupEmbedCamera = (scene = null, debug = false) => {
+var SCREEN_WIDTH = window.innerWidth,
+    SCREEN_HEIGHT = window.innerHeight;
 
-	if (scene === null)
+const setupEmbedCamera = (scene = null, renderer = null) => {
+
+	if (scene === null || renderer === null){
+        console.error('Missing Scene or Renderer!');
 		return;
+    }
 
-	embedCamera = new THREE.CubeCamera( 0.1, 200000, 128 );
+    embedRenderer = renderer;
+
+	let embedCamera = new THREE.CubeCamera( 0.1, 200000, 128 );
+
+    let i = 0;
+
+    for (let cam of embedCamera.children){
+        cam.index = i++;
+    }
+
 	scene.add( embedCamera );
+
+    window.addEventListener('resize', ()=>{
+        SCREEN_WIDTH = window.innerWidth;
+        SCREEN_HEIGHT = window.innerHeight;
+        // embedCamera.aspect = SCREEN_WIDTH/SCREEN_HEIGHT;
+        // embedRenderer.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+        console.log('Window dimensions updated. Width:',SCREEN_WIDTH,'Height:',SCREEN_HEIGHT);
+    });
+
+    return embedCamera;
 
 }
 
-const renderEmbedCamera = () => {
+const P1 = 1/4;
+const P2 = 1/3;
+const P3 = 1/2;
+const P4 = 1/1.5;
+const P5 = 1/(1+P2);
 
-	var SCREEN_WIDTH = window.innerWidth, 
-			SCREEN_HEIGHT = window.innerHeight;
+const renderEmbedCamera = (camera = null) => {
 
-	let i = 0;
+	for (let cam of camera.children){
 
-	for (let camera of embedCamera.children){
-
-		switch (i) {
+		switch (cam.index) {
 			case 0:
-				v = [ 1, 0.33 * SCREEN_HEIGHT + 1, 0.25 * SCREEN_WIDTH - 2, 0.33 * SCREEN_HEIGHT - 2 ];
+				v = [ 1, P2 * SCREEN_HEIGHT + 1, P1 * SCREEN_WIDTH - 2, P2 * SCREEN_HEIGHT - 2 ];
 				break;
 			case 1:
-				v = [ 0.5 * SCREEN_WIDTH + 1, 0.33 * SCREEN_HEIGHT + 1, 0.25 * SCREEN_WIDTH - 2, 0.33 * SCREEN_HEIGHT - 2 ]
+				v = [ P3 * SCREEN_WIDTH + 1, P2 * SCREEN_HEIGHT + 1, P1 * SCREEN_WIDTH - 2, P2 * SCREEN_HEIGHT - 2 ]
 				break;
 			case 2:
-				v = [ 0.25 * SCREEN_WIDTH + 1, 0.66 * SCREEN_HEIGHT + 1, 0.25 * SCREEN_WIDTH - 2, 0.33 * SCREEN_HEIGHT - 2 ]
+				v = [ P1 * SCREEN_WIDTH + 1, P4 * SCREEN_HEIGHT + 1, P1 * SCREEN_WIDTH - 2, P2 * SCREEN_HEIGHT - 2 ]
+                cam.rotation.z = Math.PI;
 				break;
 			case 3:
-				v = [ 0.25 * SCREEN_WIDTH + 1, 0, 0.25 * SCREEN_WIDTH - 2, 0.33 * SCREEN_HEIGHT - 2 ]
+				v = [ P1 * SCREEN_WIDTH + 1, 0, P1 * SCREEN_WIDTH - 2, P2 * SCREEN_HEIGHT - 2 ]
+                cam.rotation.z = Math.PI;
 				break;
 			case 4:
-				v = [ 0.75 * SCREEN_WIDTH + 1, 0.33 * SCREEN_HEIGHT + 1, 0.25 * SCREEN_WIDTH - 2, 0.33 * SCREEN_HEIGHT - 2 ]
+				v = [ P5 * SCREEN_WIDTH + 1, P2 * SCREEN_HEIGHT + 1, P1 * SCREEN_WIDTH - 2, P2 * SCREEN_HEIGHT - 2 ]
 				break;
 			case 5:
-				v = [ 0.25 * SCREEN_WIDTH + 1, 0.33 * SCREEN_HEIGHT + 1, 0.25 * SCREEN_WIDTH - 2, 0.33 * SCREEN_HEIGHT - 2 ]
+				v = [ P1 * SCREEN_WIDTH + 1, P2 * SCREEN_HEIGHT + 1, P1 * SCREEN_WIDTH - 2, P2 * SCREEN_HEIGHT - 2 ]
 				break;
 		}
 
-		renderer.setViewport(v[0],v[1],v[2],v[3]);
-		renderer.setScissor(v[0],v[1],v[2],v[3]);
-		renderer.setScissorTest(true);
-		renderer.render( scene, camera );
-
-		i++;
-
-		}
+		embedRenderer.setViewport(v[0],v[1],v[2],v[3]);
+		embedRenderer.setScissor(v[0],v[1],v[2],v[3]);
+		embedRenderer.setScissorTest(true);
+		embedRenderer.render( scene, cam );
+	}
 
 }
