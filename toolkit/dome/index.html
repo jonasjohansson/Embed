@@ -2,8 +2,6 @@
 <html>
 <head>
 	<script src="https://rawgit.com/mrdoob/three.js/master/build/three.min.js"></script>
-    <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/loaders/FBXLoader.js"></script>
-    <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/libs/inflate.min.js"></script>
 	<script src="../embedCamera.js"></script>
 </head>
 <body style="margin:0;">
@@ -12,24 +10,28 @@
     var scene = new THREE.Scene();
     var renderer = new THREE.WebGLRenderer();
 
+    var skyGeo = new THREE.SphereGeometry(100000, 25, 25); 
+
+    var loader  = new THREE.TextureLoader(),
+        texture = loader.load( 'panorama.png' );
+
+    var skyMat = new THREE.MeshPhongMaterial({ 
+        map: texture,
+    });
+
+    light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+    light.position.set( 0, 200, 0 );
+    scene.add( light );
+
+    var sky = new THREE.Mesh(skyGeo, skyMat);
+    sky.material.side = THREE.BackSide;
+    scene.add(sky);
+
     renderer.setSize ( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
 
-    scene.background = new THREE.Color( 0xa0a0a0 );
-
-     var loader = new THREE.FBXLoader();
-     loader.load( 'scene.fbx', function ( object ) {
-        object.traverse( function ( child ) {
-            if ( child.isMesh ) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        } );
-        scene.add( object );
-     } );
-
     embedCamera = setupEmbedCamera(scene, renderer);
-    
+
     render();
 
     function render() {
