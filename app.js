@@ -40,7 +40,7 @@ window.onload = () => {
 function render() {
     angle = clock.getElapsedTime()*0.5;
 	sphere.position.set(650*Math.cos(angle), 650*Math.cos(angle), 650*Math.sin(angle));
-    embedCamera.rotation.set( Math.PI, 0, 0 );
+    embedCamera.rotation.set( Math.PI, Math.sin(angle), 0 );
 	renderEmbedCamera( embedCamera );
 	requestAnimationFrame( render );
 }
