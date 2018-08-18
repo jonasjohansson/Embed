@@ -1,14 +1,3 @@
-/*
-
-todo:
-
-- flip cameras correctly
-- optimise render camera code ie. should not be hard coded
-- allow for dynamic browser change and width / height update perhaps pass these values to the render function
-- instantiate as a class?
-
-*/
-
 var embedRenderer = null;
 
 var SCREEN_WIDTH = window.innerWidth,
