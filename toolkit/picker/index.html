@@ -57,6 +57,9 @@
         .left.center.right {
             width:300%;
         }
+        .dg.ac {
+            right:auto!important;
+        }
     </style>
     <script>
     const sources = {}
@@ -78,7 +81,7 @@
 
     var gui = new dat.GUI();
     let size = Object.keys(sources).length;
-    
+
     for (let prop in sources){
         const folder = gui.addFolder(prop);
         let source = sources[prop];
