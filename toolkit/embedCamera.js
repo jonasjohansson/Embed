@@ -3,6 +3,13 @@ var embedRenderer = null;
 var SCREEN_WIDTH = window.innerWidth,
     SCREEN_HEIGHT = window.innerHeight;
 
+var options = {
+	camera: {
+		index: 0
+	}
+}
+
+
 const setupEmbedCamera = (scene = null, renderer = null) => {
 
 	if (scene === null || renderer === null){
@@ -23,13 +30,10 @@ const setupEmbedCamera = (scene = null, renderer = null) => {
 
 	scene.add( embedCamera );
 
-    window.addEventListener('resize', ()=>{
-        SCREEN_WIDTH = window.innerWidth;
-        SCREEN_HEIGHT = window.innerHeight;
-        // embedCamera.aspect = SCREEN_WIDTH/SCREEN_HEIGHT;
-        // embedRenderer.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
-        console.log('Window dimensions updated. Width:',SCREEN_WIDTH,'Height:',SCREEN_HEIGHT);
-    });
+	var gui = new dat.GUI();
+	var cam = gui.addFolder('Camera');
+	cam.add(options.camera, 'index', 0, 6, 1).listen();
+	cam.open();
 
     return embedCamera;
 
@@ -42,6 +46,16 @@ const P4 = 1/1.5;
 const P5 = 1/(1+P2);
 
 const renderEmbedCamera = (camera = null) => {
+
+	if (camera === null) return;
+
+	if (options.camera.index != 6){
+		embedRenderer.setViewport(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+		embedRenderer.setScissor(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+		embedRenderer.setScissorTest(false);
+		embedRenderer.render( scene, camera.children[options.camera.index] );
+		return;
+	}
 
 	for (let cam of camera.children){
 
@@ -73,5 +87,12 @@ const renderEmbedCamera = (camera = null) => {
 		embedRenderer.setScissorTest(true);
 		embedRenderer.render( scene, cam );
 	}
-
 }
+
+window.addEventListener('resize', ()=>{
+    SCREEN_WIDTH = window.innerWidth;
+    SCREEN_HEIGHT = window.innerHeight;
+    // embedCamera.aspect = SCREEN_WIDTH/SCREEN_HEIGHT;
+    // embedRenderer.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+    console.log('Window dimensions updated. Width:',SCREEN_WIDTH,'Height:',SCREEN_HEIGHT);
+});
