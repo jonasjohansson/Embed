@@ -5,7 +5,7 @@
 	<script src="../embedCamera.js"></script>
 </head>
 <body style="margin:0;">
-    <video id="video" autoplay loop crossorigin="anonymous" style="display:none">
+    <video id="video" autoplay loop playsinline>
         <source src="sintel.mp4" type="video/mp4">
     </video>
     <script>
@@ -13,36 +13,40 @@
     var scene = new THREE.Scene();
     var renderer = new THREE.WebGLRenderer();
 
-    var skyGeo = new THREE.SphereGeometry(100000, 25, 25); 
+    window.onload = () => {
 
-    video = document.getElementById( 'video' );
+	    video = document.getElementById( 'video' );
+	    video.style.display = 'none';
 
-    texture = new THREE.VideoTexture( video );
-    texture.minFilter = THREE.LinearFilter;
-    texture.magFilter = THREE.LinearFilter;
-    texture.format = THREE.RGBFormat;
+	    texture = new THREE.VideoTexture( video );
+	    texture.minFilter = THREE.LinearFilter;
+	    texture.magFilter = THREE.LinearFilter;
+	    texture.format = THREE.RGBFormat;
 
-    // var loader  = new THREE.TextureLoader(),
-    //     texture = loader.load( 'panorama.png' );
+	    // var loader  = new THREE.TextureLoader(),
+	    //     texture = loader.load( 'panorama.png' );
 
-    var skyMat = new THREE.MeshPhongMaterial({ 
-        map: texture,
-    });
+	    var skyGeo = new THREE.SphereGeometry(100000, 25, 25); 
+	    var skyMat = new THREE.MeshPhongMaterial({ 
+	        map: texture,
+	    });
 
-    light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
-    light.position.set( 0, 200, 0 );
-    scene.add( light );
+	    light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+	    light.position.set( 0, 200, 0 );
+	    scene.add( light );
 
-    var sky = new THREE.Mesh(skyGeo, skyMat);
-    sky.material.side = THREE.BackSide;
-    scene.add(sky);
+	    var sky = new THREE.Mesh(skyGeo, skyMat);
+	    sky.material.side = THREE.BackSide;
+	    scene.add(sky);
 
-    renderer.setSize ( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
+	    renderer.setSize ( window.innerWidth, window.innerHeight );
+	    document.body.appendChild( renderer.domElement );
 
-    embedCamera = setupEmbedCamera(scene, renderer);
+	    embedCamera = setupEmbedCamera(scene, renderer);
 
-    render();
+	    render();
+
+    }
 
     function render() {
         angle = clock.getElapsedTime()*0.5;
