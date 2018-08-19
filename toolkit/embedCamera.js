@@ -92,7 +92,7 @@ const renderEmbedCamera = (camera = null) => {
 window.addEventListener('resize', ()=>{
     SCREEN_WIDTH = window.innerWidth;
     SCREEN_HEIGHT = window.innerHeight;
-    // embedCamera.aspect = SCREEN_WIDTH/SCREEN_HEIGHT;
-    // embedRenderer.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+    embedCamera.aspect = SCREEN_WIDTH/SCREEN_HEIGHT;
+    embedRenderer.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
     console.log('Window dimensions updated. Width:',SCREEN_WIDTH,'Height:',SCREEN_HEIGHT);
 });
