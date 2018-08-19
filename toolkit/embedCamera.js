@@ -5,7 +5,7 @@ var SCREEN_WIDTH = window.innerWidth,
 
 var options = {
 	camera: {
-		index: 0
+		index: 6
 	}
 }
 
