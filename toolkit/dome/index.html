@@ -40,6 +40,8 @@
 	    sky.material.side = THREE.BackSide;
 	    scene.add(sky);
 
+        sky.scale.x = -1;
+
 	    renderer.setSize ( window.innerWidth, window.innerHeight );
 	    document.body.appendChild( renderer.domElement );
 
