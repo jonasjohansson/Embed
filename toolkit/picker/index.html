@@ -67,7 +67,7 @@
         let el = document.createElement('iframe');
         document.body.appendChild(el);
         sources[id] = {
-            url:'https://jonasjohansson.github.io/vista/berg/',
+            url:'https://jonasjohansson.github.io/embed/toolkit/three/',
             left:true,
             center:false,
             right:false,
@@ -86,7 +86,7 @@
         const folder = gui.addFolder(prop);
         let source = sources[prop];
         let iframe = source.iframe;
-        folder.add(source, 'url').listen().setValue('https://jonasjohansson.github.io/vista/berg/').onChange((val)=>{
+        folder.add(source, 'url').listen().onChange((val)=>{
             iframe.src = val
         });
         folder.add(source, 'left').listen().onChange((val)=>{
