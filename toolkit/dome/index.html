@@ -23,9 +23,13 @@
 	    texture.minFilter = THREE.LinearFilter;
 	    texture.magFilter = THREE.LinearFilter;
 	    texture.format = THREE.RGBFormat;
+	    texture.needsUpdate = true;
 
-	    // var loader  = new THREE.TextureLoader(),
-	    //     texture = loader.load( 'panorama.png' );
+	    var loader  = new THREE.TextureLoader(),
+	        texture = loader.load( 'panorama.png' );
+
+	    texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
+	    texture.repeat.set( 2, 1 );
 
 	    var skyGeo = new THREE.SphereGeometry(100000, 25, 25); 
 	    var skyMat = new THREE.MeshPhongMaterial({ 
