@@ -2,66 +2,66 @@
 <html>
 <head>
 	<script src="https://rawgit.com/mrdoob/three.js/master/build/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
 	<script src="../embedCamera.js"></script>
 </head>
 <body style="margin:0;">
-    <video id="video" preload muted autoplay loop playsinline style="display:none;">
-        <source src="sintel.mp4" type="video/mp4">
-    </video>
-    <script>
-    var clock = new THREE.Clock();
-    var scene = new THREE.Scene();
-    var renderer = new THREE.WebGLRenderer();
+	<video id="video" preload muted autoplay loop playsinline style="display:none;">
+		<source src="sintel.mp4" type="video/mp4">
+	</video>
+	<script>
+	var clock = new THREE.Clock();
+	var scene = new THREE.Scene();
+	var renderer = new THREE.WebGLRenderer();
 
-    window.onload = () => {
+	window.onload = () => {
 
-	    video = document.getElementById( 'video' );
-	    video.play();
+		video = document.getElementById( 'video' );
+		video.play();
 
-	    texture = new THREE.VideoTexture( video );
-	    texture.minFilter = THREE.LinearFilter;
-	    texture.magFilter = THREE.LinearFilter;
-	    texture.format = THREE.RGBFormat;
-	    texture.needsUpdate = true;
+		texture = new THREE.VideoTexture( video );
+		texture.minFilter = THREE.LinearFilter;
+		texture.magFilter = THREE.LinearFilter;
+		texture.format = THREE.RGBFormat;
+		texture.needsUpdate = true;
 
-	    var loader  = new THREE.TextureLoader(),
-	        texture = loader.load( 'panorama.png' );
+		var loader  = new THREE.TextureLoader(),
+			texture = loader.load( 'panorama.png' );
 
-	    texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
-	    texture.repeat.set( 2, 1 );
+		texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
+		texture.repeat.set( 2, 1 );
 
-	    var skyGeo = new THREE.SphereGeometry(100000, 25, 25); 
-	    var skyMat = new THREE.MeshPhongMaterial({ 
-	        map: texture,
-	    });
+		var skyGeo = new THREE.SphereGeometry(100000, 25, 25); 
+		var skyMat = new THREE.MeshPhongMaterial({ 
+			map: texture,
+		});
 
-	    light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
-	    light.position.set( 0, 200, 0 );
-	    scene.add( light );
+		light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+		light.position.set( 0, 200, 0 );
+		scene.add( light );
 
-	    var sky = new THREE.Mesh(skyGeo, skyMat);
-	    sky.material.side = THREE.BackSide;
-	    scene.add(sky);
+		var sky = new THREE.Mesh(skyGeo, skyMat);
+		sky.material.side = THREE.BackSide;
+		scene.add(sky);
 
-        sky.scale.x = -1;
+		sky.scale.x = -1;
 
-	    renderer.setSize ( window.innerWidth, window.innerHeight );
-	    document.body.appendChild( renderer.domElement );
+		renderer.setSize ( window.innerWidth, window.innerHeight );
+		document.body.appendChild( renderer.domElement );
 
-	    embedCamera = setupEmbedCamera(scene, renderer);
+		embedCamera = setupEmbedCamera(scene, renderer);
 
-	    render();
+		render();
 
-    }
+	}
 
-    function render() {
-        angle = clock.getElapsedTime()*0.5;
-        embedCamera.rotation.y = Math.sin(angle);
-        renderEmbedCamera( embedCamera );
-        // renderer.render( scene, camera );
-        requestAnimationFrame( render );
-    }
-    </script>
+	function render() {
+		angle = clock.getElapsedTime()*0.5;
+		embedCamera.rotation.y = Math.sin(angle);
+		renderEmbedCamera( embedCamera );
+		// renderer.render( scene, camera );
+		requestAnimationFrame( render );
+	}
+	</script>
 </body>
 </html>
