@@ -1,0 +1,36 @@
+{
+    "room": {
+        "name": "standard",
+        "author": "jonas johansson",
+        "author_url": "https://jonasjohansson.se/",
+        "description": "a standard piece of art",
+        "type": "video",
+        "url": "https://github.com/embed/experiences/standard/",
+        "flags": "motion touch voice camera",
+        "format": "panorama"
+    },
+    "room1": {
+        "name": "standard",
+        "author": "jonas johansson",
+        "author_url": "https://jonasjohansson.se/",
+        "description": "a standard piece of art",
+        "type": "video",
+        "url": "https://github.com/embed/experiences/standard/",
+        "flags": "motion touch voice camera",
+        "format": "panorama"
+    },
+    "room3": {
+        "id": 3
+    },
+    "room4": {
+        "name": "standard",
+        "author": "jonas johansson",
+        "author_url": "https://jonasjohansson.se/",
+        "description": "a standard piece of art",
+        "type": "video",
+        "url": "https://github.com/embed/experiences/standard/",
+        "flags": "motion touch voice camera",
+        "format": "panorama",
+        "id": 4
+    }
+}
