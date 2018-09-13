@@ -25,8 +25,8 @@
 		texture.format = THREE.RGBFormat;
 		texture.needsUpdate = true;
 
-		var loader  = new THREE.TextureLoader(),
-			texture = loader.load( 'panorama.png' );
+		// var loader  = new THREE.TextureLoader(),
+		// 	texture = loader.load( 'panorama.png' );
 
 		texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
 		texture.repeat.set( 2, 1 );

@@ -1,6 +1,6 @@
 {
-    "room": {
-        "name": "standard",
+    "room1": {
+        "title": "standard",
         "author": "jonas johansson",
         "author_url": "https://jonasjohansson.se/",
         "description": "a standard piece of art",
@@ -9,8 +9,8 @@
         "flags": "motion touch voice camera",
         "format": "panorama"
     },
-    "room1": {
-        "name": "standard",
+    "room2": {
+        "title": "standard",
         "author": "jonas johansson",
         "author_url": "https://jonasjohansson.se/",
         "description": "a standard piece of art",
@@ -20,10 +20,7 @@
         "format": "panorama"
     },
     "room3": {
-        "id": 3
-    },
-    "room4": {
-        "name": "standard",
+        "title": "standard",
         "author": "jonas johansson",
         "author_url": "https://jonasjohansson.se/",
         "description": "a standard piece of art",

@@ -1,29 +1,35 @@
-const request = require('request')
+const axios = require('axios');
+const path = require('path')
+const express = require('express');  
+const app = express();  
+const server = require('http').createServer(app);  
+const io = require('socket.io')(server);
 
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+app.use(express.static(path.join(__dirname, '/public')));
 
-app.get('/', function(req, res){
-	res.sendFile(__dirname + '/controller.html');
+server.listen(3000); 
+
+const controller;
+const viewer;
+
+io.of('/controller').on('connection', function(socket){
+
+	controller = socket;
+
+	console.log('controller connected…');
+
+	axios.get('http://localhost/embed/embed-core/public/experiences.json')
+		.then(response => {
+			console.log(response.data);
+			socket.emit('update', response.data);
+		})
+		.catch(error => {
+			console.log(error);
+		});
+
+	socket.on('')
 });
 
-io.on('connection', function(socket){
-	console.log('a user connected');
-	socket.on('load', function (data) {
-		console.log(data);
-	});
-});
-
-http.listen(3000, function(){
-  console.log('listening on *:3000');
-});
-
-request({
-	url: './experiences.json',
-	json: true
-}, function (error, response, body) {
-	if (!error && response.statusCode === 200) {
-		console.log(body) 
-	}
+io.of('/viewer').on('connection', function(socket){
+	console.log('viewer connected…');
 });
