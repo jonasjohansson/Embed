@@ -3,20 +3,41 @@
 <head>
 	<title>Embed Controller</title>
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="controller.js"></script>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Controller</h1>
 
-    <div id="loading-screen">
+    <div id="loading"></div>
+
+    <div id="welcome">
+        <h1>Hi there!<br>Welcome to your Embed room</h1>
+        <p>Description about Embed.</p>
+        <menu>
+            <button id="command-reset-sleep">Sleep Mode</button>
+            <button id="command-start">Start</button>
+        </menu>
     </div>
 
-	<ol id="experiences">
-	</ol>
-
-    <div id="experience">
+    <div id="sleep">
+        <menu>
+            <button id="command-wake-welcome">Wake</button>
+        </menu>
     </div>
+
+    <div id="error">
+        <h1>Something went wrong. Sorry.</h1>
+        <p>Let's restart and hope for the best.</p>
+        <menu>
+            <button id="command-refresh">Refresh</button>
+            <button id="command-restart">Restart</button>
+        </menu>
+    </div>
+
+    <div id="experiences">
+        <h1>Experiences</h1>
+    </div>
+    
+    <script src="controller.js"></script>
     
 </body>
 </html>

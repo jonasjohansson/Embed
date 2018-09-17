@@ -23,6 +23,5 @@ io.on('connection', function(socket){
 
 	socket.on('selected', (data)=> {
 		socket.broadcast.emit('load', data);
-		// socket.emit('load', data);
 	});
 });

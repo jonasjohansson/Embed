@@ -1,33 +1,12 @@
 {
-    "room1": {
-        "title": "standard",
-        "author": "jonas johansson",
+    "exp01": {
+        "title": "Pilgrim",
+        "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
-        "description": "a standard piece of art",
-        "type": "video",
-        "url": "https://github.com/embed/experiences/standard/",
-        "flags": "motion touch voice camera",
-        "format": "panorama"
-    },
-    "room2": {
-        "title": "standard",
-        "author": "jonas johansson",
-        "author_url": "https://jonasjohansson.se/",
-        "description": "a standard piece of art",
-        "type": "video",
-        "url": "https://github.com/embed/experiences/standard/",
-        "flags": "motion touch voice camera",
-        "format": "panorama"
-    },
-    "room3": {
-        "title": "standard",
-        "author": "jonas johansson",
-        "author_url": "https://jonasjohansson.se/",
-        "description": "a standard piece of art",
-        "type": "video",
-        "url": "https://github.com/embed/experiences/standard/",
-        "flags": "motion touch voice camera",
-        "format": "panorama",
-        "id": 4
+        "description": "Floating endlessly…",
+        "type": "webgl",
+        "url": "https://jonasjohansson.github.io/vista/pilgrim/",
+        "flags": "",
+        "format": "all"
     }
 }

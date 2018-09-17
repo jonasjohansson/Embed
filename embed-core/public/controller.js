@@ -4,6 +4,11 @@ var socket = io();
 
 // document.body.classList.toggle('isMobile',isMobile);
 
+socket.on('update', function (data) {
+	// if (isMobile)
+		display(data);
+});
+
 // fetch('http://localhost:3000/experiences.json')
 // 	.then(function(response) {
 // 		return response.json();
@@ -12,25 +17,24 @@ var socket = io();
 // 		display(data);
 // 	});
 
-socket.on('update', function (data) {
-	display(data);
-});
-
-socket.on('load', function (data) {
-	load(data);
-});
-
 display = (experiences) => {
-	let ol = document.querySelector('#experiences');
 	for (let prop in experiences){
+		let list = document.createElement('ul');
 		let experience = experiences[prop];
-		let li = document.createElement('li');
-		li.innerHTML = experience.title;
-		li.addEventListener('click', (event) => {
+		for (let prop in experience){
+			let item = experience[prop];
+			let listItem = document.createElement('li');
+			listItem.innerHTML = item;
+			list.appendChild(listItem);
+		}
+		let button = document.createElement('button');
+		button.innerHTML = 'command-play-this';
+		button.addEventListener('click', (event) => {
+			socket.emit('selected',experience);
 			load(experience);
-			socket.emit('selected', experience);
 		})
-		ol.appendChild(li);
+		list.appendChild(button);
+		document.querySelector('#experiences').appendChild(list);
 	}
 }
 
