@@ -9,27 +9,20 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 server.listen(3000); 
 
-const controller;
-const viewer;
+io.on('connection', function(socket){
 
-io.of('/controller').on('connection', function(socket){
-
-	controller = socket;
-
-	console.log('controller connected…');
+	console.log('Socket connected');
 
 	axios.get('http://localhost/embed/embed-core/public/experiences.json')
 		.then(response => {
-			console.log(response.data);
 			socket.emit('update', response.data);
 		})
 		.catch(error => {
 			console.log(error);
 		});
 
-	socket.on('')
-});
-
-io.of('/viewer').on('connection', function(socket){
-	console.log('viewer connected…');
+	socket.on('selected', (data)=> {
+		socket.broadcast.emit('load', data);
+		// socket.emit('load', data);
+	});
 });
