@@ -43,7 +43,7 @@
 	render();
 
 	function render() {
-		angle = clock.getElapsedTime()*0.1;
+		angle = clock.getElapsedTime()*0.5;
 		sphere.position.set(650*Math.cos(angle), 650*Math.cos(angle), 650*Math.sin(angle));
 		camera.rotation.y += Math.sin(angle);
 		renderEmbedCamera( camera ); 
