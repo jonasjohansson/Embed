@@ -87,6 +87,10 @@ const renderEmbedCamera = (camera = null) => {
 	}
 }
 
+window.addEventListener('load', ()=>{
+    document.body.style.margin = 0;
+});
+
 window.addEventListener('resize', ()=>{
     SCREEN_WIDTH = window.innerWidth;
     SCREEN_HEIGHT = window.innerHeight;
