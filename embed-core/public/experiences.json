@@ -1,11 +1,31 @@
 {
-    "exp01": {
-        "title": "Pilgrim",
-        "description": "Floating endlessly…",
+    "001": {
+        "title": "Title",
+        "description": "Description…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/vista/pilgrim/",
+        "url": "https://jonasjohansson.github.io/embed/embed-experiences/001/",
+        "flags": "",
+        "format": "panorama"
+    },
+    "002": {
+        "title": "Title",
+        "description": "Description…",
+        "author": "Jonas Johansson",
+        "author_url": "https://jonasjohansson.se/",
+        "type": "webgl",
+        "url": "https://jonasjohansson.github.io/embed/embed-experiences/002/",
+        "flags": "",
+        "format": "panorama"
+    },
+    "003": {
+        "title": "Title",
+        "description": "Description…",
+        "author": "Jonas Johansson",
+        "author_url": "https://jonasjohansson.se/",
+        "type": "webgl",
+        "url": "https://jonasjohansson.github.io/embed/embed-experiences/003/",
         "flags": "",
         "format": "panorama"
     }
