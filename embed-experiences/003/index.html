@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://rawgit.com/mrdoob/three.js/master/build/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
+	<script src="https://cdn.rawgit.com/mrdoob/three.js/master/build/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
 	<script src="../embedCamera.js"></script>
 </head>
-<body style="margin:0;">
-    <script>
-    var clock = new THREE.Clock();
-    var scene = new THREE.Scene();
-    var renderer = new THREE.WebGLRenderer();
+<body>
+	<script>
+	var clock = new THREE.Clock();
+	var scene = new THREE.Scene();
+	var renderer = new THREE.WebGLRenderer();
+	var controls;
 
-    scene.background = new THREE.CubeTextureLoader()
-        .load( [
-            'px-room.png',
-            'nx-room.png',
-            'py-room.png',
-            'ny-room.png',
-            'pz-room.png',
-            'nz-room.png'
-        ] );
+	scene.background = new THREE.CubeTextureLoader()
+		.load( [
+			'px-room.png',
+			'nx-room.png',
+			'py-room.png',
+			'ny-room.png',
+			'pz-room.png',
+			'nz-room.png'
+		] );
 
-    renderer.setSize ( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
+	// var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+	camera = setupEmbedCamera(scene, renderer, true);
 
-    var sphere = new THREE.Mesh(
-        new THREE.SphereGeometry(100,100,20),
-        new THREE.MeshBasicMaterial({
-            color:0xffffff,
-        })
-    );
+	controls = new THREE.OrbitControls( camera );
 
-    scene.add(sphere);
-    embedCamera = setupEmbedCamera(scene, renderer);
+	var sphere = new THREE.Mesh(
+		new THREE.SphereGeometry(100,100,20),
+		new THREE.MeshBasicMaterial({
+			color:0xffffff,
+		})
+	);
+	scene.add(sphere);
 
-    render();
+	renderer.setSize ( window.innerWidth, window.innerHeight );
+	document.body.appendChild( renderer.domElement );
 
-    function render() {
-        angle = clock.getElapsedTime()*0.5;
-        sphere.position.set(650*Math.cos(angle), 650*Math.cos(angle), 650*Math.sin(angle));
-        embedCamera.rotation.y = Math.sin(angle);
-        renderEmbedCamera( embedCamera );
-        // renderer.render( scene, camera );
-        requestAnimationFrame( render );
-    }
-    </script>
+	render();
+
+	function render() {
+		angle = clock.getElapsedTime()*0.5;
+		sphere.position.set(650*Math.cos(angle), 650*Math.cos(angle), 650*Math.sin(angle));
+		camera.rotation.y = Math.sin(angle);
+		renderEmbedCamera( camera ); 
+		// renderer.render( scene, camera );
+		controls.update();
+		requestAnimationFrame( render );
+	}
+	</script>
 </body>
 </html>

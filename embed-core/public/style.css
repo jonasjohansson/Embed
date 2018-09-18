@@ -18,15 +18,15 @@ iframe:nth-of-type(1){
     background-color:red;
 }
 iframe:nth-of-type(2){
-    left:100%;
+    /*left:100%;*/
     background-color:green;
 }
 iframe:nth-of-type(3){
-    left:200%;
+    /*left:200%;*/
     background-color:blue;
 }
 iframe:nth-of-type(4){
-    left:300%;
+    /*left:300%;*/
     background-color:yellow;
 }
 iframe.left:not(.center):not(.right):not(.top){
@@ -51,7 +51,7 @@ iframe.left.center.right {
     width:300%;
 }
 iframe:not(.left):not(.center):not(.right):not(.top){
-    display:none;
+    /*display:none;*/
 }
 .dg.ac {
     right:auto!important;
