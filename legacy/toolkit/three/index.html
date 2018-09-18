@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://rawgit.com/mrdoob/three.js/master/build/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
+	<script src="../embedCamera.js"></script>
+</head>
+<body style="margin:0;">
+    <script>
+    var clock = new THREE.Clock();
+    var scene = new THREE.Scene();
+    var renderer = new THREE.WebGLRenderer();
+
+    scene.background = new THREE.CubeTextureLoader()
+        .load( [
+            'px-room.png',
+            'nx-room.png',
+            'py-room.png',
+            'ny-room.png',
+            'pz-room.png',
+            'nz-room.png'
+        ] );
+
+    renderer.setSize ( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+
+    var sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(100,100,20),
+        new THREE.MeshBasicMaterial({
+            color:0xffffff,
+        })
+    );
+
+    scene.add(sphere);
+    embedCamera = setupEmbedCamera(scene, renderer);
+
+    render();
+
+    function render() {
+        angle = clock.getElapsedTime()*0.5;
+        sphere.position.set(650*Math.cos(angle), 650*Math.cos(angle), 650*Math.sin(angle));
+        embedCamera.rotation.y = Math.sin(angle);
+        renderEmbedCamera( embedCamera );
+        // renderer.render( scene, camera );
+        requestAnimationFrame( render );
+    }
+    </script>
+</body>
+</html>

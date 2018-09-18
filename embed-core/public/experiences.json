@@ -1,12 +1,12 @@
 {
     "exp01": {
         "title": "Pilgrim",
+        "description": "Floating endlessly…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
-        "description": "Floating endlessly…",
         "type": "webgl",
         "url": "https://jonasjohansson.github.io/vista/pilgrim/",
         "flags": "",
-        "format": "all"
+        "format": "panorama"
     }
 }

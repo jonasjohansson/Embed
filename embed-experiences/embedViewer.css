@@ -1,0 +1,55 @@
+body.loading {
+	background-color:blue;
+}
+body {
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow-x:scroll;
+    margin:0;
+}
+iframe {
+    position:absolute;
+    width:0;
+    height:100%;
+}
+iframe:nth-of-type(1){
+    background-color:red;
+}
+iframe:nth-of-type(2){
+    left:100%;
+    background-color:green;
+}
+iframe:nth-of-type(3){
+    left:200%;
+    background-color:blue;
+}
+iframe:nth-of-type(4){
+    left:300%;
+    background-color:yellow;
+}
+.left:not(.center):not(.right):not(.top){
+    left:0;
+}
+.center:not(.left):not(.right):not(.top){
+    left:100%;
+}
+.right:not(.left):not(.center):not(.top){
+    left:200%;
+}
+.top:not(.left):not(.center):not(.right){
+    left:300%;
+}
+.left,.center,.right,.top {
+    width:100%;
+}
+.left.center,.left.right,.center.right {
+    width:200%;
+}
+.left.center.right {
+    width:300%;
+}
+.dg.ac {
+    right:auto!important;
+    z-index:99!important;
+}

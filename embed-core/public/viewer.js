@@ -5,7 +5,7 @@ for (id of ['a','b','c','d']){
     let el = document.createElement('iframe');
     document.body.appendChild(el);
     sources[id] = {
-        url:    'https://jonasjohansson.github.io/embed/toolkit/three/',
+        url:    'https://jonasjohansson.github.io/embed/toolkit/dome/',
         left:   true,
         center: false,
         right:  false,
@@ -56,6 +56,16 @@ socket.on('load', function (data) {
 });
 
 load = (experience) => {
+    let format = experience.format;
+    switch (format) {
+        case 'panorama':
+            console.log(gui.__folders.a.__controllers[0].setValue(experience.url));
+            console.log(gui.__folders.a.__controllers[1].setValue(true));
+            console.log(gui.__folders.a.__controllers[2].setValue(true));
+            console.log(gui.__folders.a.__controllers[3].setValue(true));
+            console.log(gui.__folders.a.__controllers[4].setValue(false));
+        break;
+    }
     console.log(gui.__folders.a.__controllers[0].setValue(experience.url));
     document.body.classList.add('loading');
     console.log('Loading',experience.title)

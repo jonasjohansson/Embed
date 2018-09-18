@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://rawgit.com/mrdoob/three.js/master/build/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/loaders/FBXLoader.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/libs/inflate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
+	<script src="../embedCamera.js"></script>
+</head>
+<body style="margin:0;">
+    <script>
+    var clock = new THREE.Clock();
+    var scene = new THREE.Scene();
+    var renderer = new THREE.WebGLRenderer();
+
+    renderer.setSize ( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+
+    scene.background = new THREE.Color( 0xa0a0a0 );
+
+     var loader = new THREE.FBXLoader();
+     loader.load( 'scene.fbx', function ( object ) {
+        object.traverse( function ( child ) {
+            if ( child.isMesh ) {
+                child.castShadow = true;
+                child.receiveShadow = true;
+            }
+        } );
+        scene.add( object );
+     } );
+
+    embedCamera = setupEmbedCamera(scene, renderer);
+    
+    render();
+
+    function render() {
+        angle = clock.getElapsedTime()*0.5;
+        embedCamera.rotation.y = Math.sin(angle);
+        renderEmbedCamera( embedCamera );
+        // renderer.render( scene, camera );
+        requestAnimationFrame( render );
+    }
+    </script>
+</body>
+</html>
