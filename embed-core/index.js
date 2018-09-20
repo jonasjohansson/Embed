@@ -13,7 +13,7 @@ io.on('connection', function(socket){
 
 	console.log('Socket connected');
 
-	axios.get('http://localhost/embed/embed-core/public/experiences.json')
+	axios.get('http://localhost:3000/experiences.json')
 		.then(response => {
 			socket.emit('update', response.data);
 		})
