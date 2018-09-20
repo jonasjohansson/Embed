@@ -4,8 +4,10 @@
         "description": "Description…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
+        "cover_image": "",
+        "cover_video": "",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/001/",
+        "url": "http://localhost:8000/embed-experiences/001/",
         "flags": "",
         "format": "panorama"
     },
@@ -14,8 +16,10 @@
         "description": "Description…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
+        "cover_image": "",
+        "cover_video": "",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/002/",
+        "url": "http://localhost:8000/embed-experiences/002/",
         "flags": "",
         "format": "panorama"
     },
@@ -24,8 +28,10 @@
         "description": "Description…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
+        "cover_image": "",
+        "cover_video": "",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/003/",
+        "url": "http://localhost:8000/embed-experiences/003/",
         "flags": "",
         "format": "panorama"
     }
