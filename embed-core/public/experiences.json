@@ -1,6 +1,6 @@
 {
     "001": {
-        "title": "Title",
+        "title": "Title 01",
         "description": "Description…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
@@ -12,7 +12,7 @@
         "format": "panorama"
     },
     "002": {
-        "title": "Title",
+        "title": "Title 02",
         "description": "Description…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
@@ -24,7 +24,7 @@
         "format": "panorama"
     },
     "003": {
-        "title": "Title",
+        "title": "Title 03",
         "description": "Description…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",

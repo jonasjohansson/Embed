@@ -74,5 +74,10 @@ load = (experience) => {
     setTimeout(()=>{
         document.body.classList.remove('loading');
         console.log('Loading complete');
+        
+        // Update system status ...
+        /*
+        	$("#system-status").html('Now Playing...' + experience.title);
+        */
     },1000);
 }

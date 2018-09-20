@@ -3,7 +3,7 @@
 var socket = io();
 
 /*
-	General system status (temp)
+	General system status (relay + volume)
 */
 
 	// Show Initial Volume
@@ -20,4 +20,3 @@ var socket = io();
 	socket.on('relay-status', function(arduino_relay_status){
 		$("#relay-status").html(arduino_relay_status);	
 	});		
-	
