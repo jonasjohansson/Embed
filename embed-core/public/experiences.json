@@ -7,11 +7,7 @@
         "cover_image": "",
         "cover_video": "",
         "type": "webgl",
-<<<<<<< HEAD
         "url": "http://localhost:8000/embed-experiences/001/",
-=======
-        "url": "http://localhost/embed/embed-experiences/001/",
->>>>>>> origin
         "flags": "",
         "format": "panorama"
     },
@@ -23,11 +19,7 @@
         "cover_image": "",
         "cover_video": "",
         "type": "webgl",
-<<<<<<< HEAD
         "url": "http://localhost:8000/embed-experiences/002/",
-=======
-        "url": "http://localhost/embed/embed-experiences/002/",
->>>>>>> origin
         "flags": "",
         "format": "panorama"
     },
@@ -39,11 +31,7 @@
         "cover_image": "",
         "cover_video": "",
         "type": "webgl",
-<<<<<<< HEAD
         "url": "http://localhost:8000/embed-experiences/003/",
-=======
-        "url": "http://localhost/embed/embed-experiences/003/",
->>>>>>> origin
         "flags": "",
         "format": "panorama"
     }

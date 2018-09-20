@@ -12,10 +12,7 @@ var socket = io();
 	
 	// Set New Volume
 	$("#volume-slider").on("input change", function() {
-
 		var volume_new = $("#volume-slider").val();	
-	
 		socket.emit('volume-new', volume_new);
-
 	});
 		
