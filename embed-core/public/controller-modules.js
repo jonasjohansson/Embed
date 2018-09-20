@@ -27,14 +27,26 @@
 	
 	// Hardware Sleep
 	$('#command-sleep').on("click", function() {
-		arduino_relay_status = false; 
+		arduino_relay_status = "sleep"; 
 		socket.emit('relay-control', arduino_relay_status);
-		console.log("sleep click");		  
+		console.log("sleep click");	
+		$('#relay-status').html(arduino_relay_status);	  
 	});		
 	
 	// Hardware Wake
 	$('#command-wake').on("click", function() {
-		arduino_relay_status = true; 
+		arduino_relay_status = "wake"; 
 		socket.emit('relay-control', arduino_relay_status);	
-		console.log("wake click");		
+		console.log("wake click");	
+		$('#relay-status').html(arduino_relay_status);	
 	});
+	
+
+/*
+	Controller alerts
+*/
+
+	socket.on('controller-alert', function(controller_alert){
+		alert(controller_alert);
+		console.log("yo!");
+	});  

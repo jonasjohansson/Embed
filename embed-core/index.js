@@ -45,19 +45,35 @@ io.on('connection', function(socket){
 /* Arduino Relay */
 
 	socket.on('relay-control', function(arduino_relay_status) {
-		console.log("Relay Socket Change");
-		
+
 		// Check if board is even connected first
-		if(relay_status == "ready") {		
-			if(arduino_relay_status == true) {
+		if(relay_status == "relay ready") {		
+			
+			// Run command
+			if(arduino_relay_status == "wake") {
 				relay.close();
-			} else {
-				relay.open();	
 			}
+			if(arduino_relay_status == "sleep") {
+				relay.open();
+			}
+		} else {
+			controller_alert = "relay not available";
+			socket.emit('controller-alert', controller_alert);
 		}
 	});  	
+
+	board.on("ready", function() {
+		controller_alert = "relay available";
+		socket.emit('controller-alert', controller_alert);
+	});	
+	
 	
 });
+
+/* Global Variables */
+
+// Used for sending important test alerts
+var controller_alert;
 
 
 /* Set up relay */  
@@ -67,7 +83,7 @@ var relay;
 var relay_status;
 
 board.on("ready", function() {
+	relay_status = "relay ready";
 	relay = new five.Relay({ pin: 10, type: "NC"});
-	console.log("relay ready");
-	relay_status = "ready";
+	console.log("relay ready");	
 });
