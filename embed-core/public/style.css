@@ -57,3 +57,9 @@ iframe:not(.left):not(.center):not(.right):not(.top){
     right:auto!important;
     z-index:99!important;
 }
+
+/*Controller*/
+
+body.controller {
+	padding: 24px;
+}

@@ -5,26 +5,43 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="controller">
 
     <div id="loading"></div>
 
     <div id="welcome">
+	    	<h3>Welcome State</h3>
         <h1>Hi there!<br>Welcome to your Embed room</h1>
         <p>Description about Embed.</p>
-        <menu>
-            <button id="command-reset-sleep">Sleep Mode</button>
-            <button id="command-start">Start</button>
-        </menu>
+        <p><i>Project the Welcome experience. Prompt: Sleep / Start</i></p>
+    </div>
+		
+		<hr>
+		
+    <div id="sleep">
+			<h3>Sleep Controls</h3>
+			
+			<p><b>Start</b></p>
+			<p>Load the default experience from the Welcome state.</p>
+			<button id="command-start">Start</button>
+
+	    <p><b>Sleep</b></p>
+	    <p>Shut down hardware and show the sleep overlay.</p>
+			<button id="command-sleep">Sleep</button>
+			
+	    <p><b>Reset</b></p>	    
+	    <p>Reset to Welcome state.</p>
+      <button id="command-reset">Reset</button>					
+
+      <p><b>Wake</b></p>	 
+      <p>Turn on the hardware. No matter the system state.</p>
+      <button id="command-wake">Wake</button>
     </div>
 
-    <div id="sleep">
-        <menu>
-            <button id="command-wake-welcome">Wake</button>
-        </menu>
-    </div>
+		<hr>
 
     <div id="error">
+	    	<h3>Error</h3>
         <h1>Something went wrong. Sorry.</h1>
         <p>Let's restart and hope for the best.</p>
         <menu>
@@ -32,13 +49,17 @@
             <button id="command-restart">Restart</button>
         </menu>
     </div>
-
+		
+		<hr>
+		
     <div id="experiences">
-        <h1>Experiences</h1>
+        <h3>Experiences</h3>
     </div>
+    
+    <hr>
 
     <div id="volume">
-	  		<h1>Volume</h1> 
+	  		<h3>Volume</h3> 
 	  		<input type="range" id="volume-slider" class="rangeslider" value="0" min="0" max="100">
     </div>    
     

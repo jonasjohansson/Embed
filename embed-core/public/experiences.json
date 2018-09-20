@@ -4,7 +4,7 @@
         "description": "Description…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
-        "cover_image": "",
+        "cover_image": "http://localhost:8000/embed-experiences/001/panorama.png",
         "cover_video": "",
         "type": "webgl",
         "url": "http://localhost:8000/embed-experiences/001/",
