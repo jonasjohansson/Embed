@@ -41,12 +41,3 @@
 		$('#relay-status').html(arduino_relay_status);	
 	});
 	
-
-/*
-	Controller alerts
-*/
-
-	socket.on('controller-alert', function(controller_alert){
-		alert(controller_alert);
-		console.log("yo!");
-	});  

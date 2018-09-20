@@ -13,6 +13,7 @@ iframe {
     width:0;
     height:100%;
     border:0;
+    z-index: 1;
 }
 iframe:nth-of-type(1){
     background-color:red;
@@ -58,7 +59,20 @@ iframe:not(.left):not(.center):not(.right):not(.top){
     z-index:99!important;
 }
 
-/*Controller*/
+
+/* Viewer */
+
+.system-overlay {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 10px;
+	color: blue;
+	font-size: 10px;
+	z-index: 100;
+}
+
+/* Controller */
 
 body.controller {
 	padding: 24px;

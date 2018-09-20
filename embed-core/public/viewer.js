@@ -73,6 +73,6 @@ load = (experience) => {
     console.log('Loading',experience.title)
     setTimeout(()=>{
         document.body.classList.remove('loading');
-        console.log('Loading complete')
+        console.log('Loading complete');
     },1000);
 }

@@ -39,6 +39,7 @@ io.on('connection', function(socket){
 	// Set new volume		
 	socket.on('volume-new', function(volume_new){  
 		loudness.setVolume(volume_new, function (err) {});  
+		socket.broadcast.emit('volume-new', volume_new);
 	});
 	
 
@@ -55,18 +56,14 @@ io.on('connection', function(socket){
 			}
 			if(arduino_relay_status == "sleep") {
 				relay.open();
+				
 			}
 		} else {
-			controller_alert = "relay not available";
-			socket.emit('controller-alert', controller_alert);
+			arduino_relay_status = "Relay not available";
+			socket.broadcast.emit('relay-status', arduino_relay_status);
 		}
+		socket.broadcast.emit('relay-status', arduino_relay_status);
 	});  	
-
-	board.on("ready", function() {
-		controller_alert = "relay available";
-		socket.emit('controller-alert', controller_alert);
-	});	
-	
 	
 });
 
@@ -74,7 +71,6 @@ io.on('connection', function(socket){
 
 // Used for sending important test alerts
 var controller_alert;
-
 
 /* Set up relay */  
 
@@ -85,5 +81,5 @@ var relay_status;
 board.on("ready", function() {
 	relay_status = "relay ready";
 	relay = new five.Relay({ pin: 10, type: "NC"});
-	console.log("relay ready");	
+	console.log(relay_status);
 });
