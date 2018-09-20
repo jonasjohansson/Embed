@@ -3,10 +3,11 @@ var socket = io();
 const sources = {}
 for (id of ['a','b','c','d']){
     let el = document.createElement('iframe');
+    el.id = id;
     document.body.appendChild(el);
     sources[id] = {
-        url:    'https://jonasjohansson.github.io/embed/embed-experiences/002/',
-        left:   true,
+        url:    'about:blank',
+        left:   false,
         center: false,
         right:  false,
         top:    false,
@@ -22,8 +23,8 @@ let size = Object.keys(sources).length;
 
 for (let prop in sources){
     const folder = gui.addFolder(prop);
-    var source = sources[prop];
-    var iframe = source.iframe;
+    let source = sources[prop];
+    let iframe = source.iframe;
     folder.add(source, 'url').listen().onChange((val)=>{
         iframe.src = val;
     });
@@ -48,7 +49,8 @@ for (let prop in sources){
     iframe.classList.toggle('right',source.right);
     iframe.classList.toggle('top',source.top);
     iframe.style.zIndex = source.index;
-    folder.open();
+    // folder.open();
+    if (prop === 'a') folder.open();
 }
 
 socket.on('load', function (data) {
@@ -59,10 +61,10 @@ load = (experience) => {
     let format = experience.format;
     switch (format) {
         case 'panorama':
-            console.log(gui.__folders.a.__controllers[0].setValue(experience.url));
+            console.log(gui.__folders.a.__controllers[0].setValue(experience.url+'?render=normal'));
             console.log(gui.__folders.a.__controllers[1].setValue(true));
-            console.log(gui.__folders.a.__controllers[2].setValue(true));
-            console.log(gui.__folders.a.__controllers[3].setValue(true));
+            console.log(gui.__folders.a.__controllers[2].setValue(false));
+            console.log(gui.__folders.a.__controllers[3].setValue(false));
             console.log(gui.__folders.a.__controllers[4].setValue(false));
         break;
     }
