@@ -5,6 +5,8 @@ const app = express();
 const server = require('http').createServer(app);  
 const io = require('socket.io')(server);
 const loudness = require('loudness');
+const five = require("johnny-five");
+
 
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -13,7 +15,7 @@ server.listen(3000);
 io.on('connection', function(socket){
 
 	console.log('Socket connected');
-
+	
 	axios.get('http://localhost:3000/experiences.json')
 		.then(response => {
 			socket.emit('update', response.data);
@@ -21,24 +23,51 @@ io.on('connection', function(socket){
 		.catch(error => {
 			console.log(error);
 		});
-
+	
 	socket.on('selected', (data)=> {
 		socket.broadcast.emit('load', data);
 	});
+
 	
-	
-  /*
-	  Volume
-	*/
+/* Volume */
 	
 	// Get & emit Current Volume
 	loudness.getVolume(function (err, volume_initial) {
-   	socket.broadcast.emit('volume-initial', volume_initial);
+		socket.broadcast.emit('volume-initial', volume_initial);
 	});
-
+	
 	// Set new volume		
-  socket.on('volume-new', function(volume_new){  
+	socket.on('volume-new', function(volume_new){  
 		loudness.setVolume(volume_new, function (err) {});  
-  });  	
-  
+	});
+	
+
+/* Arduino Relay */
+
+	socket.on('relay-control', function(arduino_relay_status) {
+		console.log("Relay Socket Change");
+		
+		// Check if board is even connected first
+		if(relay_status == "ready") {		
+			if(arduino_relay_status == true) {
+				relay.close();
+			} else {
+				relay.open();	
+			}
+		}
+	});  	
+	
+});
+
+
+/* Set up relay */  
+
+var board = new five.Board();
+var relay;
+var relay_status;
+
+board.on("ready", function() {
+	relay = new five.Relay({ pin: 10, type: "NC"});
+	console.log("relay ready");
+	relay_status = "ready";
 });
