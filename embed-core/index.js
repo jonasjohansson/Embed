@@ -7,7 +7,6 @@ const io = require('socket.io')(server);
 const loudness = require('loudness');
 const five = require("johnny-five");
 
-
 app.use(express.static(path.join(__dirname, '/public')));
 
 server.listen(3000); 

@@ -1,5 +1,3 @@
-var socket = io();
-
 const sources = {}
 for (id of ['a','b','c','d']){
     let el = document.createElement('iframe');
