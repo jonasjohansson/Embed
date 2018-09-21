@@ -1,9 +1,10 @@
-const axios = require('axios');
 const path = require('path')
 const express = require('express');  
 const app = express();  
 const server = require('http').createServer(app);  
 const io = require('socket.io')(server);
+
+const axios = require('axios');
 const loudness = require('loudness');
 const five = require("johnny-five");
 
@@ -23,11 +24,15 @@ io.on('connection', function(socket){
 			console.log(error);
 		});
 	
-	socket.on('selected', (data)=> {
+	socket.on('selected', (data) => {
 		socket.broadcast.emit('load', data);
 	});
 
-	
+	socket.on('state-update', (data) => {
+	    socket.emit('state-update', data);
+	    socket.broadcast.emit('state-update', data);
+	});
+
 /* Volume */
 	
 	// Get & emit Current Volume
@@ -41,7 +46,6 @@ io.on('connection', function(socket){
 		socket.broadcast.emit('volume-new', volume_new);
 	});
 	
-
 /* Arduino Relay */
 
 	socket.on('relay-control', function(arduino_relay_status) {

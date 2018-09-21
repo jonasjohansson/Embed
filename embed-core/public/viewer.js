@@ -53,9 +53,17 @@ for (let prop in sources){
     if (prop === 'a') folder.open();
 }
 
+socket.on('state-update', function (data) {
+    setState(data.state, data.val);
+});
+
 socket.on('load', function (data) {
     load(data);
 });
+
+setState = (state, val) => {
+    document.body.classList.toggle(state, val);
+}
 
 load = (experience) => {
     let format = experience.format;

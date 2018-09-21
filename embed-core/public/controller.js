@@ -1,21 +1,12 @@
 var socket = io();
 
-// const isMobile = isMobileDevice();
-
-// document.body.classList.toggle('isMobile',isMobile);
-
 socket.on('update', function (data) {
-	// if (isMobile)
-		display(data);
+	display(data);
 });
 
-// fetch('http://localhost:3000/experiences.json')
-// 	.then(function(response) {
-// 		return response.json();
-// 	})
-// 	.then(function(data) {
-// 		display(data);
-// 	});
+socket.on('state-update', function (data) {
+	setState(data.state, data.val);
+});
 
 display = (experiences) => {
 	for (let prop in experiences){
@@ -39,14 +30,13 @@ display = (experiences) => {
 }
 
 load = (experience) => {
-	document.body.classList.add('loading');
-	console.log('Loading',experience.title)
+	socket.emit('state-update',{state:'loading',val:true});
 	setTimeout(()=>{
-		document.body.classList.remove('loading');
+		socket.emit('state-update',{state:'loading',val:false});
 		console.log('Loading complete')
 	},1000);
 }
 
-// function isMobileDevice() {
-//     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-// };
+setState = (state, val) => {
+	document.body.classList.toggle(state, val);
+}
