@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-confirm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icon-confirm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2-Copy-2" transform="translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000) " fill-rule="nonzero">
+            <rect id="Rectangle-7" x="0" y="0" width="24" height="24"></rect>
+        </g>
+        <path d="M12.1923882,14.1923882 L12.1923882,3.19238816 L17.1923882,3.19238816 L17.1923882,19.1923882 L15.1923882,19.1923882 L7.19238816,19.1923882 L7.19238816,14.1923882 L12.1923882,14.1923882 Z" id="Combined-Shape" fill="#E30613" fill-rule="nonzero" transform="translate(12.192388, 11.192388) rotate(-315.000000) translate(-12.192388, -11.192388) "></path>
+    </g>
+</svg>

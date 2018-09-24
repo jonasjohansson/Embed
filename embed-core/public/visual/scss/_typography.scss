@@ -1,0 +1,46 @@
+/* Font-face */
+
+
+@font-face {
+    font-family: 'Grot-Medium';
+    src: url('../fonts/Grot-Medium.woff2') format('woff2'),
+        url('../fonts/Grot-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Grot-Light';
+    src: url('../fonts/Grot-Light.woff2') format('woff2'),
+        url('../fonts/Grot-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/* Typography */
+
+body {
+	font-family: 'Grot-Light';
+	font-size: 20px;
+	line-height: 1.2;
+}
+
+bold, b, strong, .bold, h1 {
+	font-family: 'Grot-Medium';
+}
+
+h1, h2, h3, h4 {
+	font-weight: normal;
+}
+
+h1 {
+	font-size: 72px;
+	line-height: 80px;
+}
+
+h3 {
+	font-size: 20px;
+	line-height: 24px;
+}

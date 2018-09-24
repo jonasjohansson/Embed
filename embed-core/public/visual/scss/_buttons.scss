@@ -1,0 +1,91 @@
+
+button {
+	position: relative;
+	display: block;
+	background-color: $c_e3;
+	color: $c_d1;
+	font-family: 'Grot-Medium';
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	width: auto;
+	@include buttonshadow();
+	@include unselectable();
+	
+	&.medium {
+		height: 48px;
+		border-radius: 24px;
+		font-size: 20px;
+		i {
+			width: 48px;
+			height: 48px;
+		}
+		span {
+			height: 48px;
+			line-height: 48px;
+			padding-right: 24px;
+		}
+	}
+
+	&.large {
+		height: 96px;
+		border-radius: 48px;
+		font-size: 32px;
+		i {
+			width: 96px;
+			height: 96px;
+		}
+		span {
+			height: 96px;
+			line-height: 96px;
+			padding-right: 48px;
+		}
+	}
+	
+	//touch effect
+	
+	&.touchstart {
+		background-color: $c_c1;
+	}
+	
+	//text 
+	
+	span {
+		position: relative;
+		float: left;
+		width: auto;
+	}
+	
+	//icons 
+	i {
+		position: relative;
+		float: left;
+		//background-color: red;
+		display: block;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 24px 24px;
+		
+		&.icon-power-green {
+			background-image: url(../icons/icon-power-green.svg);
+		}
+		&.icon-power-red {
+			background-image: url(../icons/icon-power-red.svg);
+		}		
+		&.icon-sleep {
+			background-image: url(../icons/icon-sleep.svg);
+		}		
+		&.icon-close-grey {
+			background-image: url(../icons/icon-close-grey.svg);
+		}				
+	}
+	
+	//align 
+	
+	&.align-middle {
+		margin: 0 auto;
+	}
+	&.align-right {
+		float: right;
+	}	
+}
