@@ -1,13 +1,5 @@
 var socket = io();
 
-socket.on('update', function (data) {
-	display(data);
-});
-
-socket.on('state-update', function (data) {
-	setState(data.state, data.val);
-});
-
 display = (experiences) => {
 	for (let prop in experiences){
 		let list = document.createElement('ul');
@@ -19,24 +11,19 @@ display = (experiences) => {
 			list.appendChild(listItem);
 		}
 		let button = document.createElement('button');
-		button.innerHTML = 'command-play-this';
+		button.innerHTML = 'command-play';
 		button.addEventListener('click', (event) => {
-			socket.emit('selected',experience);
-			load(experience);
+			socket.emit('play',experience);
 		})
 		list.appendChild(button);
 		document.querySelector('#experiences').appendChild(list);
 	}
 }
 
-load = (experience) => {
+play = (experience) => {
 	socket.emit('state-update',{state:'loading',val:true});
 	setTimeout(()=>{
 		socket.emit('state-update',{state:'loading',val:false});
-		console.log('Loading complete')
+		socket.emit('state-update',{state:'playing',val:true});
 	},1000);
-}
-
-setState = (state, val) => {
-	document.body.classList.toggle(state, val);
 }

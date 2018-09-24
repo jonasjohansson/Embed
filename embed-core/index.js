@@ -24,8 +24,14 @@ io.on('connection', function(socket){
 			console.log(error);
 		});
 	
-	socket.on('selected', (data) => {
-		socket.broadcast.emit('load', data);
+	socket.on('play', (data) => {
+		socket.emit('play', data);
+		socket.broadcast.emit('play', data);
+	});
+
+	socket.on('stop', (data) => {
+		socket.emit('stop', data);
+		socket.broadcast.emit('stop', data);
 	});
 
 	socket.on('state-update', (data) => {

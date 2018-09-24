@@ -1,5 +1,24 @@
 var socket = io();
 
+display = (experiences) => {
+
+}
+
+play = (experience) => {
+    let format = experience.format;
+    switch (format) {
+        case 'panorama':
+            console.log(gui.__folders.a.__controllers[0].setValue(experience.url+'?render=normal'));
+            console.log(gui.__folders.a.__controllers[1].setValue(true));
+            console.log(gui.__folders.a.__controllers[2].setValue(false));
+            console.log(gui.__folders.a.__controllers[3].setValue(false));
+            console.log(gui.__folders.a.__controllers[4].setValue(false));
+        break;
+    }
+}
+
+/* player */
+
 const sources = {}
 for (id of ['a','b','c','d']){
     let el = document.createElement('iframe');
@@ -51,41 +70,4 @@ for (let prop in sources){
     iframe.style.zIndex = source.index;
     // folder.open();
     if (prop === 'a') folder.open();
-}
-
-socket.on('state-update', function (data) {
-    setState(data.state, data.val);
-});
-
-socket.on('load', function (data) {
-    load(data);
-});
-
-setState = (state, val) => {
-    document.body.classList.toggle(state, val);
-}
-
-load = (experience) => {
-    let format = experience.format;
-    switch (format) {
-        case 'panorama':
-            console.log(gui.__folders.a.__controllers[0].setValue(experience.url+'?render=normal'));
-            console.log(gui.__folders.a.__controllers[1].setValue(true));
-            console.log(gui.__folders.a.__controllers[2].setValue(false));
-            console.log(gui.__folders.a.__controllers[3].setValue(false));
-            console.log(gui.__folders.a.__controllers[4].setValue(false));
-        break;
-    }
-    console.log(gui.__folders.a.__controllers[0].setValue(experience.url));
-    document.body.classList.add('loading');
-    console.log('Loading',experience.title)
-    setTimeout(()=>{
-        document.body.classList.remove('loading');
-        console.log('Loading complete');
-        
-        // Update system status ...
-        /*
-        	$("#system-status").html('Now Playing...' + experience.title);
-        */
-    },1000);
 }
