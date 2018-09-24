@@ -25,15 +25,18 @@ io.on('connection', function(socket){
 		});
 	
 	socket.on('play', (data) => {
-        send('play',data);
+		socket.emit('play', data);
+		socket.broadcast.emit('play', data);
 	});
 
 	socket.on('stop', (data) => {
-        send('stop',data);
+		socket.emit('stop', data);
+		socket.broadcast.emit('stop', data);
 	});
 
 	socket.on('state-update', (data) => {
-        send('state-update',data);
+	    socket.emit('state-update', data);
+	    socket.broadcast.emit('state-update', data);
 	});
 
 /* Volume */
@@ -72,11 +75,6 @@ io.on('connection', function(socket){
 	});  	
 	
 });
-
-send = (socket, data) => {
-    socket.emit('stop', data);
-    socket.broadcast.emit('stop', data);
-}
 
 /* Global Variables */
 
