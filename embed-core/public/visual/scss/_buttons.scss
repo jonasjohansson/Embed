@@ -12,6 +12,10 @@ button {
 	@include buttonshadow();
 	@include unselectable();
 	
+	span, i {
+		display: inline !important;
+	}
+	
 	&.small{
 		height: 32px;
 		border-radius: 16px;

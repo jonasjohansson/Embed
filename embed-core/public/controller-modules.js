@@ -63,8 +63,7 @@ setState = (state, val) => {
 		// Relay
 		arduino_relay_status = "sleep"; 
 		socket.emit('relay-control', arduino_relay_status);
-		console.log("projectors off");	
-			    
+		console.log("projectors off");		    
 		$("#system-status-plus p.relay").html(arduino_relay_status);	
 					    
 		// >on success:
@@ -76,8 +75,7 @@ setState = (state, val) => {
 	    // Relay
 		arduino_relay_status = "wake"; 
 		socket.emit('relay-control', arduino_relay_status);	
-		console.log("projectors on");	
-		
+		console.log("projectors on");		
 		$("#system-status-plus p.relay").html(arduino_relay_status);	    
 		
 		// > on success:
@@ -85,8 +83,8 @@ setState = (state, val) => {
 		show_destination_overlay();	    		 
     
     } else if(state == "start") {
-		$("#welcome").hide();
-		
+
+		$("#welcome").hide();		
 		destination_overlay = $("#explore");
 		show_destination_overlay();	    		 
     
@@ -97,8 +95,7 @@ setState = (state, val) => {
     
     } else if(state == "playing") {
 
-		$("#loading").hide();
-		
+		$("#loading").hide();	
 		$("#playing-controls").show();
   		 
     } else if(state == "stopped") {
@@ -107,7 +104,9 @@ setState = (state, val) => {
 		$("#playing-controls").hide();
 		// > Hide "currently playing" 
 		// > Load "Default experience"   		 
+   
     } else if(state == "reset-welcome") {
+	    
 	    // Hide experience stuff
 	    $("#explore").hide();
 	    $("#playing-controls").hide();
