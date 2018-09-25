@@ -39,27 +39,31 @@ socket.on('reset', function (data) {
 });
 
 document.addEventListener('click', event => {
-    for (let node of event.path){
-        if (node.nodeName === 'BUTTON'){
-            switch (node.id){
-                case 'command-stop':
-                    socket.emit('stop');
-                break;  
-                case 'command-start':
-                    socket.emit('start');
-                break;  
-                case 'command-sleep':
-                    socket.emit('sleep');
-                break;     
-                case 'command-wake':
-                    socket.emit('wake');
-                break; 
-                case 'command-reset':
-                    socket.emit('reset');
-                break;
-            }                                                                      
-        }   
-    }
+
+    var button = (event.target.nodeName === 'BUTTON') ? event.target : event.target.parentNode;
+
+    if (button.nodeName !== 'BUTTON')
+        return;
+
+    console.log(button.id,'was clicked!');
+
+    switch (button.id){
+        case 'command-stop':
+            socket.emit('stop');
+        break;  
+        case 'command-start':
+            socket.emit('start');
+        break;  
+        case 'command-sleep':
+            socket.emit('sleep');
+        break;     
+        case 'command-wake':
+            socket.emit('wake');
+        break; 
+        case 'command-reset':
+            socket.emit('reset');
+        break;
+    }                                                                      
 });
 
 stop = () => {
