@@ -107,7 +107,19 @@ setState = (state, val) => {
 		$("#playing-controls").hide();
 		// > Hide "currently playing" 
 		// > Load "Default experience"   		 
-    }      
+    } else if(state == "reset-welcome") {
+	    // Hide experience stuff
+	    $("#explore").hide();
+	    $("#playing-controls").hide();
+		// > Stop "currently playing"
+		// > Load "Welcome Experience"  
+			    
+		destination_overlay = $("#welcome");
+		show_destination_overlay();			
+ 		 
+    }          
+    
+    
     
 }
 
@@ -123,32 +135,35 @@ setState = (state, val) => {
 	 
 	// Pre-sleep overlay (Welcome)
 	$('#show-overlay-presleep-welcome').on("click tap", function(e) {
-		//$("#welcome").hide();
-		
 		destination_overlay = $("#overlay-presleep-welcome");
 		show_destination_overlay();
 	});
 
 	$('#close-overlay-presleep-welcome').on("click tap", function() {
-		//$("#overlay-presleep").hide();
-		
 		destination_overlay = $("#welcome");
 		show_destination_overlay();
 	});
 	
 	// Pre-sleep overlay (Explore)
 	$('#show-overlay-presleep-explore').on("click tap", function(e) {
-		//$("#welcome").hide();
-		
 		destination_overlay = $("#overlay-presleep-explore");
 		show_destination_overlay();
 	});	
 	$('#close-overlay-presleep-explore').on("click tap", function() {
-		//$("#overlay-presleep-explore").hide();
-		
-		destination_overlay = $("#welcome");
+		destination_overlay = $("#explore");
 		show_destination_overlay();
 	});
+	
+	// Show pre-reset warning
+	$('#show-overlay-prereset').on("click tap", function(e) {
+		destination_overlay = $("#overlay-prereset");
+		show_destination_overlay();
+	});	
+	$('#close-overlay-prereset').on("click tap", function() {
+		destination_overlay = $("#overlay-presleep-explore");
+		show_destination_overlay();
+	});	
+	
 
 
 
@@ -167,7 +182,7 @@ setState = (state, val) => {
 	// Butons
 	$('button').on("touchstart mouseover", function() {
 		$(this).addClass("touchstart");
-		TweenMax.to($(this).find("i"), tr_in, {scale: 1.1});
+		TweenMax.to($(this).find("i"), tr_in, {scale: 1.15});
 	});
 	
 	$('button').on("touchend mouseleave", function() {

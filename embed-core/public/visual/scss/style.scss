@@ -19,8 +19,11 @@
 	#system-status-plus {
 		position: fixed;
 		z-index: 4000;
-		bottom: 0;
-		left: 4px;
+		top: 8px;
+		text-align: center;
+		width: 100px;
+		margin-left: -50px;
+		left: 50%;
 		color: red;
 		font-size: 10px;
 		.relay {
@@ -91,6 +94,20 @@
 		background-color: red;
 		@include linearGradient($c_black_transparent, $c_black_50);
 		z-index: 1000;
+		
+		.left-trigger {
+			position: absolute;
+			left: 16px;
+			bottom: 16px;
+			button {
+				float: left;
+				margin-bottom: 32px;
+			}	
+			.caption {
+				color: $c_c1;
+				margin-bottom: 8px;
+			}
+		}
 	}	
 
 
@@ -227,6 +244,8 @@
 			max-width: 224px;
 			&.current-experience {
 				position: relative;
+				min-width: 96px;
+				overflow: hidden;
 			}
 		}
 		#current-experience-title {

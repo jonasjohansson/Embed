@@ -12,6 +12,22 @@ button {
 	@include buttonshadow();
 	@include unselectable();
 	
+	&.small{
+		height: 32px;
+		border-radius: 16px;
+		font-size: 16px;
+		i {
+			width: 48px;
+			height: 48px;
+		}
+		span {
+			height: 30px;
+			line-height: 30px;
+			padding: 0 16px;
+			margin-top: 1px;
+		}
+	}
+
 	&.medium {
 		height: 48px;
 		border-radius: 24px;
@@ -93,6 +109,9 @@ button {
 		}
 		&.icon-loading {
 			background-image: url(../icons/icon-loading.svg);
+		}
+		&.icon-confirm-red {
+			background-image: url(../icons/icon-confirm.svg);	
 		}										
 	}
 	
@@ -122,7 +141,7 @@ button {
 	margin-top: 36px;
 	display: flex;
 	justify-content: center;
-	padding: 0 16px 0 8px;	
+	padding: 0 16px 0 0px;	
 
 	.rangeslider,
 	.rangeslider__fill {
@@ -173,15 +192,17 @@ button {
 	
 	//icons 
 	i {
-		flex-grow: 48px;
-		flex-basis: 48px;
+		flex-grow: 32px;
+		flex-basis: 32px;
 		//background-color: red;
 		display: block;
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-size: 24px 24px;
-		width: 48px;
+		background-position: 0 0;
+		width: 32px;
 		height: 24px;
+		padding-right: 8px;
 		&.icon-volume {
 			background-image: url(../icons/icon-volume.svg);
 			&.on {
