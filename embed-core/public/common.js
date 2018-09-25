@@ -39,23 +39,25 @@ socket.on('reset', function (data) {
 });
 
 document.addEventListener('click', event => {
-    if (event.target.nodeName === 'BUTTON'){
-        switch (event.target.id){
-            case 'command-stop':
-                socket.emit('stop');
-            break;  
-            case 'command-start':
-                socket.emit('start');
-            break;  
-            case 'command-sleep':
-                socket.emit('sleep');
-            break;     
-            case 'command-wake':
-                socket.emit('wake');
-            break; 
-            case 'command-reset':
-                socket.emit('reset');
-            break;                                                                         
+    for (let node of event.path){
+        if (node.nodeName === 'BUTTON'){
+            switch (node.id){
+                case 'command-stop':
+                    socket.emit('stop');
+                break;  
+                case 'command-start':
+                    socket.emit('start');
+                break;  
+                case 'command-sleep':
+                    socket.emit('sleep');
+                break;     
+                case 'command-wake':
+                    socket.emit('wake');
+                break; 
+                case 'command-reset':
+                    socket.emit('reset');
+                break;
+            }                                                                      
         }   
     }
 });
