@@ -38,25 +38,27 @@ socket.on('reset', function (data) {
     reset(data);
 });
 
-document.addEventListener('click', event => {	
-    if (event.target.nodeName === 'BUTTON'){
-	    console.log("click button");
-        switch (event.target.id){
-            case 'command-stop':
-                socket.emit('stop');
-            break;  
-            case 'command-start':
-                socket.emit('start');
-            break;  
-            case 'command-sleep':
-                socket.emit('sleep');
-            break;     
-            case 'command-wake':
-                socket.emit('wake');
-            break; 
-            case 'command-reset':
-                socket.emit('reset');
-            break;                                                                         
+
+document.addEventListener('click', event => {
+    for (let node of event.path){
+        if (node.nodeName === 'BUTTON'){
+            switch (node.id){
+                case 'command-stop':
+                    socket.emit('stop');
+                break;  
+                case 'command-start':
+                    socket.emit('start');
+                break;  
+                case 'command-sleep':
+                    socket.emit('sleep');
+                break;     
+                case 'command-wake':
+                    socket.emit('wake');
+                break; 
+                case 'command-reset':
+                    socket.emit('reset');
+                break;
+            }                                                                      
         }   
     }
 });
