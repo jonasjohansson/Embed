@@ -77,7 +77,16 @@ button {
 		}		
 		&.icon-close-grey {
 			background-image: url(../icons/icon-close-grey.svg);
-		}				
+		}	
+		&.icon-stop-grey {
+			background-image: url(../icons/icon-stop-grey.svg);
+		}	
+		&.icon-stop-red {
+			background-image: url(../icons/icon-stop-red.svg);
+		}
+		&.icon-loading {
+			background-image: url(../icons/icon-loading.svg);
+		}										
 	}
 	
 	//align 

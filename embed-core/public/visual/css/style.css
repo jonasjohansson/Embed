@@ -183,6 +183,12 @@ h1 {
 }
 
 /* line 43, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_typography.scss */
+h2 {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+/* line 48, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_typography.scss */
 h3 {
   font-size: 20px;
   line-height: 24px;
@@ -288,12 +294,27 @@ button i.icon-close-grey {
   background-image: url(../icons/icon-close-grey.svg);
 }
 
-/* line 85, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 81, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+button i.icon-stop-grey {
+  background-image: url(../icons/icon-stop-grey.svg);
+}
+
+/* line 84, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+button i.icon-stop-red {
+  background-image: url(../icons/icon-stop-red.svg);
+}
+
+/* line 87, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+button i.icon-loading {
+  background-image: url(../icons/icon-loading.svg);
+}
+
+/* line 94, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button.align-middle {
   margin: 0 auto;
 }
 
-/* line 88, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 97, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button.align-right {
   float: right;
 }
@@ -306,25 +327,40 @@ button.align-right {
   display: none;
 }
 
+/* line 19, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+#system-status-plus {
+  position: fixed;
+  z-index: 4000;
+  bottom: 0;
+  left: 4px;
+  color: red;
+  font-size: 10px;
+}
+
+/* line 26, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+#system-status-plus .relay {
+  color: green;
+}
+
 /*
 	General
 */
-/* line 26, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 36, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 body {
   background-color: #DCE0E1;
 }
 
-/* line 28, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 38, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 body.controller {
   background-color: #121212;
 }
 
-/* line 32, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 42, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 body.welcome-state #welcome {
   display: block;
 }
 
-/* line 34, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 44, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 body.welcome-state #welcome .pattern {
   opacity: 1;
 }
@@ -332,7 +368,7 @@ body.welcome-state #welcome .pattern {
 /*
 	Nav – Top
 */
-/* line 46, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 56, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-top {
   z-index: 1000;
   position: fixed;
@@ -342,7 +378,7 @@ body.welcome-state #welcome .pattern {
   padding: 16px;
 }
 
-/* line 55, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 65, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-top .logo {
   position: relative;
   float: left;
@@ -352,10 +388,17 @@ body.welcome-state #welcome .pattern {
   margin-top: 8px;
 }
 
+/* line 74, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+.nav-top .header {
+  color: #FFFFFF;
+  float: left;
+  margin-top: 4px;
+}
+
 /*
 	Nav – Bottom
 */
-/* line 70, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 86, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-bottom {
   position: fixed;
   width: 100%;
@@ -382,16 +425,23 @@ body.welcome-state #welcome .pattern {
 /*
 	Sections
 */
-/* line 85, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 101, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section {
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   display: none;
+  z-index: 100;
+  background-color: #121212;
 }
 
-/* line 94, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 110, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+section.overlay-block {
+  z-index: 200;
+}
+
+/* line 115, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .content-notice {
   position: relative;
   width: 100%;
@@ -405,57 +455,72 @@ section .content-notice {
   -webkit-overflow-scrolling: touch;
 }
 
-/* line 102, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 123, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .content-notice h1 {
   color: #E6E6E6;
   margin-bottom: 16px;
 }
 
-/* line 106, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 127, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .content-notice h3 {
   color: #999999;
   max-width: 384px;
 }
 
-/* line 113, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 134, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+section .content-feed {
+  position: relative;
+  width: 100%;
+  float: left;
+  z-index: 101;
+  padding: 24px 16px;
+  padding-top: 104px;
+  height: 100%;
+  overflow-y: scroll;
+  /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+  color: white;
+}
+
+/* line 146, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern {
   width: 100%;
   height: 100%;
   display: block;
   position: absolute;
   top: 0;
-  background-position: center center;
+  background-position: 50% center;
   background-size: auto 100%;
   z-index: 100;
   opacity: 0;
 }
 
-/* line 123, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 157, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-welcome {
   background-image: url(../patterns/pattern-welcome.svg);
 }
 
-/* line 126, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 160, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-confirm {
   background-image: url(../patterns/pattern-confirm.svg);
 }
 
-/* line 129, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 163, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-sleeping {
   background-image: url(../patterns/pattern-sleeping.svg);
 }
 
-/* line 132, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 166, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-loading {
   background-image: url(../patterns/pattern-loading.svg);
 }
 
-/* line 135, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 169, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-confirm {
   background-image: url(../patterns/pattern-confirm.svg);
 }
 
-/* line 138, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 172, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-notice {
   background-image: url(../patterns/pattern-notice.svg);
 }
@@ -463,7 +528,7 @@ section .pattern.pattern-notice {
 /*
 	Volume Control
 */
-/* line 150, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 184, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .volume-wrap {
   position: relative;
   top: 0;
@@ -472,7 +537,7 @@ section .pattern.pattern-notice {
   opacity: 0;
 }
 
-/* line 158, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 192, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .volume-wrap #volume-slider {
   position: relative;
   width: 100%;
@@ -480,7 +545,7 @@ section .pattern.pattern-notice {
   display: none;
 }
 
-/* line 164, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 198, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .volume-wrap .rangeslider,
 .volume-wrap .rangeslider__fill {
   float: left;
@@ -492,36 +557,36 @@ section .pattern.pattern-notice {
   border-radius: 4px;
 }
 
-/* line 175, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 209, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .volume-wrap .rangeslider {
   position: relative;
   border: 1px solid #666666;
 }
 
-/* line 181, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 215, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .volume-wrap .rangeslider--horizontal {
   height: 4px;
   top: 10px;
 }
 
-/* line 186, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 220, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .volume-wrap .rangeslider--disabled {
   opacity: 0.4;
 }
 
-/* line 190, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 224, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .volume-wrap .rangeslider__fill {
   background: #666666;
   position: absolute;
 }
 
-/* line 194, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 228, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .volume-wrap .rangeslider--horizontal .rangeslider__fill {
   top: 0;
   height: 100%;
 }
 
-/* line 199, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 233, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .volume-wrap .rangeslider__handle {
   background: white;
   border: 1px solid #000000;

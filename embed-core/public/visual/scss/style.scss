@@ -16,7 +16,17 @@
 		display: none;
 	}
 	
-
+	#system-status-plus {
+		position: fixed;
+		z-index: 4000;
+		bottom: 0;
+		left: 4px;
+		color: red;
+		font-size: 10px;
+		.relay {
+			color: green;
+		}
+	}
 
 /*
 	General
@@ -60,6 +70,12 @@
 			width: 106px;
 			margin-top: 8px;
 		}
+		
+		.header {
+			color: $c_d2;	
+			float: left;
+			margin-top: 4px;
+		}
 	}
 	
 	
@@ -88,7 +104,12 @@
 		position: fixed;
 		top: 0;
 		display: none;
- 
+		z-index: 100;
+		background-color: $c_e2;
+		
+		&.overlay-block {
+			z-index: 200;
+		}
 		
 		//content 
 		.content-notice {
@@ -109,6 +130,18 @@
 			}			
 		}
 		
+		//Experiences
+		.content-feed{
+			@include basicfloat();
+			z-index: 101;
+			padding: 24px 16px;
+			padding-top: 104px;
+			height: 100%;
+			overflow-y: scroll; /* has to be scroll, not auto */
+			-webkit-overflow-scrolling: touch; 			
+			color: white;			
+		}		
+		
 		//Patterns
 		.pattern {
 			width: 100%;
@@ -116,10 +149,11 @@
 			display: block;
 			position: absolute;
 			top: 0;		
-			background-position: center center;
+			background-position: 50% center;
 			background-size: auto 100%;
 			z-index: 100;
 			opacity: 0;
+			
 			&.pattern-welcome {
 				background-image: url(../patterns/pattern-welcome.svg);
 			}

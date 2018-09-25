@@ -16,12 +16,16 @@
 <body class="controller welcome-state">
 
 
-
-
+	<div id="system-status-plus">
+		<p class="state">default-welcome</p>
+		<p class="relay">Relay on</p>
+	</div>
+	
+	<!-- Welcome -->
 	<section id="welcome">
 		<div class="nav-top">
 			<div class="logo"></div>
-			<button class="medium align-right launch-overlay" id="show-overlay-sleep">
+			<button class="medium align-right launch-overlay" id="show-overlay-presleep-welcome">
 				<i class="icon-sleep"></i>
 				<span>Sleep</span>
 			</button>		
@@ -38,12 +42,34 @@
 			</button>
 		</div>		
 	</section>
+	
+	<!-- Explore feed -->
+	<section id="explore">
+		<div class="nav-top">
+			<h2 class="header">Explore</h2>
+			<button class="medium align-right launch-overlay" id="show-overlay-presleep-explore">
+				<i class="icon-sleep"></i>
+				<span>Sleep</span>
+			</button>		
+		</div>		
+		<div class="content-feed">
+			<div id="experiences">
+				<!-- JSON FEED -->
+			</div>
+		</div>	
+		<div class="nav-bottom" id="playing-controls" style="display: none;">
+			<button class="large align-middle" id="command-stop">
+				<i class="icon-stop-red"></i>
+				<span>Stop</span>
+			</button>
+		</div>		
+	</section>		
 
-
-	<section id="overlay-sleep">
+	<!-- Pre-sleep (Welcome) -->
+	<section id="overlay-presleep-welcome" class="overlay-block">
 		<div class="nav-top">
 			<div class="logo"></div>
-			<button class="medium align-right" id="close-overlay-sleep">
+			<button class="medium align-right" id="close-overlay-presleep-welcome">
 				<i class="icon-close-grey"></i>
 				<span>Cancel</span>
 			</button>		
@@ -61,7 +87,30 @@
 		</div>		
 	</section>
 	
-	<section id="overlay-sleeping">
+	<!-- Pre-sleep (Explore) -->
+	<section id="overlay-presleep-explore" class="overlay-block">
+		<div class="nav-top">
+			<div class="logo"></div>
+			<button class="medium align-right" id="close-overlay-presleep-explore">
+				<i class="icon-close-grey"></i>
+				<span>Cancel</span>
+			</button>		
+		</div>		
+		<div class="content-notice">
+			<h1>Are you sure you want to shut it all off? (Explore)</h1>
+			<h3>You are about to turn off all the projectors and you will loose your current experience.</h3>
+		</div>	
+		<div class="pattern pattern-confirm"></div>
+		<div class="nav-bottom">
+			<button class="large align-middle" id="command-sleep">
+				<i class="icon-power-red"></i>
+				<span>Go to sleep</span>
+			</button>
+		</div>		
+	</section>	
+	
+	
+	<section id="overlay-sleeping" class="overlay-block">
 		<div class="content-notice">
 			<h1>The system is sleeping.<br>Bzzz…</h1>
 			<h3>You can always just turn it back on.</h3>
@@ -76,10 +125,29 @@
 	</section>	
 
 
+	<section id="loading" class="overlay-block">
+		<div class="nav-top">
+			<div class="logo"></div>
+			<!--
+			<button class="medium align-right launch-overlay" id="show-overlay-presleep-welcome">
+				<i class="icon-sleep"></i>
+			</button>		
+			-->
+		</div>		
+		<div class="content-notice">
+			<h1>One moment, please…</h1>
+			<h3>Let's see what the internet can offer.</h3>
+		</div>	
+		<div class="pattern pattern-welcome"></div>
+		<div class="nav-bottom">
+			<button class="large align-middle" id="command-start">
+				<i class="icon-loading"></i>
+			</button>
+		</div>		
+	</section>
+	
 
-
-
-	<div id="loading"></div>
+	
 	
 	<div class="temp">
 
@@ -125,9 +193,7 @@
 			
 		<hr>
 			
-		<div id="experiences">
-			<h3>Experiences</h3>
-		</div>
+
 		
 		<hr>
 			
@@ -152,7 +218,7 @@
 		
 		<div id="system-status">
 			<h3>System Status</h3>
-			<p><b>Relay status: </b><i id="relay-status"></i></p>	
+			<p></p>
 		</div>   
 		
 	</div>     
@@ -160,6 +226,7 @@
 	<script src="vendor/jquery.js"></script>
 	<script src="vendor/TweenMax.js"></script>
 	<script src="controller.js"></script>
+	<script src="common.js"></script>
 	<script src="controller-modules.js"></script>
 	
 </body>

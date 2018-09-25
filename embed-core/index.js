@@ -24,6 +24,11 @@ io.on('connection', function(socket){
 			console.log(error);
 		});
 	
+	socket.on('start', (data) => {
+		socket.emit('start', data);
+		socket.broadcast.emit('start', data);
+	});
+
 	socket.on('play', (data) => {
 		socket.emit('play', data);
 		socket.broadcast.emit('play', data);
@@ -33,6 +38,21 @@ io.on('connection', function(socket){
 		socket.emit('stop', data);
 		socket.broadcast.emit('stop', data);
 	});
+	
+	socket.on('sleep', (data) => {
+		socket.emit('sleep', data);
+		socket.broadcast.emit('sleep', data);
+	});	
+	
+	socket.on('reset', (data) => {
+		socket.emit('reset', data);
+		socket.broadcast.emit('reset', data);
+	});
+	
+	socket.on('wake', (data) => {
+		socket.emit('wake', data);
+		socket.broadcast.emit('wake', data);
+	});			
 
 	socket.on('state-update', (data) => {
 	    socket.emit('state-update', data);
