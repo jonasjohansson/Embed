@@ -40,6 +40,7 @@ socket.on('reset', function (data) {
 
 document.addEventListener('click', (event) => {
     if (event.target === 'button'){
+        console.log("button clicked");
         switch (button.id){
             case 'command-stop':
                 socket.emit('stop');
@@ -56,7 +57,7 @@ document.addEventListener('click', (event) => {
             case 'command-reset':
                 socket.emit('reset');
             break;                                                                         
-        }
+        }   
     }
 });
 

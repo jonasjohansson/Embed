@@ -201,7 +201,7 @@ setState = (state, val) => {
 */
 
 	// Range slider
-	$("#volume-slider").rangeslider({
+	$(".controller-plus #volume-slider").rangeslider({
 		polyfill : false
 	});		
 

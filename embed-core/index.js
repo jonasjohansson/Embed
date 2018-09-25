@@ -97,16 +97,11 @@ io.on('connection', function(socket){
 	
 });
 
-/* Global Variables */
-
-// Used for sending important test alerts
-var controller_alert;
 
 /* Set up relay */  
 
 var board = new five.Board();
-var relay;
-var relay_status;
+var relay, relay_status;
 
 board.on("ready", function() {
 	relay_status = "relay ready";
