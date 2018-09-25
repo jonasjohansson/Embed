@@ -1,6 +1,13 @@
 var socket = io();
 
 display = (experiences) => {
+
+	$experiences = document.querySelector('#experiences');
+
+	while ($experiences.firstChild) {
+	    $experiences.removeChild($experiences.firstChild);
+	}
+
 	for (let prop in experiences){
 		let experience = experiences[prop];
 
@@ -26,7 +33,8 @@ display = (experiences) => {
 		})
 
 		$experience.appendChild($button);
-		document.querySelector('#experiences').appendChild($experience);
+
+		$experiences.appendChild($experience);
 	}
 }
 
