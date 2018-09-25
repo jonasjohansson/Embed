@@ -27,7 +27,7 @@ button {
 		}
 	}
 
-	&.large {
+	&.large, &.large-middle {
 		height: 96px;
 		border-radius: 48px;
 		font-size: 32px;
@@ -41,6 +41,13 @@ button {
 			padding-right: 48px;
 		}
 	}
+
+	&.large-middle {
+		box-shadow: none;
+		border-radius: 0;
+		border-right: 1px solid $c_black;
+		border-left: 1px solid $c_black;
+	}	
 	
 	//touch effect
 	
@@ -98,3 +105,130 @@ button {
 		float: right;
 	}	
 }
+
+
+
+/*
+	Playing Controls Wrap
+*/
+
+.playing-controls-wrap-outer {
+	position: relative;
+	max-width: 768px;
+	padding: 0 32px;
+	margin: 0 auto;
+}
+
+.playing-controls-wrap {
+	position: relative;
+	width: 100%;
+	background-color: gray;
+	display: flex;
+	justify-content: center;
+	
+	
+	//Visual
+	background-color: $c_e3;
+	color: $c_d1;
+	font-family: 'Grot-Medium';
+	padding: 0;
+	overflow: hidden;
+	width: auto;
+	@include buttonshadow();
+	@include unselectable();	
+	
+	//Details
+	height: 96px;
+	border-radius: 48px;
+	.flex-item {
+		flex-grow: 1;
+		max-width: 224px;
+	}
+}	
+
+
+
+/*
+	Volume Control
+*/
+
+.volume-wrap {
+	
+	position: relative;
+	top: 0;
+	opacity: 1;
+	height: 24px;
+	margin-top: 36px;
+	display: flex;
+	justify-content: center;
+	padding: 0 16px 0 8px;	
+
+	.rangeslider,
+	.rangeslider__fill {
+		position: relative;
+		display: block;
+		flex-grow: 1;
+	}
+	
+	.rangeslider {
+	  //background: #e6e6e6;
+	  position: relative;
+	  background-color: $c_black;
+	  
+	}
+	
+	.rangeslider--horizontal {
+	  height: 4px;
+	  top: 10px;
+	}
+
+	.rangeslider--disabled {
+	  opacity: 0.4;
+	}
+	
+	.rangeslider__fill {
+	  background: $c_c1;
+	  position: absolute;
+	}
+	.rangeslider--horizontal .rangeslider__fill {
+	  top: 0;
+	  height: 100%;
+	}
+	
+	.rangeslider__handle {
+	  background-color: $c_d1;
+	  cursor: pointer;
+	  display: inline-block;
+	  width: 24px;
+	  height: 24px;
+	  position: absolute;
+	  border-radius: 50%;
+	  margin-top: -10px;
+	  margin-left: 0px;
+	}
+	.rangeslider__handle:active, .rangeslider--active .rangeslider__handle {
+	  background-color: $c_d2;
+	}
+	
+	//icons 
+	i {
+		flex-grow: 48px;
+		flex-basis: 48px;
+		//background-color: red;
+		display: block;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 24px 24px;
+		width: 48px;
+		height: 24px;
+		&.icon-volume {
+			background-image: url(../icons/icon-volume.svg);
+			&.on {
+				background-image: url(../icons/icon-volume-up.svg);
+			}
+		}
+		
+									
+	}	
+	
+}	

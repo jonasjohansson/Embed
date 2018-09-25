@@ -1,7 +1,7 @@
 {
     "001": {
         "title": "Title 01",
-        "description": "Description…",
+        "description": "Description 01…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
         "cover_image": "http://localhost:8000/embed-experiences/001/panorama.png",
@@ -13,7 +13,7 @@
     },
     "002": {
         "title": "Title 02",
-        "description": "Description…",
+        "description": "Description 02…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
         "cover_image": "",
@@ -25,7 +25,7 @@
     },
     "003": {
         "title": "Title 03",
-        "description": "Description…",
+        "description": "Description 02…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
         "cover_image": "",

@@ -1,19 +1,5 @@
 // Additional controller modules for later merge
 
-/*
-	Volume
-*/
-
-	// Set Initial Volume
-	socket.on('volume-initial', function(volume_initial){
-		$('#volume-slider').val(volume_initial).change();
-	});  
-	
-	// Set New Volume
-	$("#volume-slider").on("input change", function() {
-		var volume_new = $("#volume-slider").val();	
-		socket.emit('volume-new', volume_new);
-	});	
 
 
 /*
@@ -188,3 +174,31 @@ setState = (state, val) => {
 		$(this).removeClass("touchstart");
 		TweenMax.to($(this).find("i"), tr_out, {scale: 1});
 	});
+	
+
+/*
+	Volume
+*/
+
+	// Range slider
+	$("#volume-slider").rangeslider({
+		polyfill : false
+	});		
+
+	// Set Initial Volume
+	socket.on('volume-initial', function(volume_initial){
+		$('#volume-slider').val(volume_initial).change();
+	});  
+	
+	// Set New Volume
+	$("#volume-slider").on("input change", function() {
+		var volume_new = $("#volume-slider").val();	
+		socket.emit('volume-new', volume_new);
+		if(volume_new > 0) {
+			$(".volume-wrap i").addClass("on");	
+		} else {
+			$(".volume-wrap i").removeClass("on");		
+		}
+	});	
+	
+	

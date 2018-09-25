@@ -233,38 +233,46 @@ button.medium span {
 }
 
 /* line 30, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
-button.large {
+button.large, button.large-middle {
   height: 96px;
   border-radius: 48px;
   font-size: 32px;
 }
 
 /* line 34, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
-button.large i {
+button.large i, button.large-middle i {
   width: 96px;
   height: 96px;
 }
 
 /* line 38, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
-button.large span {
+button.large span, button.large-middle span {
   height: 96px;
   line-height: 96px;
   padding-right: 48px;
 }
 
-/* line 47, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 45, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+button.large-middle {
+  box-shadow: none;
+  border-radius: 0;
+  border-right: 1px solid #000000;
+  border-left: 1px solid #000000;
+}
+
+/* line 54, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button.touchstart {
   background-color: #666666;
 }
 
-/* line 53, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 60, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button span {
   position: relative;
   float: left;
   width: auto;
 }
 
-/* line 60, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 67, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button i {
   position: relative;
   float: left;
@@ -274,49 +282,180 @@ button i {
   background-size: 24px 24px;
 }
 
-/* line 69, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 76, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button i.icon-power-green {
   background-image: url(../icons/icon-power-green.svg);
 }
 
-/* line 72, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 79, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button i.icon-power-red {
   background-image: url(../icons/icon-power-red.svg);
 }
 
-/* line 75, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 82, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button i.icon-sleep {
   background-image: url(../icons/icon-sleep.svg);
 }
 
-/* line 78, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 85, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button i.icon-close-grey {
   background-image: url(../icons/icon-close-grey.svg);
 }
 
-/* line 81, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 88, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button i.icon-stop-grey {
   background-image: url(../icons/icon-stop-grey.svg);
 }
 
-/* line 84, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 91, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button i.icon-stop-red {
   background-image: url(../icons/icon-stop-red.svg);
 }
 
-/* line 87, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 94, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button i.icon-loading {
   background-image: url(../icons/icon-loading.svg);
 }
 
-/* line 94, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 101, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button.align-middle {
   margin: 0 auto;
 }
 
-/* line 97, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+/* line 104, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
 button.align-right {
   float: right;
+}
+
+/*
+	Playing Controls Wrap
+*/
+/* line 115, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.playing-controls-wrap-outer {
+  position: relative;
+  max-width: 768px;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+
+/* line 122, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.playing-controls-wrap {
+  position: relative;
+  width: 100%;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  background-color: #242424;
+  color: #E6E6E6;
+  font-family: 'Grot-Medium';
+  padding: 0;
+  overflow: hidden;
+  width: auto;
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.25);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 96px;
+  border-radius: 48px;
+}
+
+/* line 143, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.playing-controls-wrap .flex-item {
+  flex-grow: 1;
+  max-width: 224px;
+}
+
+/*
+	Volume Control
+*/
+/* line 155, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap {
+  position: relative;
+  top: 0;
+  opacity: 1;
+  height: 24px;
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px 0 8px;
+}
+
+/* line 166, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap .rangeslider,
+.volume-wrap .rangeslider__fill {
+  position: relative;
+  display: block;
+  flex-grow: 1;
+}
+
+/* line 173, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap .rangeslider {
+  position: relative;
+  background-color: #000000;
+}
+
+/* line 180, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap .rangeslider--horizontal {
+  height: 4px;
+  top: 10px;
+}
+
+/* line 185, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap .rangeslider--disabled {
+  opacity: 0.4;
+}
+
+/* line 189, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap .rangeslider__fill {
+  background: #666666;
+  position: absolute;
+}
+
+/* line 193, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap .rangeslider--horizontal .rangeslider__fill {
+  top: 0;
+  height: 100%;
+}
+
+/* line 198, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap .rangeslider__handle {
+  background-color: #E6E6E6;
+  cursor: pointer;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  border-radius: 50%;
+  margin-top: -10px;
+  margin-left: 0px;
+}
+
+/* line 209, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap .rangeslider__handle:active, .volume-wrap .rangeslider--active .rangeslider__handle {
+  background-color: #FFFFFF;
+}
+
+/* line 214, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap i {
+  flex-grow: 48px;
+  flex-basis: 48px;
+  display: block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  width: 48px;
+  height: 24px;
+}
+
+/* line 224, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap i.icon-volume {
+  background-image: url(../icons/icon-volume.svg);
+}
+
+/* line 226, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/_buttons.scss */
+.volume-wrap i.icon-volume.on {
+  background-image: url(../icons/icon-volume-up.svg);
 }
 
 /*
@@ -526,79 +665,13 @@ section .pattern.pattern-notice {
 }
 
 /*
-	Volume Control
+	Experiencees feed
 */
-/* line 184, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
-.volume-wrap {
-  position: relative;
-  top: 0;
-  float: right;
-  margin-right: 16px;
-  opacity: 0;
-}
-
-/* line 192, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
-.volume-wrap #volume-slider {
+/* line 186, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+#experiences ul {
   position: relative;
   width: 100%;
   float: left;
-  display: none;
-}
-
-/* line 198, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
-.volume-wrap .rangeslider,
-.volume-wrap .rangeslider__fill {
-  float: left;
-  position: relative;
-  width: 96px;
-  display: block;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-}
-
-/* line 209, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
-.volume-wrap .rangeslider {
-  position: relative;
-  border: 1px solid #666666;
-}
-
-/* line 215, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
-.volume-wrap .rangeslider--horizontal {
-  height: 4px;
-  top: 10px;
-}
-
-/* line 220, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
-.volume-wrap .rangeslider--disabled {
-  opacity: 0.4;
-}
-
-/* line 224, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
-.volume-wrap .rangeslider__fill {
-  background: #666666;
-  position: absolute;
-}
-
-/* line 228, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
-.volume-wrap .rangeslider--horizontal .rangeslider__fill {
-  top: 0;
-  height: 100%;
-}
-
-/* line 233, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
-.volume-wrap .rangeslider__handle {
-  background: white;
-  border: 1px solid #000000;
-  background-color: #666666;
-  cursor: pointer;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  border-radius: 50%;
-  margin-top: -11px;
-  margin-left: -1px;
 }
 
 /*# sourceMappingURL=../css/style.map */

@@ -63,13 +63,14 @@ io.on('connection', function(socket){
 	
 	// Get & emit Current Volume
 	loudness.getVolume(function (err, volume_initial) {
-		socket.broadcast.emit('volume-initial', volume_initial);
+		socket.emit('volume-initial', volume_initial);
+		console.log("initial-volume:", volume_initial);
 	});
 	
 	// Set new volume		
 	socket.on('volume-new', function(volume_new){  
 		loudness.setVolume(volume_new, function (err) {});  
-		socket.broadcast.emit('volume-new', volume_new);
+		socket.emit('volume-new', volume_new);
 	});
 	
 /* Arduino Relay */

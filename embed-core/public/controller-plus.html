@@ -44,7 +44,7 @@
 	</section>
 	
 	<!-- Explore feed -->
-	<section id="explore">
+	<section id="explore" style="display: block;">
 		<div class="nav-top">
 			<h2 class="header">Explore</h2>
 			<button class="medium align-right launch-overlay" id="show-overlay-presleep-explore">
@@ -57,11 +57,23 @@
 				<!-- JSON FEED -->
 			</div>
 		</div>	
-		<div class="nav-bottom" id="playing-controls" style="display: none;">
-			<button class="large align-middle" id="command-stop">
-				<i class="icon-stop-red"></i>
-				<span>Stop</span>
-			</button>
+		<div class="nav-bottom" id="playing-controls" style="display: block;">
+			<div class="playing-controls-wrap-outer">
+				<div class="playing-controls-wrap">
+					<div class="flex-item current-experience">
+						<div id="current-experience-title">Current Title...</div>
+						<div id="current-experience-image">Current Image...</div>
+					</div>
+					<button class="flex-item large-middle" id="command-stop">
+						<i class="icon-stop-red"></i>
+						<span>Stop</span>
+					</button>
+					<div class="flex-item volume-wrap">
+						<i class="icon-volume"></i>
+						<input type="range" id="volume-slider" class="rangeslider" value="0" min="0" max="100">
+					</div>
+				</div>
+			</div>
 		</div>		
 	</section>		
 
@@ -197,33 +209,12 @@
 		
 		<hr>
 			
-		<div id="current-experience">
-			<h3>Current Experience</h3>
-					
-			<div id="now-playing">
-				<h1>Now playing...</h1>
-				<div id="current-experience-title">Title goes here...</div>
-				<div id="current-experience-image">Image goes here...</div>
-				
-				<p><b>Stop</b></p>	 
-				<p>Stop current experience. Load default experience...</p>
-				<button id="command-stop-current">Stop</button>       
-				
-				<h3>Volume</h3> 
-				<input type="range" id="volume-slider" class="rangeslider" value="0" min="0" max="100">
-			</div>	
-		</div>
-		
-		<hr>
-		
-		<div id="system-status">
-			<h3>System Status</h3>
-			<p></p>
-		</div>   
+
 		
 	</div>     
 	
 	<script src="vendor/jquery.js"></script>
+	<script src="vendor/rangeslider.min.js"></script>
 	<script src="vendor/TweenMax.js"></script>
 	<script src="controller.js"></script>
 	<script src="common.js"></script>

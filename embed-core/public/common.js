@@ -1,3 +1,4 @@
+// Load JSON data
 socket.on('update', function (data) {
     display(data);
 });
