@@ -1,7 +1,6 @@
 var socket = io();
 
 display = (experiences) => {
-
 }
 
 play = (experience) => {

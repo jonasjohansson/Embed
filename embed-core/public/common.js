@@ -1,6 +1,9 @@
+var experiences = null;
+
 // Load JSON data
 socket.on('update', function (data) {
-    display(data);
+    experiences = data;
+    display(experiences);
 });
 
 socket.on('state-update', function (data) {
