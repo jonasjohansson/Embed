@@ -1,6 +1,13 @@
 var socket = io();
 
 display = (experiences) => {
+
+	$experiences = document.querySelector('#experiences');
+
+	while ($experiences.firstChild) {
+	    $experiences.removeChild($experiences.firstChild);
+	}
+
 	for (let prop in experiences){
 		let experience = experiences[prop];
 
@@ -10,7 +17,7 @@ display = (experiences) => {
 		$experience.setAttribute('data-flags', experience.flags);
 		$experience.setAttribute('data-format', experience.format);	
 
-
+		// Overview
 		var $experience_overview = document.createElement('div');
 		
 		$experience_overview.setAttribute("class", "experience_overview");			
@@ -31,7 +38,7 @@ display = (experiences) => {
 		
 		$experience.appendChild($experience_overview);	
 
-				
+		// Details	
 		var $experience_details = document.createElement('div');
 		
 		$experience_details.setAttribute("class", "experience_details");					
@@ -40,15 +47,16 @@ display = (experiences) => {
 
 		$experience.appendChild($experience_details);
 		
+		// Button
 		$button = document.createElement('button');
 		$button.innerHTML = 'command-play';
 		
 		$button.addEventListener('click', (event) => {
 			socket.emit('play',experience);
 		})
-				
+		
 		$experience_details.appendChild($button);
-		document.querySelector('#experiences').appendChild($experience);
+		$experiences.appendChild($experience);
 	}
 }
 

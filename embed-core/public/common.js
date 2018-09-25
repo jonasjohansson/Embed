@@ -38,10 +38,9 @@ socket.on('reset', function (data) {
     reset(data);
 });
 
-document.addEventListener('click', (event) => {
-    if (event.target === 'button'){
-        console.log("button clicked");
-        switch (button.id){
+document.addEventListener('click', event => {
+    if (event.target.nodeName === 'BUTTON'){
+        switch (event.target.id){
             case 'command-stop':
                 socket.emit('stop');
             break;  
