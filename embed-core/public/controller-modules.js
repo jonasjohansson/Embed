@@ -173,12 +173,14 @@ setState = (state, val) => {
 */
 
 	// global transitions
-	
+	/*
 	var tr_in = 0.3;
 	var tr_out = 0.1;
 	var tr_smooth = .5;
 	var tr_super_smooth = 1.7;
-	
+	*/
+	var tr_in, tr_out, tr_smooth, tr_super_smooth = 0;
+		
 	// Butons
 	$('button').on("touchstart mouseover", function() {
 		$(this).addClass("touchstart");
@@ -192,7 +194,7 @@ setState = (state, val) => {
 	
 	//Loading spin
 	
-	TweenMax.to('button.loading', 1, {rotation:"360", ease:Linear.easeNone,repeat:-1});
+	TweenMax.to('button.loading', tr_super_smooth, {rotation:"360", ease:Linear.easeNone,repeat:-1});
 	
 	
 
