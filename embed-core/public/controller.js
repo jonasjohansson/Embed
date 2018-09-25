@@ -25,5 +25,5 @@ play = (experience) => {
 	setTimeout(()=>{
 		socket.emit('state-update',{state:'loading',val:false});
 		socket.emit('state-update',{state:'playing',val:true});
-	},1000);
+	},3000);
 }

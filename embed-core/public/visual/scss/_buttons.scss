@@ -79,6 +79,10 @@ button {
 		width: auto;
 	}
 	
+	&.loading {
+		pointer-events: none;
+	} 
+	
 	//icons 
 	i {
 		position: relative;

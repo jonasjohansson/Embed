@@ -176,7 +176,7 @@ setState = (state, val) => {
 	
 	var tr_in = 0.3;
 	var tr_out = 0.1;
-	var tr_smooth = .7;
+	var tr_smooth = .5;
 	var tr_super_smooth = 1.7;
 	
 	// Butons
@@ -189,6 +189,11 @@ setState = (state, val) => {
 		$(this).removeClass("touchstart");
 		TweenMax.to($(this).find("i"), tr_out, {scale: 1});
 	});
+	
+	//Loading spin
+	
+	TweenMax.to('button.loading', 1, {rotation:"360", ease:Linear.easeNone,repeat:-1});
+	
 	
 
 /*
