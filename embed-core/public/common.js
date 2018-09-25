@@ -7,7 +7,6 @@ socket.on('state-update', function (data) {
     setState(data.state, data.val);
 });
 
-
 // Experience playback
 socket.on('play', function (data) {
     play(data);
@@ -36,10 +35,8 @@ socket.on('reset', function (data) {
     reset(data);
 });
 
-const buttons = document.querySelectorAll('button');
-
-for (let button of buttons){
-    button.addEventListener('click', (event) => {
+document.addEventListener('click', (event) => {
+    if (event.target === 'button'){
         switch (button.id){
             case 'command-stop':
                 socket.emit('stop');
@@ -57,8 +54,8 @@ for (let button of buttons){
                 socket.emit('reset');
             break;                                                                         
         }
-    });
-}
+    }
+});
 
 stop = () => {
     socket.emit('state-update',{state:'stopped',val:false});
