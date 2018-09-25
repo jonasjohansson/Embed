@@ -40,14 +40,26 @@ socket.on('reset', function (data) {
 
 document.addEventListener('click', event => {
 
-    var button = (event.target.nodeName === 'BUTTON') ? event.target : event.target.parentNode;
+	var node = null;
 
-    if (button.nodeName !== 'BUTTON')
-        return;
+	if (event.target.hasAttribute('data-action'))
+		node = event.target;
+	else if (event.target.parentNode.hasAttribute('data-action'))
+		node = event.target.parentNode;
 
-    console.log(button.id,'was clicked!');
+	if (node === null)
+		return;
 
-    switch (button.id){
+    // var button = (event.target.getAttribute('data-action') === 'BUTTON') ? event.target : event.target.parentNode;
+
+    // if (button.nodeName !== 'BUTTON')
+    //     return;
+
+    var attr = node.getAttribute('data-action');
+
+    console.log(node.nodeName,attr,'was clicked!');
+
+    switch (attr){
         case 'command-stop':
             socket.emit('stop');
         break;  
