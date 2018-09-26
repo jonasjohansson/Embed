@@ -40,27 +40,44 @@ socket.on('reset', function (data) {
 
 
 document.addEventListener('click', event => {
-    for (let node of event.path){
-        if (node.nodeName === 'BUTTON'){
-            switch (node.id){
-                case 'command-stop':
-                    socket.emit('stop');
-                break;  
-                case 'command-start':
-                    socket.emit('start');
-                break;  
-                case 'command-sleep':
-                    socket.emit('sleep');
-                break;     
-                case 'command-wake':
-                    socket.emit('wake');
-                break; 
-                case 'command-reset':
-                    socket.emit('reset');
-                break;
-            }
-        }   
-    }
+
+	var node = null;
+
+	if (event.target.hasAttribute('data-action'))
+		node = event.target;
+		
+	else if (event.target.parentNode.hasAttribute('data-action'))
+		node = event.target.parentNode;
+
+	if (node === null)
+		return;
+
+    // var button = (event.target.getAttribute('data-action') === 'BUTTON') ? event.target : event.target.parentNode;
+
+    // if (button.nodeName !== 'BUTTON')
+    //     return;
+
+    var attr = node.getAttribute('data-action');
+
+
+    switch (attr){
+        case 'command-stop':
+            socket.emit('stop');
+        break;  
+        case 'command-start':
+            socket.emit('start');
+        break;  
+        case 'command-sleep':
+            socket.emit('sleep');
+        break;     
+        case 'command-wake':
+            socket.emit('wake');
+        break; 
+        case 'command-reset':
+            socket.emit('reset');
+        break;
+    }                                                                      
+
 });
 
 stop = () => {
