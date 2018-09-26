@@ -49,7 +49,9 @@ display = (experiences) => {
 		
 		// Button
 		$button = document.createElement('button');
-		$button.innerHTML = 'command-play';
+		$button.innerHTML = 'Play';
+		$button.setAttribute('data-action', "command-play-this");
+		
 		
 		$button.addEventListener('click', (event) => {
 			socket.emit('play',experience);

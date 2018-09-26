@@ -38,14 +38,14 @@ socket.on('reset', function (data) {
     reset(data);
 });
 
-
 document.addEventListener('click', event => {
-
+	
+	console.log('clicked!');
+	
 	var node = null;
 
 	if (event.target.hasAttribute('data-action'))
 		node = event.target;
-		
 	else if (event.target.parentNode.hasAttribute('data-action'))
 		node = event.target.parentNode;
 
@@ -59,6 +59,7 @@ document.addEventListener('click', event => {
 
     var attr = node.getAttribute('data-action');
 
+    console.log(node.nodeName,attr,'was clicked!');
 
     switch (attr){
         case 'command-stop':
@@ -77,7 +78,6 @@ document.addEventListener('click', event => {
             socket.emit('reset');
         break;
     }                                                                      
-
 });
 
 stop = () => {

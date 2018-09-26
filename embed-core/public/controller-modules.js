@@ -27,7 +27,7 @@
 		this_pattern = destination_overlay.find(".pattern");
 		this_nav_bottom = destination_overlay.find(".nav-bottom");
 		
-		TweenMax.fromTo(this_pattern, tr_smooth, {opacity: 0, backgroundPositionX: "40%"}, {opacity: .25, backgroundPositionX: "50%"});
+		//TweenMax.fromTo(this_pattern, tr_smooth, {opacity: 0, backgroundPositionX: "40%"}, {opacity: .25, backgroundPositionX: "50%"});
 		TweenMax.fromTo(this_nav_bottom, tr_smooth, {y: 64}, {y: 0});
 	}
 	
@@ -133,32 +133,32 @@ setState = (state, val) => {
 
 	 
 	// Pre-sleep overlay (Welcome)
-	$('#show-overlay-presleep-welcome').on("click tap", function(e) {
+	$("[data-action=show-overlay-presleep-welcome]").on("click tap", function(e) {
 		destination_overlay = $("#overlay-presleep-welcome");
 		show_destination_overlay();
 	});
 
-	$('#close-overlay-presleep-welcome').on("click tap", function() {
+	$('[data-action=close-overlay-presleep-welcom]').on("click tap", function() {
 		destination_overlay = $("#welcome");
 		show_destination_overlay();
 	});
 	
 	// Pre-sleep overlay (Explore)
-	$('#show-overlay-presleep-explore').on("click tap", function(e) {
+	$('[data-action=show-overlay-presleep-explore]').on("click tap", function(e) {
 		destination_overlay = $("#overlay-presleep-explore");
 		show_destination_overlay();
 	});	
-	$('#close-overlay-presleep-explore').on("click tap", function() {
+	$('[data-action=close-overlay-presleep-explore]').on("click tap", function() {
 		destination_overlay = $("#explore");
 		show_destination_overlay();
 	});
 	
 	// Show pre-reset warning
-	$('#show-overlay-prereset').on("click tap", function(e) {
+	$('[data-action=show-overlay-prereset]').on("click tap", function(e) {
 		destination_overlay = $("#overlay-prereset");
 		show_destination_overlay();
 	});	
-	$('#close-overlay-prereset').on("click tap", function() {
+	$('[data-action=close-overlay-prereset]').on("click tap", function() {
 		destination_overlay = $("#overlay-presleep-explore");
 		show_destination_overlay();
 	});	

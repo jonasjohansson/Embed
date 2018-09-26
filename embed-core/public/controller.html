@@ -22,19 +22,19 @@
 		<h3>Global Sleep Controls</h3>
 		<p><b>Start</b></p>
 		<p>Load the default experience from the Welcome state.</p>
-		<button id="command-start">Start</button>
+		<button data-action="command-start">Start</button>
 		
 		<p><b>Sleep</b></p>
 		<p>Shut down hardware and show the sleep overlay.</p>
-		<button id="command-sleep">Sleep</button>
+		<button data-action="command-sleep">Sleep</button>
 		
 		<p><b>Reset</b></p>	    
 		<p>Reset to Welcome state.</p>
-		<button id="command-reset">Reset</button>
+		<button data-action="command-reset">Reset</button>
 		
 		<p><b>Wake</b></p>	 
 		<p>Turn on the hardware. No matter the system state.</p>
-		<button id="command-wake">Wake</button>
+		<button data-action="command-wake">Wake</button>
 	</div>
 
 	<hr>
@@ -44,8 +44,8 @@
 		<h1>Something went wrong. Sorry.</h1>
 		<p>Let's restart and hope for the best.</p>
 		<menu>
-			<button id="command-refresh">Refresh</button>
-			<button id="command-restart">Restart</button>
+			<button data-action="command-refresh">Refresh</button>
+			<button data-action="command-restart">Restart</button>
 		</menu>
 	</div>
 		
@@ -62,12 +62,12 @@
 				
 		<div id="now-playing">
 			<h1>Now playing...</h1>
-			<div id="current-experience-title">Title goes here...</div>
-			<div id="current-experience-image">Image goes here...</div>
+			<div data-action="current-experience-title">Title goes here...</div>
+			<div data-action="current-experience-image">Image goes here...</div>
 			
 			<p><b>Stop</b></p>	 
 			<p>Stop current experience. Load default experience...</p>
-			<button id="command-stop">Stop</button>       
+			<button data-action="command-stop">Stop</button>       
 			
 			<h3>Volume</h3> 
 			<input type="range" id="volume-slider" class="rangeslider" value="0" min="0" max="100">
