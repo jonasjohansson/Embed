@@ -231,6 +231,11 @@
 			padding: 0;
 			margin-bottom: 32px;
 			box-shadow: 0px 0px 32px rgba(255,255,255,0.15);
+			&.selected {
+				margin-bottom: 0;
+				box-shadow: none;
+				padding-bottom: 112px;
+			}
 			.experience_overview {
 				@include basicfloat();
 				z-index: 100;
@@ -277,7 +282,14 @@
 				display: none;
 				overflow: visible;
 				//height: 700px;
-				padding: 48px 32px;
+				.inner {
+					h3 {
+						color: $c_c2;
+						margin-bottom: 8px;
+						margin-top: 24px;
+					}
+					padding: 48px 32px;
+				}
 				.nav-bottom {
 					z-index: 4000;
 				}

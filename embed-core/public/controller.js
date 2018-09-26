@@ -42,9 +42,12 @@ display = (experiences) => {
 		var $experience_details = document.createElement('div');		
 		$experience_details.setAttribute("class", "experience_details");					
 		$experience_details.innerHTML = `
-			<a href="${experience.author_url}">
-				<span class="author">${experience.author}</span>
-			</a>`;
+			<div class="inner">
+				<h3>Credits</h3>
+				<a href="${experience.author_url}">
+					<span class="author">${experience.author}</span>
+				</a>
+			</div>`;
 		
 		$experience.appendChild($experience_details);	
 		

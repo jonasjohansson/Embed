@@ -138,7 +138,7 @@ setState = (state, val) => {
 		show_destination_overlay();
 	});
 
-	$('[data-action=close-overlay-presleep-welcom]').on("click tap", function() {
+	$('[data-action=close-overlay-presleep-welcome]').on("click tap", function() {
 		destination_overlay = $("#welcome");
 		show_destination_overlay();
 	});
@@ -231,12 +231,12 @@ setState = (state, val) => {
 	var tr_in, tr_out, tr_smooth, tr_super_smooth = 0;
 		
 	// Butons
-	$('button').on("touchstart mouseover", function() {
+	$('body').on("touchstart mouseover", "button", function() {
 		$(this).addClass("touchstart");
 		TweenMax.to($(this).find("i"), tr_in, {scale: 1.15});
 	});
 	
-	$('button').on("touchend mouseleave", function() {
+	$('body').on("touchend mouseleave", "button", function() {
 		$(this).removeClass("touchstart");
 		TweenMax.to($(this).find("i"), tr_out, {scale: 1});
 	});
