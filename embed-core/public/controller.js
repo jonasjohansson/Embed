@@ -22,42 +22,55 @@ display = (experiences) => {
 		
 		$experience_overview.setAttribute("class", "experience_overview");			
 		$experience_overview.innerHTML = `
-				<div class="cover">
-					<video style="min-height: 100px; background-image: url(${experience.cover_image});">
-						<source src="${experience.cover_video}" type="video/mp4">
-					</video>
-				</div>	
-				<div class="info-wrap">
-					<h2 class="bold">${experience.title}</h2>
-					<div class="attributes">
-						<span class="author">${experience.author}</span>
-					</div>
-					<p class="description">${experience.description}</p>
-					
-				</div>`;
+			<div class="cover">
+				<video style="min-height: 100px; background-image: url(${experience.cover_image});">
+					<source src="${experience.cover_video}" type="video/mp4">
+				</video>
+			</div>	
+			<div class="info-wrap">
+				<h2 class="bold">${experience.title}</h2>
+				<div class="attributes">
+					<span class="author">${experience.author}</span>
+				</div>
+				<p class="description">${experience.description}</p>
+				
+			</div>`;
 		
 		$experience.appendChild($experience_overview);	
 
 		// Details	
-		var $experience_details = document.createElement('div');
-		
+		var $experience_details = document.createElement('div');		
 		$experience_details.setAttribute("class", "experience_details");					
-		$experience_details.innerHTML = `<a href="${experience.author_url}"><span class="author">${experience.author}</span></a>`;
+		$experience_details.innerHTML = `
+			<a href="${experience.author_url}">
+				<span class="author">${experience.author}</span>
+			</a>`;
+		
+		$experience.appendChild($experience_details);	
+		
+		// Experience controls
+		var $experience_controls = document.createElement('div');		
+		$experience_controls.setAttribute("class", "nav-bottom");					
 
 
-		$experience.appendChild($experience_details);
+		$experience_details.appendChild($experience_controls);
+		
 		
 		// Button
 		$button = document.createElement('button');
-		$button.innerHTML = 'Play';
+		//$button.outerHTML = `<div class="nav-bottom"></div>`;
+		$button.innerHTML = `<i class="icon-play"></i><span>Play</span>`;
+		$button.setAttribute('class', "large align-middle");
 		$button.setAttribute('data-action', "command-play-this");
-		
-		
+
+
 		$button.addEventListener('click', (event) => {
 			socket.emit('play',experience);
 		})
 		
-		$experience_details.appendChild($button);
+		$experience_controls.appendChild($button);
+		
+		// Wrap them all up
 		$experiences.appendChild($experience);
 	}
 }

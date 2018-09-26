@@ -40,8 +40,6 @@ socket.on('reset', function (data) {
 
 document.addEventListener('click', event => {
 	
-	console.log('clicked!');
-	
 	var node = null;
 
 	if (event.target.hasAttribute('data-action'))

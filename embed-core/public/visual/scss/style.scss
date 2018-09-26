@@ -79,6 +79,11 @@
 			float: left;
 			margin-top: 4px;
 		}
+		
+		// Layer two
+		&.experience-nav {
+			display: none;	
+		}
 	}
 	
 	
@@ -198,10 +203,26 @@
 	Experiencees feed
 */
 
-
+	#explore.detailed-view {
+		.content-feed {
+			padding: 0;
+			//background-color: $c_d1;
+		}
+		.experience_overview {
+			.description {
+				font-size: 32px;
+				line-height: 40px;
+				max-width: none;
+				width: 100%;
+				padding-right: 80px;
+			}
+		}
+		
+	}
 
 	ul#experiences {
 		@include basicfloat();
+		
 		li {
 			@include basicfloat();
 			z-index: 100;
@@ -251,9 +272,15 @@
 			.experience_details {
 				@include basicfloat();
 				z-index: 100;
-				background-color: $c_black;
+				//background-color: $c_black;
 				height: auto;
 				display: none;
+				overflow: visible;
+				//height: 700px;
+				padding: 48px 32px;
+				.nav-bottom {
+					z-index: 4000;
+				}
 			}	
 			/*		
 			&:before {
@@ -269,7 +296,13 @@
 				border-radius: 16px;
 				box-shadow: 0px 0px 32px rgba(255,255,255,0.15);
 			}
-			*/	
+			*/
+			&:not(.selected):hover {
+				.experience_overview {
+					background-color: $c_e2;
+				}
+				cursor: pointer;
+			}	
 		}	
 	}
 

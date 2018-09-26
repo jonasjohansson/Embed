@@ -166,6 +166,56 @@ setState = (state, val) => {
 
 
 
+/*
+	Expand Experience
+*/
+	
+	var selected_experience;
+	$('#experiences').on("click", "li", function() {
+		
+		selected_experience = $(this);
+		
+		
+		//Hide all others
+		$('#experiences li').hide();
+		
+		//Show this
+		selected_experience.show();
+		
+		//Nav control
+		$('#explore .nav-top').hide();
+		$('#explore .nav-top.experience-nav').show();
+		
+				
+		$('#explore').addClass("detailed-view");
+		
+		selected_experience.addClass("selected");
+		
+		//Show details
+		var selected_experience_details = selected_experience.find(".experience_details");
+		selected_experience_details.show();
+
+	});
+	
+	$('[data-action=close-experience-details]').on("click", function() {
+				
+		//Show all others
+		$('#experiences li').show();
+		
+		//Show this
+		//selected_experience.show();
+		
+		//Nav control
+		$('#explore .nav-top').show();
+		$('#explore .nav-top.experience-nav').hide();
+		$("#experiences li .experience_details").hide();
+				
+		$('#explore').removeClass("detailed-view");
+		
+		selected_experience.removeClass("selected");
+
+	});	
+
 
 /*
 	Visual effects

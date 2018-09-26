@@ -120,7 +120,12 @@ button {
 		}
 		&.icon-confirm-red {
 			background-image: url(../icons/icon-confirm.svg);	
-		}										
+		}	
+		&.icon-prev {
+			background-image: url(../icons/icon-prev.svg);	
+		}
+		&.icon-play {
+			background-image: url(../icons/icon-play-green.svg);										}
 	}
 	
 	//align 
