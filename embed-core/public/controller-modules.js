@@ -27,7 +27,7 @@
 		this_pattern = destination_overlay.find(".pattern");
 		this_nav_bottom = destination_overlay.find(".nav-bottom");
 		
-		TweenMax.fromTo(this_pattern, tr_smooth, {opacity: 0, backgroundPositionX: "40%"}, {opacity: 1, backgroundPositionX: "50%"});
+		TweenMax.fromTo(this_pattern, tr_smooth, {opacity: 0, backgroundPositionX: "40%"}, {opacity: .25, backgroundPositionX: "50%"});
 		TweenMax.fromTo(this_nav_bottom, tr_smooth, {y: 64}, {y: 0});
 	}
 	

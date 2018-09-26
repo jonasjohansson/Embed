@@ -58,7 +58,7 @@ document.addEventListener('click', event => {
                 case 'command-reset':
                     socket.emit('reset');
                 break;
-            }                                                                      
+            }
         }   
     }
 });
