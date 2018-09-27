@@ -1,6 +1,7 @@
 {
     "001": {
         "title": "Title 01",
+        "slug": "title-01",
         "description": "The Ark is an ephemeral, site-specific audiovisual installation that took place in the ethnobotanical garden of Oaxaca, Mexico.",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
@@ -13,6 +14,7 @@
     },
     "002": {
         "title": "Title 02",
+        "slug": "title-02",
         "description": "Description 02…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
@@ -25,6 +27,7 @@
     },
     "003": {
         "title": "Title 03",
+        "slug": "title-03",
         "description": "Description 02…",
         "author": "Jonas Johansson",
         "author_url": "https://jonasjohansson.se/",
