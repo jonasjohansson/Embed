@@ -14,6 +14,13 @@ document.addEventListener('click', e => {
     const action = node.getAttribute('data-action');
     const data = node.getAttribute('data-data') || '';
 
+    if (action === 'play' && selectedExperience !== undefined) {
+        let slug = selectedExperience.slug;
+        if (slug !== 'default' && slug !== 'welcome') {
+            if (!confirm('You will loose your current progress, OK?')) return;
+        }
+    }
+
     console.log(e.target.nodeName, action, 'was clicked!');
 
     socket.emit(action, data);
