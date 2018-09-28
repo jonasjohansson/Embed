@@ -66,4 +66,8 @@ socket.on('play', id => {
     console.log('Experience:', selectedExperience.title, 'is loading…');
 });
 
+socket.on('stop', data => {
+    stop();
+});
+
 socket.on('state-update', data => setState(data.name, data.state));

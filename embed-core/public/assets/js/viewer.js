@@ -1,8 +1,11 @@
 var socket = io();
 
-display = experiences => {
-	play(experiences['default']);
-};
+display = () => play(experiences['default']);
+start = () => play(experiences['default']);
+stop = () => play(experiences['default']);
+reset = () => play(experiences['welcome']);
+restart = () => play(experiences['welcome']);
+welcome = () => play(experiences['welcome']);
 
 play = experience => {
 	console.log(experience);

@@ -40,6 +40,10 @@ play = experience => {
 	document.querySelector('#' + experience.slug).classList.add('selected');
 };
 
+stop = () => {
+	document.querySelector('.selected').classList.remove('selected');
+};
+
 socket.on('volume-initial', volume_initial => {
 	$volume_slider.value = volume_initial;
 });
