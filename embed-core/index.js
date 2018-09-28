@@ -54,12 +54,8 @@ io.on('connection', function(socket) {
 		// Check if board is even connected first
 		if (relay_status == 'relay ready') {
 			// Run command
-			if (arduino_relay_status == 'wake') {
-				relay.close();
-			}
-			if (arduino_relay_status == 'sleep') {
-				relay.open();
-			}
+			if (arduino_relay_status == 'wake') relay.close();
+			else if (arduino_relay_status == 'sleep') relay.open();
 		} else {
 			arduino_relay_status = 'Relay not available';
 			socket.broadcast.emit('relay-status', arduino_relay_status);
