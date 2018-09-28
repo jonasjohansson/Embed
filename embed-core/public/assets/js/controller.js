@@ -1,5 +1,7 @@
 var socket = io();
 
+$volume_slider = document.querySelector('#volume-slider');
+
 display = experiences => {
 	$experiences = document.querySelector('#experiences');
 
@@ -11,15 +13,15 @@ display = experiences => {
 
 		$experience.id = experience.slug;
 		// $experience.setAttribute('data-title', experience.title);
-		$experience.setAttribute('data-flags', experience.flags);
-		$experience.setAttribute('data-format', experience.format);
+		// $experience.setAttribute('data-flags', experience.flags);
+		// $experience.setAttribute('data-format', experience.format);
 
 		$experience.innerHTML = `
 			<video poster="${experience.cover_image}">
 				<source src="${experience.cover_video}" type="video/mp4">
 			</video>
 			<h2>${experience.title}</h2>
-			<div class="attributes">
+			<div>
 				<a href="${experience.author_url}">
 					<span>${experience.author}</span>
 				</a>
@@ -37,3 +39,12 @@ play = experience => {
 		el.classList.remove('selected');
 	document.querySelector('#' + experience.slug).classList.add('selected');
 };
+
+socket.on('volume-initial', volume_initial => {
+	$volume_slider.value = volume_initial;
+});
+
+$volume_slider.addEventListener('change', e => {
+	var volume_new = e.target.value;
+	socket.emit('volume-new', volume_new);
+});
