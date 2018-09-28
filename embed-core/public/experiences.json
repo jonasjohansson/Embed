@@ -1,4 +1,30 @@
 {
+    "default": {
+        "title": "Default",
+        "slug": "default",
+        "description": "",
+        "author": "Embed",
+        "author_url": "https://embedproject.io/",
+        "cover_image": "",
+        "cover_video": "",
+        "type": "webgl",
+        "url": "https://jonasjohansson.github.io/embed/embed-experiences/default/",
+        "flags": "",
+        "format": ""
+    },
+    "welcome": {
+        "title": "Welcome",
+        "slug": "welcome",
+        "description": "",
+        "author": "Embed",
+        "author_url": "https://embedproject.io/",
+        "cover_image": "",
+        "cover_video": "",
+        "type": "webgl",
+        "url": "https://jonasjohansson.github.io/embed/embed-experiences/welcome/",
+        "flags": "",
+        "format": ""
+    },
     "001": {
         "title": "Title 01",
         "slug": "title-01",

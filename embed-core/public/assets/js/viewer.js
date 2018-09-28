@@ -1,9 +1,10 @@
 var socket = io();
 
-display = experiences => {};
+display = experiences => {
+    play(experiences['000-default']);
+};
 
 play = experience => {
-    console.log(experience);
     let format = experience.format;
     switch (format) {
         case 'panorama':
