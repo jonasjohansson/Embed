@@ -8,10 +8,12 @@ display = experiences => {
 	removeChildren($experiences);
 
 	for (let prop in experiences) {
+		if (prop === 'default' || prop === 'welcome') continue;
+
 		let experience = experiences[prop];
 		let $experience = document.createElement('div');
 
-		$experience.id = experience.slug;
+		$experience.setAttribute('data-slug', experience.slug);
 		// $experience.setAttribute('data-title', experience.title);
 		// $experience.setAttribute('data-flags', experience.flags);
 		// $experience.setAttribute('data-format', experience.format);
