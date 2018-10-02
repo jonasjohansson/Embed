@@ -33,11 +33,19 @@ $(document).ready(function() {
 			setting_width = parseInt($("#setting-width").val());
 			setting_height = parseInt($("#setting-height").val());
 			setting_depth = parseInt($("#setting-depth").val());
+
+			var set_ratio_center = setting_width/setting_height;
+			var set_ratio_sides = setting_depth/setting_height;
+			var set_ratio_top = setting_width/setting_depth;
+	
+	
+	
+	
+			
+			
 			setting_proj_width = parseInt($("#setting-proj-width").val());
 			setting_proj_height = parseInt($("#setting-proj-height").val());
 			
-			
-		
 			
 			// Findings			
 			var combined_width = setting_width + setting_depth * 2;
@@ -60,7 +68,6 @@ $(document).ready(function() {
 				
 				// Unsafe
 				var set_onepercent = setting_proj_width/setting_height/allowed_ratio; 
-				var set_onepercent_z = setting_proj_width/setting_height/allowed_ratio; 
 				
 				// Output values
 				var the_width = setting_width * set_onepercent;
@@ -70,7 +77,6 @@ $(document).ready(function() {
 
 				// Safe
 				var set_onepercent = setting_proj_height/setting_width*allowed_ratio; 
-				var set_onepercent_z = setting_proj_height/setting_depth*allowed_ratio; 
 				
 				// Output values
 				var the_width = setting_width * set_onepercent;
@@ -129,10 +135,10 @@ $(function () {
 			Stage Settings
 		*/
 		
-		$('#setting-show-guides').val($(this).is(':checked'));
+	$('#setting-show-guides').val($(this).is(':checked'));
 		$('#setting-show-guides').change(function() {
         if(this.checked) {
-					$(".stage").addClass("specs_on");
+			$(".stage").addClass("specs_on");
         } else {
 	      	$(".stage").removeClass("specs_on");  
         }       
@@ -146,39 +152,6 @@ $(function () {
 
 		var socket = io();
 		
-
-		
-		/*
-			Manage Content – TEMP
-		*/
-		$('.button').click(function(){
-			
-			var launch_mode = $(this).attr("id");
-      
-      socket.emit('launch mode', launch_mode);
-      
-    });
-    
-    socket.on('launch mode', function(launch_mode){
-
-      // Empty divs
-      $(".box .inner, body.agenda").empty();
-      $(".book").empty(); 
-      $("body").css("opacity", "1");
-      $(".box div").css("background-color", "");
-      
-      
-      //Reset timelines
-      var open_case = launch_mode;
-      
-  
-      // Refresh
-      if(open_case == "#open-reset") {
-
-		     	location.reload();  
-
-      }      
-    });
     
     
 
