@@ -1,11 +1,23 @@
 var socket = io();
 
-display = () => play(experiences['default']);
-start = () => play(experiences['default']);
-stop = () => play(experiences['default']);
-reset = () => play(experiences['welcome']);
-restart = () => play(experiences['welcome']);
-welcome = () => play(experiences['welcome']);
+display = () => {};
+
+setup = () => {
+	console.log('setup');
+	play(experiences['welcome']);
+};
+
+enter = () => {
+	play(experiences['default']);
+};
+
+reset = () => {
+	setup();
+};
+
+stop = () => {
+	enter();
+};
 
 play = experience => {
 	console.log(experience);

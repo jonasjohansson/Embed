@@ -42,14 +42,22 @@ removeChildren = el => {
     }
 };
 
-socket.on('start', data => {
-    setState('experiences', true);
-});
+/* triggered when system is initiated */
 
 socket.on('update', data => {
     experiences = data;
     display(experiences);
+});
+
+socket.on('setup', data => {
+    setup();
     setState('welcome', true);
+});
+
+/* enter the experience */
+
+socket.on('enter', data => {
+    setState('experiences', true);
 });
 
 socket.on('restart', data => {

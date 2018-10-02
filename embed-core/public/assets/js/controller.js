@@ -2,6 +2,8 @@ var socket = io();
 
 $volume_slider = document.querySelector('#volume-slider');
 
+setup = () => {};
+
 display = experiences => {
 	$experiences = document.querySelector('#experiences');
 
@@ -39,7 +41,9 @@ display = experiences => {
 play = experience => {
 	for (let el of document.querySelectorAll('.selected'))
 		el.classList.remove('selected');
-	document.querySelector('#' + experience.slug).classList.add('selected');
+	document
+		.querySelector(`[data-slug=${experience.slug}]`)
+		.classList.add('selected');
 };
 
 stop = () => {

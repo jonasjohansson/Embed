@@ -19,12 +19,13 @@ io.on('connection', function(socket) {
 		.get('http://localhost:3000/experiences.json')
 		.then(response => {
 			socket.emit('update', response.data);
+			socket.emit('setup');
 		})
 		.catch(error => {
 			console.log(error);
 		});
 
-	socket.on('start', data => emit('start'));
+	socket.on('enter', data => emit('enter'));
 	socket.on('error', data => emit('error'));
 	socket.on('play', data => emit('play', data));
 	socket.on('stop', data => emit('stop'));
