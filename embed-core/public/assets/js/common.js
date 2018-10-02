@@ -52,7 +52,8 @@ socket.on('update', data => {
     display(experiences);
 });
 
-socket.on('setup', data => {
+socket.on('reset', data => {
+    console.log('asd');
     setup();
     setState('welcome', true);
 });
@@ -62,10 +63,6 @@ socket.on('setup', data => {
 socket.on('enter', data => {
     enter();
     setState('experiences', true);
-});
-
-socket.on('restart', data => {
-    setState('welcome', true);
 });
 
 socket.on('error', data => {

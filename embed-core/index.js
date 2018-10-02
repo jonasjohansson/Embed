@@ -19,7 +19,7 @@ io.on('connection', function(socket) {
 		.get('http://localhost:3000/experiences.json')
 		.then(response => {
 			socket.emit('update', response.data);
-			socket.emit('setup');
+			socket.emit('reset');
 		})
 		.catch(error => {
 			console.log(error);
@@ -29,10 +29,8 @@ io.on('connection', function(socket) {
 	socket.on('error', data => emit('error'));
 	socket.on('play', data => emit('play', data));
 	socket.on('stop', data => emit('stop'));
-	socket.on('sleep', data => emit('sleep'));
 	socket.on('reset', data => emit('reset'));
-	socket.on('wake', data => emit('wake'));
-	socket.on('restart', data => emit('restart'));
+
 	socket.on('state-update', data => emit('state-update', data));
 
 	/* Volume */

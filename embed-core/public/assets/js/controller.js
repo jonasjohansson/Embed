@@ -4,6 +4,7 @@ $volume_slider = document.querySelector('#volume-slider');
 
 setup = () => {};
 enter = () => {};
+reset = () => {};
 
 display = experiences => {
 	$experiences = document.querySelector('#experiences');
