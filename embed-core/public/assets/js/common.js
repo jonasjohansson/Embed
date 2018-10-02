@@ -14,10 +14,13 @@ document.addEventListener('click', e => {
     const action = node.getAttribute('data-action');
     const data = node.getAttribute('data-data') || '';
 
-    if (action === 'play' && selectedExperience !== undefined) {
-        let slug = selectedExperience.slug;
-        if (slug !== 'default' && slug !== 'welcome') {
-            if (!confirm('You will loose your current progress, OK?')) return;
+    if (selectedExperience !== undefined && selectedExperience !== null) {
+        if (action === 'play') {
+            let slug = selectedExperience.slug;
+            if (slug !== 'default' && slug !== 'welcome') {
+                if (!confirm('You will loose your current progress, OK?'))
+                    return;
+            }
         }
     }
 
@@ -77,6 +80,7 @@ socket.on('play', id => {
 
 socket.on('stop', data => {
     stop();
+    selectedExperience = undefined;
 });
 
 socket.on('state-update', data => setState(data.name, data.state));
