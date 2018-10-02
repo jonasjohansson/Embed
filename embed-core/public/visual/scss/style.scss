@@ -236,6 +236,11 @@
 				box-shadow: none;
 				padding-bottom: 112px;
 			}
+			&.playing {
+				span.playing {
+					display: block !important;
+				}
+			}
 			.experience_overview {
 				@include basicfloat();
 				z-index: 100;
@@ -264,6 +269,12 @@
 						margin-bottom: 24px;
 						span {
 							color: $c_c1;
+							margin-right: 16px;
+							float: left;
+							&.playing {
+								color: $c_green;
+								display: none;
+							}
 						}	
 					}
 				}
@@ -367,7 +378,7 @@
 			display: table;
 			height: 100%;
 			width: auto;
-			padding-left: 88px;
+			padding-left: 48px;
 			z-index: 100;
 			p {
 				display: table-cell;
@@ -399,6 +410,7 @@
 			background-image: url(../icons/icon-play-green.svg);
 			z-index: 4;
 			display: block;
+			display: none;
 		}
 		.gradient {
 			z-index: 3;
@@ -416,6 +428,7 @@
 			left: 0;
 			top: 0;	
 			background-position: center center;
+			background-size: cover;
 			z-index: 2;
 		}		
 		.default-image {

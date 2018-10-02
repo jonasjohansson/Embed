@@ -9,6 +9,9 @@ setup = () => {};
 enter = () => {};
 reset = () => {};
 
+var current_experience;
+var selectedExperience;
+
 display = experiences => {
 	$experiences = document.querySelector('#experiences');
 
@@ -37,6 +40,7 @@ display = experiences => {
 					<h2 class="bold">${experience.title}</h2>
 					<div class="attributes">
 						<span class="author">${experience.author}</span>
+						<span class="playing">Playing</span>
 					</div>
 					<p class="description">${experience.description}</p>
 					
@@ -55,7 +59,6 @@ display = experiences => {
 						<i class="icon-play"></i>
 						<span>Play</span>
 					</button>
-					<button data-action="stop">stop</button>
 				</div> 						
 			</div>`;
 
@@ -64,13 +67,17 @@ display = experiences => {
 };
 
 play = experience => {
-	for (let el of document.querySelectorAll('.selected'))
-		el.classList.remove('selected');
-	document.querySelector('#' + experience.slug).classList.add('selected');
+	$('#experiences li').removeClass('playing');
+	
+	current_experience = $('li[data-slug=' + experience.slug + ']');
+	current_experience.addClass('playing');
+	
+	$("#current-experience-title p").text(selectedExperience.title);
+	$("#current-experience-image").css('background-image', 'url(' +  selectedExperience.cover_image + ')');
 };
 
 stop = () => {
-	document.querySelector('.selected').classList.remove('selected');
+	$('#experiences li').removeClass('playing');
 };
 
 socket.on('volume-initial', volume_initial => {
@@ -267,6 +274,11 @@ socket.on('reset', data => {
 		//Show details
 		var selected_experience_details = selected_experience.find(".experience_details");
 		selected_experience_details.show();
+		
+		// Hide stop if this one is not playing
+		if(!selected_experience.hasClass("playing")) {
+			$("#playing-controls").hide();		
+		}
 
 	});
 	
@@ -275,8 +287,10 @@ socket.on('reset', data => {
 		//Show all others
 		$('#experiences li').show();
 		
-		//Show this
-		//selected_experience.show();
+		//Bring controls up if something is playing
+		if (selectedExperience !== undefined && selectedExperience !== null) {
+			$("#playing-controls").show();	
+		}
 		
 		//Nav control
 		$('#explore .nav-top').show();
