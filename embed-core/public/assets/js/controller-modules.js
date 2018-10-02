@@ -1,4 +1,86 @@
-// Additional controller modules for later merge
+/*
+	Controller.js (Oct 2)
+*/
+
+
+var socket = io();
+
+display = experiences => {
+	$experiences = document.querySelector('#experiences');
+
+	removeChildren($experiences);
+
+	for (let prop in experiences) {
+		if (prop === 'default' || prop === 'welcome') continue;
+
+		let experience = experiences[prop];
+		let $experience = document.createElement('li');
+
+		$experience.setAttribute('data-slug', experience.slug);
+		// $experience.setAttribute('data-title', experience.title);
+		// $experience.setAttribute('data-flags', experience.flags);
+		// $experience.setAttribute('data-format', experience.format);
+
+
+
+		$experience.innerHTML = `
+			<div class="experience_overview">
+				<div class="cover">
+					<video style="min-height: 100px; background-image: url(${experience.cover_image});">
+						<source src="${experience.cover_video}" type="video/mp4">
+					</video>
+				</div>	
+				<div class="info-wrap">
+					<h2 class="bold">${experience.title}</h2>
+					<div class="attributes">
+						<span class="author">${experience.author}</span>
+					</div>
+					<p class="description">${experience.description}</p>
+					
+				</div>			
+			</div> 
+			<div class="experience_details">
+				<div class="inner">
+					<h3>Credits</h3>
+					<a href="${experience.author_url}">
+						<span class="author">${experience.author}</span>
+					</a>
+					<p>Long description goes here ... </p>
+				</div>	
+				<div class="nav-bottom">
+					<button class="large align-middle" data-action="play" data-data="${prop}">
+						<i class="icon-play"></i>
+						<span>Play</span>
+					</button>
+					<button data-action="stop">stop</button>
+				</div> 						
+			</div>`;
+
+		$experiences.appendChild($experience);
+	}
+};
+
+play = experience => {
+	for (let el of document.querySelectorAll('.selected'))
+		el.classList.remove('selected');
+	document.querySelector('#' + experience.slug).classList.add('selected');
+};
+
+stop = () => {
+	document.querySelector('.selected').classList.remove('selected');
+};
+
+socket.on('volume-initial', volume_initial => {
+	$volume_slider.value = volume_initial;
+});
+
+$volume_slider = document.querySelector('#volume-slider');
+
+$volume_slider.addEventListener('change', e => {
+	var volume_new = e.target.value;
+	socket.emit('volume-new', volume_new);
+});
+
 
 
 
@@ -47,80 +129,74 @@
 	State control 1 – Sockets
 */
 
-	
+/*	
 socket.on('state-update', function (data) {
     setState(data.state, data.val);
 });
+*/
 
-setState = (state, val) => {
+
+
+socket.on('enter', data => {
+	$("#welcome").hide();		
+	destination_overlay = $("#explore");
+	show_destination_overlay();
 	
-	// just print the state for testing
-	$("#system-status-plus p.state").html(state,val);
+	//Helpers	    
+	$("#system-status-plus p.relay").html("start");			     
+});
+
+socket.on('sleep', data => {
+	destination_overlay = $("#overlay-sleeping");
+	show_destination_overlay();	  
 	
-	// perform actions based on the state
-    if(state == "sleep") {
-		
-		// Relay
-		arduino_relay_status = "sleep"; 
-		socket.emit('relay-control', arduino_relay_status);
-		console.log("projectors off");		    
-		$("#system-status-plus p.relay").html(arduino_relay_status);	
-					    
-		// >on success:
-		destination_overlay = $("#overlay-sleeping");
-		show_destination_overlay();	    		 
-    
-    } else if(state == "wake") {
-	    
-	    // Relay
-		arduino_relay_status = "wake"; 
-		socket.emit('relay-control', arduino_relay_status);	
-		console.log("projectors on");		
-		$("#system-status-plus p.relay").html(arduino_relay_status);	    
-		
-		// > on success:
-		destination_overlay = $("#welcome");
-		show_destination_overlay();	    		 
-    
-    } else if(state == "start") {
+	//Helpers
+	arduino_relay_status = "sleep"; 		    
+	$("#system-status-plus p.relay").html(arduino_relay_status);		     
+});
 
-		$("#welcome").hide();		
-		destination_overlay = $("#explore");
-		show_destination_overlay();	    		 
-    
-    } else if(state == "loading") {
+socket.on('wake', data => {
+	destination_overlay = $("#welcome");
+	show_destination_overlay();	
+	
+	//Helpers
+	arduino_relay_status = "wake"; 	
+	$("#system-status-plus p.relay").html(arduino_relay_status);	         
+});
 
-		destination_overlay = $("#loading");
-		show_destination_overlay();	    		 
-    
-    } else if(state == "playing") {
+socket.on('wake', data => {
+	destination_overlay = $("#welcome");
+	show_destination_overlay();	
+	
+	//Helpers
+	arduino_relay_status = "wake"; 	
+	$("#system-status-plus p.relay").html(arduino_relay_status);	         
+});
 
-		$("#loading").hide();	
-		$("#playing-controls").show();
-  		 
-    } else if(state == "stopped") {
-		
-		// Hide controls
-		$("#playing-controls").hide();
-		// > Hide "currently playing" 
-		// > Load "Default experience"   		 
-   
-    } else if(state == "reset-welcome") {
-	    
-	    // Hide experience stuff
-	    $("#explore").hide();
-	    $("#playing-controls").hide();
-		// > Stop "currently playing"
-		// > Load "Welcome Experience"  
-			    
-		destination_overlay = $("#welcome");
-		show_destination_overlay();			
- 		 
-    }          
-    
-    
-    
-}
+// Loading
+
+/*
+	destination_overlay = $("#loading");
+	show_destination_overlay();	    		 
+*/    
+
+socket.on('play', id => {
+	$("#loading").hide();	
+	$("#playing-controls").show();
+});
+
+socket.on('stop', data => {
+	$("#playing-controls").hide();	         
+});
+
+socket.on('reset', data => {
+    // Hide experience stuff
+    $("#explore").hide();
+    $("#playing-controls").hide();
+		    
+	destination_overlay = $("#welcome");
+	show_destination_overlay();			         
+});
 
 
 
@@ -272,4 +348,8 @@ setState = (state, val) => {
 		}
 	});	
 	
+
+
+
+
 	
