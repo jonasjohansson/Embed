@@ -1,12 +1,22 @@
 var SCREEN_WIDTH = window.innerWidth,
 	SCREEN_HEIGHT = window.innerHeight;
 
-var params = location.href.split('?')[1].split('&');
+var data;
+var params;
 
-data = {};
-for (attr in params) {
-	data[params[attr].split('=')[0]] = params[attr].split('=')[1];
+if (location.href.includes('?')) {
+	params = location.href.split('?')[1].split('&');
+	data = {};
+	for (attr in params) {
+		data[params[attr].split('=')[0]] = params[attr].split('=')[1];
+	}
 }
+
+data = {
+	w: 3530,
+	h: 2570,
+	d: 2660
+};
 
 var options = {
 	camera: {
@@ -15,14 +25,16 @@ var options = {
 	}
 };
 
-console.log(data);
-console.log(data.w, data.h, data.d);
-
 const P1 = 1 / 4;
 const P2 = 1 / 3;
 const P3 = 1 / 2;
 const P4 = 1 / 1.5;
 const P5 = 1 / (1 + P2);
+
+var r1 = data.d / data.h;
+var r2 = data.w / data.h;
+var sideW = SCREEN_WIDTH - SCREEN_WIDTH / r1;
+var frontW = SCREEN_WIDTH - SCREEN_WIDTH / r2;
 
 const setupEmbedCamera = (scene = null, renderer = null) => {
 	if (scene === null || renderer === null) {
@@ -80,7 +92,8 @@ const renderEmbedCamera = (camera = null) => {
 					P1 * SCREEN_WIDTH,
 					P2 * SCREEN_HEIGHT
 				];
-				if (panorama) v = [0, 0, SCREEN_WIDTH * P2, SCREEN_HEIGHT];
+				if (panorama)
+					v = [0, 0, (SCREEN_WIDTH * P1) / r1, SCREEN_HEIGHT];
 				break;
 			case 1:
 				v = [
@@ -91,9 +104,9 @@ const renderEmbedCamera = (camera = null) => {
 				];
 				if (panorama)
 					v = [
-						SCREEN_WIDTH * P2 * 2,
+						SCREEN_WIDTH * P1 * 2,
 						0,
-						SCREEN_WIDTH * P2,
+						(SCREEN_WIDTH * P1) / r1,
 						SCREEN_HEIGHT
 					];
 				break;
@@ -114,7 +127,13 @@ const renderEmbedCamera = (camera = null) => {
 					P1 * SCREEN_WIDTH,
 					P2 * SCREEN_HEIGHT
 				];
-				if (panorama) v = [0, 0, 0, 0];
+				if (panorama)
+					v = [
+						SCREEN_WIDTH * P1 * 3,
+						0,
+						(SCREEN_WIDTH * P1) / r2,
+						SCREEN_HEIGHT
+					];
 				cam.rotation.z = Math.PI;
 				break;
 			case 4:
@@ -135,9 +154,9 @@ const renderEmbedCamera = (camera = null) => {
 				];
 				if (panorama)
 					v = [
-						SCREEN_WIDTH * P2,
+						SCREEN_WIDTH * P1,
 						0,
-						SCREEN_WIDTH * P2,
+						(SCREEN_WIDTH * P1) / r2,
 						SCREEN_HEIGHT
 					];
 				break;
