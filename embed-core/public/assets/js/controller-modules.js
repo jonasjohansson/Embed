@@ -5,6 +5,10 @@
 
 var socket = io();
 
+setup = () => {};
+enter = () => {};
+reset = () => {};
+
 display = experiences => {
 	$experiences = document.querySelector('#experiences');
 
@@ -20,7 +24,6 @@ display = experiences => {
 		// $experience.setAttribute('data-title', experience.title);
 		// $experience.setAttribute('data-flags', experience.flags);
 		// $experience.setAttribute('data-format', experience.format);
-
 
 
 		$experience.innerHTML = `
@@ -129,12 +132,6 @@ $volume_slider.addEventListener('change', e => {
 	State control 1 – Sockets
 */
 
-/*	
-socket.on('state-update', function (data) {
-    setState(data.state, data.val);
-});
-*/
-
 
 
 socket.on('enter', data => {
@@ -143,7 +140,7 @@ socket.on('enter', data => {
 	show_destination_overlay();
 	
 	//Helpers	    
-	$("#system-status-plus p.relay").html("start");			     
+	$("#system-status-plus p.relay").html("enter");			     
 });
 
 socket.on('sleep', data => {
