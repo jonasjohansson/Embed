@@ -3,6 +3,7 @@ var socket = io();
 $volume_slider = document.querySelector('#volume-slider');
 
 setup = () => {};
+enter = () => {};
 
 display = experiences => {
 	$experiences = document.querySelector('#experiences');

@@ -57,6 +57,7 @@ socket.on('setup', data => {
 /* enter the experience */
 
 socket.on('enter', data => {
+    enter();
     setState('experiences', true);
 });
 
