@@ -25,6 +25,15 @@ io.on('connection', function(socket) {
 			console.log(error);
 		});
 
+	axios
+		.get('http://localhost:3000/rooms.json')
+		.then(response => {
+			socket.emit('update-rooms', response.data);
+		})
+		.catch(error => {
+			console.log(error);
+		});
+
 	socket.on('enter', data => emit('enter'));
 	socket.on('error', data => emit('error'));
 	socket.on('play', data => emit('play', data));

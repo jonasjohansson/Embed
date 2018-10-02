@@ -1,5 +1,7 @@
 var socket = io();
 
+var rooms;
+
 display = () => {};
 
 setup = () => {
@@ -21,7 +23,11 @@ stop = () => {
 
 play = experience => {
 	console.log(experience);
-	gui.__folders.a.__controllers[0].setValue(experience.url);
+	gui.__folders.a.__controllers[0].setValue(
+		`${experience.url}?w=${rooms['001'].w}&h=${rooms['001'].h}&d=${
+			rooms['001'].d
+		}`
+	);
 	gui.__folders.a.__controllers[1].setValue(true);
 	// let format = experience.format;
 	// switch (format) {
@@ -38,6 +44,10 @@ play = experience => {
 	// 		break;
 	// }
 };
+
+socket.on('update-rooms', data => {
+	rooms = data;
+});
 
 const sources = {};
 for (id of ['a', 'b', 'c', 'd']) {

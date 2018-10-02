@@ -1,12 +1,22 @@
 var SCREEN_WIDTH = window.innerWidth,
 	SCREEN_HEIGHT = window.innerHeight;
 
+var params = location.href.split('?')[1].split('&');
+
+data = {};
+for (attr in params) {
+	data[params[attr].split('=')[0]] = params[attr].split('=')[1];
+}
+
 var options = {
 	camera: {
 		index: 6,
 		panorama: true
 	}
 };
+
+console.log(data);
+console.log(data.w, data.h, data.d);
 
 const P1 = 1 / 4;
 const P2 = 1 / 3;

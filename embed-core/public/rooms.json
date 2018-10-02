@@ -3,10 +3,8 @@
         "location": "Stockholm",
         "room-name": 607,
         "room-pw": "",
-        "dimensions": {
-            "w": 3530,
-            "h": 2570,
-            "d": 2660
-        }
+        "w": 3530,
+        "h": 2570,
+        "d": 2660
     }
 }
