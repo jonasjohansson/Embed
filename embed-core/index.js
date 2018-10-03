@@ -36,6 +36,8 @@ io.on('connection', function(socket) {
 
 	socket.on('enter', data => emit('enter'));
 	socket.on('error', data => emit('error'));
+	socket.on('wake', data => emit('wake'));
+	socket.on('sleep', data => emit('sleep'));
 	socket.on('play', data => emit('play', data));
 	socket.on('stop', data => emit('stop'));
 	socket.on('reset', data => emit('reset'));
