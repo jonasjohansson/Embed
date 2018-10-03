@@ -45,12 +45,20 @@ const setupEmbedCamera = (scene = null, renderer = null) => {
 	camera = new THREE.CubeCamera(0.1, 200000, 128);
 	scene.add(camera);
 	// camera.rotation.x = Math.PI;
+	camera.scale.x = -1;
 	camera.scale.y = -1;
 
 	let i = 0;
 
 	for (let cam of camera.children) {
 		cam.index = i++;
+		if (i == 5 || i == 3) {
+			cam.aspect = r2;
+		} else if (i == 0 || i == 1) {
+			cam.aspect = r1;
+		}
+		// var helper = new THREE.CameraHelper(cam);
+		// scene.add(helper);
 	}
 
 	// 0 = left
@@ -92,8 +100,8 @@ const renderEmbedCamera = (camera = null) => {
 					P1 * SCREEN_WIDTH,
 					P2 * SCREEN_HEIGHT
 				];
-				if (panorama)
-					v = [0, 0, (SCREEN_WIDTH * P1) / r1, SCREEN_HEIGHT];
+				if (panorama) v = [0, 0, SCREEN_WIDTH * P1, SCREEN_HEIGHT];
+				// v = [0, 0, 0, 0];
 				break;
 			case 1:
 				v = [
@@ -104,11 +112,12 @@ const renderEmbedCamera = (camera = null) => {
 				];
 				if (panorama)
 					v = [
-						SCREEN_WIDTH * P1 * 2,
+						SCREEN_WIDTH * (P1 * 2),
 						0,
-						(SCREEN_WIDTH * P1) / r1,
+						SCREEN_WIDTH * P1,
 						SCREEN_HEIGHT
 					];
+				// v = [0, 0, 0, 0];
 				break;
 			case 2:
 				v = [
@@ -131,9 +140,10 @@ const renderEmbedCamera = (camera = null) => {
 					v = [
 						SCREEN_WIDTH * P1 * 3,
 						0,
-						(SCREEN_WIDTH * P1) / r2,
+						SCREEN_WIDTH * P1,
 						SCREEN_HEIGHT
 					];
+				// v = [0, 0, 0, 0];
 				cam.rotation.z = Math.PI;
 				break;
 			case 4:
@@ -154,11 +164,12 @@ const renderEmbedCamera = (camera = null) => {
 				];
 				if (panorama)
 					v = [
-						SCREEN_WIDTH * P1,
+						SCREEN_WIDTH * P1 * 1,
 						0,
-						(SCREEN_WIDTH * P1) / r2,
+						SCREEN_WIDTH * P1,
 						SCREEN_HEIGHT
 					];
+				// v = [0, 0, 0, 0];
 				break;
 		}
 
