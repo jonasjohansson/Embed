@@ -16,19 +16,14 @@
 		display: none;
 	}
 	
-	#system-status-plus {
-		position: fixed;
-		z-index: 4000;
-		top: 8px;
-		text-align: center;
-		width: 100px;
-		margin-left: -50px;
-		left: 50%;
-		color: red;
-		font-size: 10px;
-		.relay {
-			color: green;
-		}
+	body, body * {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	 -khtml-user-select: none; /* Konqueror HTML */
+	   -moz-user-select: none; /* Firefox */
+	    -ms-user-select: none; /* Internet Explorer/Edge */
+	        user-select: none; /* Non-prefixed version, currently
+	                              supported by Chrome and Opera */
 	}
 
 /*
@@ -50,7 +45,11 @@
 			}
 		}
 	}
-
+	
+	// Gloabal loader
+	#global-loader {
+		display: none;
+	}
 
 /*
 	Nav – Top
@@ -89,9 +88,13 @@
 	
 /*
 	Nav – Bottom
-*/
+*/	
+
+	.nav-bottom	{
+		//display: none;
+	}
 	
-	.nav-bottom {
+	.nav-bottom, .nav-bottom-play {
 		position: fixed;
 		width: 100%;
 		height: 112px;
@@ -113,7 +116,17 @@
 				margin-bottom: 8px;
 			}
 		}
+		&.transparent {
+			@include noGradient;
+			pointer-events: none;	
+		}
 	}	
+	
+	// Detailed view – Play
+	#play-controls {
+		display: none;
+		z-index: 900;
+	}
 
 
 /*
@@ -202,6 +215,21 @@
 /*
 	Experiencees feed
 */
+	
+	
+	#explore {
+		.nav-top.main {
+			position: relative;
+			float: left;
+			padding: 16px 0;
+		}
+		.content-feed {
+			padding: 24px 16px;
+			padding-top: 0;
+			//background-color: $c_d1;
+		}		
+	}
+	
 
 	#explore.detailed-view {
 		.content-feed {
@@ -235,11 +263,12 @@
 				margin-bottom: 0;
 				box-shadow: none;
 				padding-bottom: 112px;
-			}
-			&.playing {
-				span.playing {
-					display: block !important;
-				}
+				height: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				overflow-y: scroll; /* has to be scroll, not auto */
+				-webkit-overflow-scrolling: touch; 					
 			}
 			.experience_overview {
 				@include basicfloat();
@@ -279,8 +308,7 @@
 					}
 				}
 				.description {
-					width: 40%;
-					max-width: 720px;
+					max-width: 420px;
 					color: $c_d1;
 					padding-bottom: 16px;
 				}
@@ -294,15 +322,20 @@
 				overflow: visible;
 				//height: 700px;
 				.inner {
-					h3 {
-						color: $c_c2;
+					h2 {
+						color: $c_c1;
 						margin-bottom: 8px;
-						margin-top: 24px;
+						margin-top: 32px;
+						margin-bottom: 16px;
 					}
 					padding: 48px 32px;
-				}
-				.nav-bottom {
-					z-index: 4000;
+					p.long-description {
+						color: #999999;
+						max-width: 496px;
+					}
+					.helper {
+						color: $c_c2;	
+					}
 				}
 			}	
 			/*		
@@ -322,7 +355,7 @@
 			*/
 			&:not(.selected):hover {
 				.experience_overview {
-					background-color: $c_e2;
+					//background-color: $c_e2;
 				}
 				cursor: pointer;
 			}	

@@ -46,13 +46,7 @@
 	
 	<!-- Explore feed -->
 	<section id="explore">
-		<div class="nav-top">
-			<h2 class="header">Explore</h2>
-			<button class="medium align-right launch-overlay" data-action="show-overlay-presleep-explore">
-				<i class="icon-sleep"></i>
-				<span>Sleep</span>
-			</button>		
-		</div>	
+	
 		<div class="nav-top experience-nav">
 			<button class="medium align-left launch-overlay" data-action="close-experience-details">
 				<i class="icon-prev"></i>
@@ -60,6 +54,13 @@
 			</button>		
 		</div>				
 		<div class="content-feed">
+		<div class="nav-top main">
+			<h2 class="header">Explore</h2>
+			<button class="medium align-right launch-overlay" data-action="show-overlay-presleep-explore">
+				<i class="icon-sleep"></i>
+				<span>Sleep</span>
+			</button>		
+		</div>			
 			<ul id="experiences">
 				<!-- JSON FEED -->
 			</ul>
@@ -86,7 +87,13 @@
 					</div>
 				</div>
 			</div>
-		</div>		
+		</div>
+		<div class="nav-bottom-play" id="play-controls">
+			<button class="large align-middle" data-action="play" data-data="">
+			<i class="icon-play"></i>
+			<span>Play</span>
+			</button>
+		</div>	
 	</section>		
 
 	<!-- Pre-sleep (Welcome) -->
@@ -200,7 +207,11 @@
 	</section>
 	
 
-	
+	<div class="nav-bottom transparent" id="global-loader">
+		<button class="large align-middle loading">
+			<i class="icon-loading"></i>
+		</button>
+	</div>		
    
 	
 	<script src="../assets/js/jquery.js"></script>

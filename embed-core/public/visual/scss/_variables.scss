@@ -99,6 +99,10 @@ $maxwidth-large: 1270px;
   }      
 }
 
+@mixin noGradient(){
+    background: none;
+}
+
 
 @mixin linearGradient($top, $bottom){
     background: $top; /* Old browsers */

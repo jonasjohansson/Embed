@@ -22,8 +22,8 @@ display = experiences => {
 
 		let experience = experiences[prop];
 		let $experience = document.createElement('li');
-
 		$experience.setAttribute('data-slug', experience.slug);
+		$experience.setAttribute('data-play-prop', prop);
 		// $experience.setAttribute('data-title', experience.title);
 		// $experience.setAttribute('data-flags', experience.flags);
 		// $experience.setAttribute('data-format', experience.format);
@@ -48,18 +48,19 @@ display = experiences => {
 			</div> 
 			<div class="experience_details">
 				<div class="inner">
-					<h3>Credits</h3>
-					<a href="${experience.author_url}">
-						<span class="author">${experience.author}</span>
-					</a>
-					<p>Long description goes here ... </p>
-				</div>	
-				<div class="nav-bottom">
-					<button class="large align-middle" data-action="play" data-data="${prop}">
-						<i class="icon-play"></i>
-						<span>Play</span>
-					</button>
-				</div> 						
+					<p class="long-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit, mauris et pretium eleifend, velit odio mollis ante, quis congue lacus mauris vitae orci. Maecenas facilisis orci eu augue iaculis, non mollis justo pulvinar. Sed a pulvinar sem, et sodales sapien. Morbi viverra ante nec ante tincidunt molestie. Pellentesque rhoncus pulvinar risus et tincidunt. Nam nibh mauris, feugiat eget velit a, finibus efficitur neque. Sed fermentum leo at massa efficitur efficitur. Sed sed neque quis lectus suscipit sodales. In pulvinar posuere lorem, vitae lacinia eros sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+
+In aliquet metus vel elit scelerisque, gravida cursus turpis hendrerit. Vivamus lobortis, felis ut semper dictum, ipsum arcu faucibus justo, vitae varius urna urna et odio. Donec ultrices, magna sodales pellentesque, diam elit finibus ante, ut pretium velit orci eu est. Nam vel orci massa. Phasellus dapibus dui nec augue ornare ultrices. Quisque malesuada massa molestie, mollis ante nec, tempus dolor. Aenean aliquam eleifend leo, vitae tincidunt nisl vehicula ac. In ultrices molestie erat, sed porttitor orci faucibus. Suspendisse luctus pulvinar tortor, eget pharetra purus condimentum nec. Donec eu laoreet libero. Sed vel urna euismod, egestas dui eget, pellentesque nisi. Integer vitae feugiat sapien. Curabitur porttitor et sapien sit amet vulputate.</p>
+					<h2>Credits</h2>
+					<p>
+						<span class="helper">Author – </span>
+						<a href="${experience.author_url}"><span class="author link">${experience.author}</span></a>		
+					</p>
+					<p>
+						<span class="helper">Type – </span>
+						<span class="author link">${experience.type}</span>	
+					</p>							
+				</div>				
 			</div>`;
 
 		$experiences.appendChild($experience);
@@ -120,20 +121,38 @@ $volume_slider.addEventListener('change', e => {
 		this_nav_bottom = destination_overlay.find(".nav-bottom");
 		
 		TweenMax.fromTo(this_pattern, tr_smooth, {opacity: 0, backgroundPositionX: "40%"}, {opacity: 1, backgroundPositionX: "50%"});
-		TweenMax.fromTo(this_nav_bottom, tr_smooth, {y: 64}, {y: 0});
+		TweenMax.fromTo(this_nav_bottom, tr_smooth, {y: 112}, {y: 0, delay: tr_delay});
+		
 	}
 	
-	// Show temp overlay (only above)
-	function show_temp_overlay(){
-		destination_overlay.show();
-		this_pattern = destination_overlay.find(".pattern");
-		this_nav_bottom = destination_overlay.find(".nav-bottom");
-		
-		TweenMax.fromTo(this_pattern, tr_smooth, {opacity: 0, backgroundPositionX: -64}, {opacity: 1, backgroundPositionX: 0});
-		TweenMax.fromTo(this_nav_bottom, tr_smooth, {y: 64}, {y: 0});
+	
+	//
+	function show_loader(){
+		$("#global-loader").show();
+	}
+	function hide_loader(){
+		$("#global-loader").hide();
 	}	
-
-
+	function show_playing(){
+		TweenMax.fromTo($("#playing-controls"), tr_smooth, {y: 112}, {y: 0, display: "block"});
+	}	
+	function hide_playing(){
+		TweenMax.fromTo($("#playing-controls"), tr_out, {y: 0}, {y: 112, display: "none"});
+	}	
+	function show_play(){
+		TweenMax.fromTo($("#play-controls"), tr_smooth, {y: 112}, {y: 0, display: "block"});
+	}	
+	function hide_play(){
+		$("#play-controls").hide();	
+	}	
+	function hide_welcome(){
+		$("#welcome").hide();	
+	}	
+	function hide_sleeping(){
+		$("#overlay-sleeping").hide();	
+	}		
+	
+	
 
 /*
 	State control 1 – Sockets
@@ -142,59 +161,47 @@ $volume_slider.addEventListener('change', e => {
 
 
 socket.on('enter', data => {
-	$("#welcome").hide();		
-	destination_overlay = $("#explore");
-	show_destination_overlay();
-	
-	//Helpers	    
-	$("#system-status-plus p.relay").html("enter");			     
+	destination_overlay = $("#explore");	
+	$("[data-action=enter]").hide();
+	show_loader();
+	setTimeout(hide_welcome, 500);
+	setTimeout(show_destination_overlay, 500);
+	setTimeout(hide_loader, 500);
 });
 
 socket.on('sleep', data => {
 	destination_overlay = $("#overlay-sleeping");
-	show_destination_overlay();	  
-	
-	//Helpers
-	arduino_relay_status = "sleep"; 		    
-	$("#system-status-plus p.relay").html(arduino_relay_status);		     
+	show_destination_overlay();	  	         
 });
 
 socket.on('wake', data => {
-	destination_overlay = $("#welcome");
-	show_destination_overlay();	
-	
-	//Helpers
-	arduino_relay_status = "wake"; 	
-	$("#system-status-plus p.relay").html(arduino_relay_status);	         
+	//destination_overlay = $("#welcome");
+	show_loader();
+	$("[data-action=wake]").hide();
+	setTimeout(hide_sleeping, 3000);
+	setTimeout(hide_loader, 3000);	       
 });
 
-socket.on('wake', data => {
-	destination_overlay = $("#welcome");
-	show_destination_overlay();	
-	
-	//Helpers
-	arduino_relay_status = "wake"; 	
-	$("#system-status-plus p.relay").html(arduino_relay_status);	         
-});
-
-// Loading
-
-/*
-	destination_overlay = $("#loading");
-	show_destination_overlay();	    		 
-*/    
 
 socket.on('play', id => {
-	$("#loading").hide();	
-	$("#playing-controls").show();
+	$("#loading").hide();
+	hide_play();
+	show_loader();
+	setTimeout(show_playing, 1000);
+	setTimeout(hide_loader, 1000);
 });
 
 socket.on('stop', data => {
-	$("#playing-controls").hide();	         
+	hide_playing();	 
+	if(selected_experience.hasClass("selected")) { 
+		show_play();					   
+	}
 });
 
 socket.on('reset', data => {
     // Hide experience stuff
+    $("[data-action=enter]").show();
+    
     $("#explore").hide();
     $("#playing-controls").hide();
 		    
@@ -214,11 +221,13 @@ socket.on('reset', data => {
 	 
 	// Pre-sleep overlay (Welcome)
 	$("[data-action=show-overlay-presleep-welcome]").on("click tap", function(e) {
+		$("[data-action=wake]").show();
 		destination_overlay = $("#overlay-presleep-welcome");
 		show_destination_overlay();
 	});
 
 	$('[data-action=close-overlay-presleep-welcome]').on("click tap", function() {
+		$("[data-action=wake]").show();
 		destination_overlay = $("#welcome");
 		show_destination_overlay();
 	});
@@ -246,21 +255,20 @@ socket.on('reset', data => {
 
 
 
-/*
-	Expand Experience
-*/
+	//Expand Experience
 	
 	var selected_experience;
 	$('#experiences').on("click", "li", function() {
 		
 		selected_experience = $(this);
-		
-		
+
 		//Hide all others
 		$('#experiences li').hide();
 		
 		//Show this
 		selected_experience.show();
+		
+		TweenMax.to(selected_experience, 0, {scale: 1});
 		
 		//Nav control
 		$('#explore .nav-top').hide();
@@ -269,16 +277,26 @@ socket.on('reset', data => {
 				
 		$('#explore').addClass("detailed-view");
 		
-		selected_experience.addClass("selected");
+		
 		
 		//Show details
 		var selected_experience_details = selected_experience.find(".experience_details");
 		selected_experience_details.show();
 		
+		//Show dynamic play-nav
+		var play_prop = selected_experience.attr("data-play-prop");
+		$("#play-controls button").attr("data-data", play_prop);
+
 		// Hide stop if this one is not playing
 		if(!selected_experience.hasClass("playing")) {
-			$("#playing-controls").hide();		
+			$("#playing-controls").hide();	
+			if(!selected_experience.hasClass("selected")) {
+				TweenMax.fromTo($("#play-controls"), tr_smooth, {y: 64}, {y: 0, display: "block", delay: tr_delay});	
+			}			
+			
 		}
+		
+		selected_experience.addClass("selected");
 
 	});
 	
@@ -295,9 +313,13 @@ socket.on('reset', data => {
 		//Nav control
 		$('#explore .nav-top').show();
 		$('#explore .nav-top.experience-nav').hide();
-		$("#experiences li .experience_details").hide();
-				
+		$("#experiences li .experience_details").hide();				
 		$('#explore').removeClass("detailed-view");
+		
+		
+		//Show dynamic play-nav
+		$("#play-controls button").attr("data-data", "undefined");
+		$("#play-controls").hide();	
 		
 		selected_experience.removeClass("selected");
 
@@ -314,6 +336,7 @@ socket.on('reset', data => {
 	var tr_out = 0.1;
 	var tr_smooth = .5;
 	var tr_super_smooth = 1.7;
+	var tr_delay = .3;
 	
 	//var tr_in, tr_out, tr_smooth, tr_super_smooth = 0;
 		
@@ -327,6 +350,21 @@ socket.on('reset', data => {
 		$(this).removeClass("touchstart");
 		TweenMax.to($(this).find("i"), tr_out, {scale: 1});
 	});
+	
+	//Experiences feed touch
+	$('body').on("touchstart mouseover", "#experiences li", function() {		
+		if(!$(this).hasClass("selected")) {
+			TweenMax.to($(this), tr_in, {scale: 1.01});
+			TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#121212"});	
+		}
+	});	
+	$('body').on("touchend mouseleave", "#experiences li", function() {		
+		TweenMax.to($(this), tr_in, {scale: 1});
+		if(!$(this).hasClass("selected")) {
+			//TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#000"});	
+		}
+	});		
+		
 	
 	//Loading spin
 	
