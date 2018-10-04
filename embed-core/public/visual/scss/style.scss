@@ -33,8 +33,10 @@
 
 	body {
 		background-color:$c_n;
+		//background-color:black;
 		&.controller {
 			background-color: $c_e2;
+			background-color:black;
 		}
 		&.welcome-state {
 			#welcome {
@@ -152,9 +154,7 @@
 			z-index: 101;
 			padding: 160px 64px;
 			padding-top: 256px;
-			height: 100%;
-			overflow-y: scroll; /* has to be scroll, not auto */
-			-webkit-overflow-scrolling: touch; 			
+			height: 100%;		
 			h1 {
 				color: $c_d1;
 				margin-bottom: 16px;
@@ -171,10 +171,8 @@
 			z-index: 101;
 			padding: 24px 16px;
 			padding-top: 104px;
-			height: 100%;
-			overflow-y: scroll; /* has to be scroll, not auto */
-			-webkit-overflow-scrolling: touch; 			
-			color: white;			
+			height: auto;
+			color: white;	
 		}		
 		
 		//Patterns
@@ -218,6 +216,9 @@
 	
 	
 	#explore {
+		height: auto;
+		position: relative;
+		
 		.nav-top.main {
 			position: relative;
 			float: left;
@@ -226,6 +227,7 @@
 		.content-feed {
 			padding: 24px 16px;
 			padding-top: 0;
+			background-color: black;
 			//background-color: $c_d1;
 		}		
 	}
@@ -263,12 +265,10 @@
 				margin-bottom: 0;
 				box-shadow: none;
 				padding-bottom: 112px;
-				height: 100%;
-				position: fixed;
+				//height: 100%;
+				//position: fixed;
 				top: 0;
-				left: 0;
-				overflow-y: scroll; /* has to be scroll, not auto */
-				-webkit-overflow-scrolling: touch; 					
+				left: 0;				
 			}
 			.experience_overview {
 				@include basicfloat();

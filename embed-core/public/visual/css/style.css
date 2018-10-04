@@ -505,22 +505,23 @@ body {
   background-color: #DCE0E1;
 }
 
-/* line 36, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 37, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 body.controller {
   background-color: #121212;
+  background-color: black;
 }
 
-/* line 40, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 42, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 body.welcome-state #welcome {
   display: block;
 }
 
-/* line 42, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 44, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 body.welcome-state #welcome .pattern {
   opacity: 1;
 }
 
-/* line 50, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 52, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 #global-loader {
   display: none;
 }
@@ -528,7 +529,7 @@ body.welcome-state #welcome .pattern {
 /*
 	Nav – Top
 */
-/* line 58, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 60, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-top {
   z-index: 1000;
   position: fixed;
@@ -538,7 +539,7 @@ body.welcome-state #welcome .pattern {
   padding: 16px;
 }
 
-/* line 67, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 69, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-top .logo {
   position: relative;
   float: left;
@@ -548,14 +549,14 @@ body.welcome-state #welcome .pattern {
   margin-top: 8px;
 }
 
-/* line 76, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 78, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-top .header {
   color: #FFFFFF;
   float: left;
   margin-top: 4px;
 }
 
-/* line 83, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 85, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-top.experience-nav {
   display: none;
 }
@@ -563,7 +564,7 @@ body.welcome-state #welcome .pattern {
 /*
 	Nav – Bottom
 */
-/* line 97, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 99, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-bottom, .nav-bottom-play {
   position: fixed;
   width: 100%;
@@ -587,31 +588,31 @@ body.welcome-state #welcome .pattern {
   z-index: 1000;
 }
 
-/* line 106, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 108, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-bottom .left-trigger, .nav-bottom-play .left-trigger {
   position: absolute;
   left: 16px;
   bottom: 16px;
 }
 
-/* line 110, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 112, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-bottom .left-trigger button, .nav-bottom-play .left-trigger button {
   float: left;
 }
 
-/* line 114, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 116, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-bottom .left-trigger .caption, .nav-bottom-play .left-trigger .caption {
   color: #666666;
   margin-bottom: 8px;
 }
 
-/* line 119, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 121, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .nav-bottom.transparent, .nav-bottom-play.transparent {
   background: none;
   pointer-events: none;
 }
 
-/* line 126, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 128, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 #play-controls {
   display: none;
   z-index: 900;
@@ -620,7 +621,7 @@ body.welcome-state #welcome .pattern {
 /*
 	Sections
 */
-/* line 136, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 138, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section {
   width: 100%;
   height: 100%;
@@ -631,12 +632,12 @@ section {
   background-color: #121212;
 }
 
-/* line 145, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 147, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section.overlay-block {
   z-index: 200;
 }
 
-/* line 150, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 152, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .content-notice {
   position: relative;
   width: 100%;
@@ -645,9 +646,6 @@ section .content-notice {
   padding: 160px 64px;
   padding-top: 256px;
   height: 100%;
-  overflow-y: scroll;
-  /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;
 }
 
 /* line 158, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
@@ -670,14 +668,11 @@ section .content-feed {
   z-index: 101;
   padding: 24px 16px;
   padding-top: 104px;
-  height: 100%;
-  overflow-y: scroll;
-  /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;
+  height: auto;
   color: white;
 }
 
-/* line 181, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 179, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern {
   width: 100%;
   height: 100%;
@@ -690,32 +685,32 @@ section .pattern {
   opacity: 0;
 }
 
-/* line 192, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 190, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-welcome {
   background-image: url(../patterns/pattern-welcome.svg);
 }
 
-/* line 195, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 193, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-confirm {
   background-image: url(../patterns/pattern-confirm.svg);
 }
 
-/* line 198, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 196, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-sleeping {
   background-image: url(../patterns/pattern-sleeping.svg);
 }
 
-/* line 201, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 199, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-loading {
   background-image: url(../patterns/pattern-loading.svg);
 }
 
-/* line 204, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 202, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-confirm {
   background-image: url(../patterns/pattern-confirm.svg);
 }
 
-/* line 207, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 205, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 section .pattern.pattern-notice {
   background-image: url(../patterns/pattern-notice.svg);
 }
@@ -723,25 +718,32 @@ section .pattern.pattern-notice {
 /*
 	Experiencees feed
 */
-/* line 221, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 218, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+#explore {
+  height: auto;
+  position: relative;
+}
+
+/* line 222, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 #explore .nav-top.main {
   position: relative;
   float: left;
   padding: 16px 0;
 }
 
-/* line 226, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 227, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 #explore .content-feed {
   padding: 24px 16px;
   padding-top: 0;
+  background-color: black;
 }
 
-/* line 235, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 237, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 #explore.detailed-view .content-feed {
   padding: 0;
 }
 
-/* line 240, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 242, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 #explore.detailed-view .experience_overview .description {
   font-size: 32px;
   line-height: 40px;
@@ -750,14 +752,14 @@ section .pattern.pattern-notice {
   padding-right: 80px;
 }
 
-/* line 251, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 253, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences {
   position: relative;
   width: 100%;
   float: left;
 }
 
-/* line 254, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 256, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li {
   position: relative;
   width: 100%;
@@ -785,18 +787,13 @@ ul#experiences li {
 			*/
 }
 
-/* line 262, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 264, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li.selected {
   margin-bottom: 0;
   box-shadow: none;
   padding-bottom: 112px;
-  height: 100%;
-  position: fixed;
   top: 0;
   left: 0;
-  overflow-y: scroll;
-  /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;
 }
 
 /* line 273, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */

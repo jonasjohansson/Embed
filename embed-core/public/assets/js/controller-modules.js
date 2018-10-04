@@ -258,17 +258,23 @@ socket.on('reset', data => {
 	//Expand Experience
 	
 	var selected_experience;
+	var scroll_save;
 	$('#experiences').on("click", "li", function() {
 		
 		selected_experience = $(this);
-
+					
+		scroll_save = $('.content-feed').offset().top;
+		
 		//Hide all others
 		$('#experiences li').hide();
+		
+		// Scroll to top
+		window.scrollTo(0, 0);
 		
 		//Show this
 		selected_experience.show();
 		
-		TweenMax.to(selected_experience, 0, {scale: 1});
+		
 		
 		//Nav control
 		$('#explore .nav-top').hide();
@@ -297,6 +303,7 @@ socket.on('reset', data => {
 		}
 		
 		selected_experience.addClass("selected");
+		TweenMax.set($("#experiences li"), {scale: 1});
 
 	});
 	
@@ -304,6 +311,11 @@ socket.on('reset', data => {
 				
 		//Show all others
 		$('#experiences li').show();
+		
+		//Scroll to saved possition
+		window.scrollTo(0, scroll_save);
+		
+		TweenMax.set($("#experiences li"), {scale: 1});
 		
 		//Bring controls up if something is playing
 		if (selectedExperience !== undefined && selectedExperience !== null) {
@@ -355,13 +367,13 @@ socket.on('reset', data => {
 	$('body').on("touchstart mouseover", "#experiences li", function() {		
 		if(!$(this).hasClass("selected")) {
 			TweenMax.to($(this), tr_in, {scale: 1.01});
-			TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#121212"});	
+			//TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#121212"});	
 		}
 	});	
 	$('body').on("touchend mouseleave", "#experiences li", function() {		
-		TweenMax.to($(this), tr_in, {scale: 1});
 		if(!$(this).hasClass("selected")) {
-			//TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#000"});	
+			TweenMax.to($(this), tr_in, {scale: 1});
+			//TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#000"});
 		}
 	});		
 		
