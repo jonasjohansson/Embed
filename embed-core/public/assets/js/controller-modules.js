@@ -119,7 +119,7 @@ $volume_slider.addEventListener('change', e => {
 		this_pattern = destination_overlay.find(".pattern");
 		this_nav_bottom = destination_overlay.find(".nav-bottom");
 		
-		//TweenMax.fromTo(this_pattern, tr_smooth, {opacity: 0, backgroundPositionX: "40%"}, {opacity: .25, backgroundPositionX: "50%"});
+		TweenMax.fromTo(this_pattern, tr_smooth, {opacity: 0, backgroundPositionX: "40%"}, {opacity: 1, backgroundPositionX: "50%"});
 		TweenMax.fromTo(this_nav_bottom, tr_smooth, {y: 64}, {y: 0});
 	}
 	
@@ -309,13 +309,13 @@ socket.on('reset', data => {
 */
 
 	// global transitions
-	/*
+	
 	var tr_in = 0.3;
 	var tr_out = 0.1;
 	var tr_smooth = .5;
 	var tr_super_smooth = 1.7;
-	*/
-	var tr_in, tr_out, tr_smooth, tr_super_smooth = 0;
+	
+	//var tr_in, tr_out, tr_smooth, tr_super_smooth = 0;
 		
 	// Butons
 	$('body').on("touchstart mouseover", "button", function() {

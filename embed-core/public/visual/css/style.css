@@ -516,6 +516,11 @@ body.welcome-state #welcome {
   display: block;
 }
 
+/* line 47, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+body.welcome-state #welcome .pattern {
+  opacity: 1;
+}
+
 /*
 	Nav – Top
 */
