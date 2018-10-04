@@ -193,8 +193,12 @@ socket.on('play', id => {
 
 socket.on('stop', data => {
 	hide_playing();	 
-	if(selected_experience.hasClass("selected")) { 
-		show_play();					   
+	if(selected_experience == null) {
+
+	} else {
+		if(selected_experience.hasClass("selected")) { 
+			show_play();					   
+		}
 	}
 });
 
