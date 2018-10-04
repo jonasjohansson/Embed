@@ -814,19 +814,26 @@ ul#experiences li .experience_overview .cover {
   float: left;
   height: 400px;
   background-color: #121212;
-  background-size: cover;
+  background-size: 500px auto;
+  overflow: hidden;
 }
 
-/* line 285, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 286, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_overview .cover video {
   position: absolute;
   width: 100%;
-  height: 100%;
   background-position: center center;
   background-size: cover;
+  min-width: 100%;
+  min-height: 401px;
+  width: auto;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* line 293, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 300, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_overview .info-wrap {
   position: relative;
   width: 100%;
@@ -834,7 +841,7 @@ ul#experiences li .experience_overview .info-wrap {
   padding: 32px;
 }
 
-/* line 296, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 303, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_overview .info-wrap .attributes {
   position: relative;
   width: 100%;
@@ -843,27 +850,27 @@ ul#experiences li .experience_overview .info-wrap .attributes {
   margin-bottom: 24px;
 }
 
-/* line 300, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 307, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_overview .info-wrap .attributes span {
   color: #666666;
   margin-right: 16px;
   float: left;
 }
 
-/* line 304, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 311, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_overview .info-wrap .attributes span.playing {
   color: #04A64B;
   display: none;
 }
 
-/* line 311, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 318, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_overview .description {
   max-width: 420px;
   color: #E6E6E6;
   padding-bottom: 16px;
 }
 
-/* line 317, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 324, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_details {
   position: relative;
   width: 100%;
@@ -874,12 +881,12 @@ ul#experiences li .experience_details {
   overflow: visible;
 }
 
-/* line 325, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 332, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_details .inner {
   padding: 48px 32px;
 }
 
-/* line 326, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 333, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_details .inner h2 {
   color: #666666;
   margin-bottom: 8px;
@@ -887,18 +894,18 @@ ul#experiences li .experience_details .inner h2 {
   margin-bottom: 16px;
 }
 
-/* line 333, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 340, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_details .inner p.long-description {
   color: #999999;
   max-width: 496px;
 }
 
-/* line 337, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 344, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li .experience_details .inner .helper {
   color: #999999;
 }
 
-/* line 357, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 364, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 ul#experiences li:not(.selected):hover {
   cursor: pointer;
 }
@@ -906,7 +913,7 @@ ul#experiences li:not(.selected):hover {
 /*
 	Playing Controls Wrap
 */
-/* line 373, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 380, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .playing-controls-wrap-outer {
   position: relative;
   max-width: 768px;
@@ -914,7 +921,7 @@ ul#experiences li:not(.selected):hover {
   margin: 0 auto;
 }
 
-/* line 380, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 387, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .playing-controls-wrap {
   position: relative;
   width: 100%;
@@ -936,20 +943,20 @@ ul#experiences li:not(.selected):hover {
   border-radius: 48px;
 }
 
-/* line 401, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 408, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .playing-controls-wrap .flex-item {
   flex-grow: 1;
   max-width: 224px;
 }
 
-/* line 404, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 411, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .playing-controls-wrap .flex-item.current-experience {
   position: relative;
   min-width: 96px;
   overflow: hidden;
 }
 
-/* line 410, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 417, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .playing-controls-wrap #current-experience-title {
   position: absolute;
   display: table;
@@ -959,7 +966,7 @@ ul#experiences li:not(.selected):hover {
   z-index: 100;
 }
 
-/* line 417, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 424, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .playing-controls-wrap #current-experience-title p {
   display: table-cell;
   vertical-align: middle;
@@ -968,7 +975,7 @@ ul#experiences li:not(.selected):hover {
   line-height: 24px;
 }
 
-/* line 427, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 434, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .current-experience-image-wrap {
   height: 96px;
   width: 96px;
@@ -978,7 +985,7 @@ ul#experiences li:not(.selected):hover {
   z-index: 90;
 }
 
-/* line 434, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 441, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .current-experience-image-wrap .icon-play {
   position: absolute;
   width: 24px;
@@ -995,7 +1002,7 @@ ul#experiences li:not(.selected):hover {
   display: none;
 }
 
-/* line 449, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 456, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .current-experience-image-wrap .gradient {
   z-index: 3;
   background: rgba(36, 36, 36, 0);
@@ -1019,7 +1026,7 @@ ul#experiences li:not(.selected):hover {
   top: 0;
 }
 
-/* line 458, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 465, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .current-experience-image-wrap #current-experience-image {
   height: 96px;
   width: 96px;
@@ -1031,7 +1038,7 @@ ul#experiences li:not(.selected):hover {
   z-index: 2;
 }
 
-/* line 468, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 475, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .current-experience-image-wrap .default-image {
   z-index: 1;
 }
@@ -1040,7 +1047,7 @@ ul#experiences li:not(.selected):hover {
 	Default bizz
 	
 */
-/* line 478, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
+/* line 485, /Users/vitali/LOCALDEV/jonas-embed/embed/embed-core/public/visual/scss/style.scss */
 .default-image {
   position: absolute;
   width: 100%;

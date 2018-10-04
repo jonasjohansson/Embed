@@ -1,5 +1,5 @@
 /*
-	Controller.js (Oct 2)
+	Controller.js + Front-end
 */
 
 
@@ -24,15 +24,11 @@ display = experiences => {
 		let $experience = document.createElement('li');
 		$experience.setAttribute('data-slug', experience.slug);
 		$experience.setAttribute('data-play-prop', prop);
-		// $experience.setAttribute('data-title', experience.title);
-		// $experience.setAttribute('data-flags', experience.flags);
-		// $experience.setAttribute('data-format', experience.format);
-
 
 		$experience.innerHTML = `
 			<div class="experience_overview">
 				<div class="cover">
-					<video style="min-height: 100px; background-image: url(${experience.cover_image});">
+					<video style="background-image: url(${experience.cover_image});" autoplay muted loop>
 						<source src="${experience.cover_video}" type="video/mp4">
 					</video>
 				</div>	
@@ -175,7 +171,6 @@ socket.on('sleep', data => {
 });
 
 socket.on('wake', data => {
-	//destination_overlay = $("#welcome");
 	show_loader();
 	$("[data-action=wake]").hide();
 	setTimeout(hide_sleeping, 3000);
@@ -415,6 +410,9 @@ socket.on('reset', data => {
 	
 
 
+/*
+	Play video on scroll
+*/
 
 
 	
