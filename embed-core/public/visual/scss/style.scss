@@ -271,6 +271,11 @@
 				left: 0;	
 				background-color: $c_e2;			
 			}
+			&.playing {
+				span.playing {
+					display: block !important;
+				}
+			}
 			.experience_overview {
 				@include basicfloat();
 				z-index: 100;
@@ -279,7 +284,7 @@
 				.cover {
 					@include basicfloat();
 					height: 400px;
-					//background-image: url("../img/buzz.gif");
+					background-image: url("../img/buzz.gif");
 					background-color: $c_e2;
 					background-size: 500px auto;
 					overflow: hidden;
