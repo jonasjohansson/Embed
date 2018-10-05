@@ -283,7 +283,8 @@
 				height: auto;
 				.cover {
 					@include basicfloat();
-					height: 400px;
+					//height: 400px;
+					padding-bottom: 56%;
 					background-image: url("../img/buzz.gif");
 					background-color: $c_e2;
 					background-size: 500px auto;
@@ -294,7 +295,7 @@
 						background-position: center center;
 						background-size: cover;
 						min-width: 100%; 
-						min-height: 401px;
+						min-height: 100%;
 						width: auto;
 						height: auto;
 						top: 50%;

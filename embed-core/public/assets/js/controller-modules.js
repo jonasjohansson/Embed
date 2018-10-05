@@ -63,20 +63,81 @@ In aliquet metus vel elit scelerisque, gravida cursus turpis hendrerit. Vivamus 
 	}
 };
 
+
+	
+
+/*
+	State control 1 – Socket Functions
+*/
+
+
 play = experience => {
 	$('#experiences li').removeClass('playing');
 	
 	current_experience = $('li[data-slug=' + experience.slug + ']');
-	current_experience.addClass('playing');
-	
+
 	$("#current-experience-title p").text(selectedExperience.title);
 	$("#current-experience-image").css('background-image', 'url(' +  selectedExperience.cover_image + ')');
+	$("#loading").hide();
+		
+	hide_play();
+	show_loader();
+	setTimeout(show_playing, 1000);
+	setTimeout(hide_loader, 1000);
+	
+	setTimeout(function(){
+    	current_experience.addClass('playing');
+  	}, 1000);
+	
 };
 
 stop = () => {
 	$('#experiences li').removeClass('playing');
+	
+	hide_playing();	 
+	if(selected_experience == null) {
+
+	} else {
+		if(selected_experience.hasClass("selected")) { 
+			show_play();					   
+		}
+	}	
 };
 
+socket.on('enter', data => {
+	destination_overlay = $("#explore");	
+	$("[data-action=enter]").hide();
+	show_loader();
+	setTimeout(hide_welcome, 500);
+	setTimeout(show_destination_overlay, 500);
+	setTimeout(hide_loader, 500);
+});
+
+socket.on('sleep', data => {
+	destination_overlay = $("#overlay-sleeping");
+	show_destination_overlay();	  	         
+});
+
+socket.on('wake', data => {
+	show_loader();
+	$("[data-action=wake]").hide();
+	setTimeout(hide_sleeping, 3000);
+	setTimeout(hide_loader, 3000);	       
+});
+
+socket.on('reset', data => {
+    // Hide experience stuff
+    $("[data-action=enter]").show();
+    
+    $("#explore").hide();
+    $("#playing-controls").hide();
+		    
+	destination_overlay = $("#welcome");
+	show_destination_overlay();			         
+});
+
+
+// Volume slider
 socket.on('volume-initial', volume_initial => {
 	$volume_slider.value = volume_initial;
 });
@@ -87,7 +148,6 @@ $volume_slider.addEventListener('change', e => {
 	var volume_new = e.target.value;
 	socket.emit('volume-new', volume_new);
 });
-
 
 
 
@@ -122,7 +182,7 @@ $volume_slider.addEventListener('change', e => {
 	}
 	
 	
-	//
+	// Hide / Show controls
 	function show_loader(){
 		$("#global-loader").show();
 	}
@@ -148,75 +208,11 @@ $volume_slider.addEventListener('change', e => {
 		$("#overlay-sleeping").hide();	
 	}		
 	
-	
 
-/*
-	State control 1 – Sockets
-*/
-
-
-
-socket.on('enter', data => {
-	destination_overlay = $("#explore");	
-	$("[data-action=enter]").hide();
-	show_loader();
-	setTimeout(hide_welcome, 500);
-	setTimeout(show_destination_overlay, 500);
-	setTimeout(hide_loader, 500);
-});
-
-socket.on('sleep', data => {
-	destination_overlay = $("#overlay-sleeping");
-	show_destination_overlay();	  	         
-});
-
-socket.on('wake', data => {
-	show_loader();
-	$("[data-action=wake]").hide();
-	setTimeout(hide_sleeping, 3000);
-	setTimeout(hide_loader, 3000);	       
-});
-
-
-socket.on('play', id => {
-	$("#loading").hide();
-	hide_play();
-	show_loader();
-	setTimeout(show_playing, 1000);
-	setTimeout(hide_loader, 1000);
-});
-
-socket.on('stop', data => {
-	hide_playing();	 
-	if(selected_experience == null) {
-
-	} else {
-		if(selected_experience.hasClass("selected")) { 
-			show_play();					   
-		}
-	}
-});
-
-socket.on('reset', data => {
-    // Hide experience stuff
-    $("[data-action=enter]").show();
-    
-    $("#explore").hide();
-    $("#playing-controls").hide();
-		    
-	destination_overlay = $("#welcome");
-	show_destination_overlay();			         
-});
-
-
-
-
-	
 
 /*
 	State control 2 – Front-end Confirmations
 */
-
 	 
 	// Pre-sleep overlay (Welcome)
 	$("[data-action=show-overlay-presleep-welcome]").on("click tap", function(e) {
@@ -252,8 +248,6 @@ socket.on('reset', data => {
 	});	
 	
 
-
-
 	//Expand Experience
 	
 	var selected_experience;
@@ -261,8 +255,8 @@ socket.on('reset', data => {
 	$('#experiences').on("click", "li", function() {
 		
 		selected_experience = $(this);
-					
-		scroll_save = $('.content-feed').offset().top;
+							
+		scroll_save = $(window).scrollTop();
 		
 		//Hide all others
 		$('#experiences li').hide();
@@ -272,17 +266,13 @@ socket.on('reset', data => {
 		
 		//Show this
 		selected_experience.show();
-		
-		
-		
+		TweenMax.to(selected_experience, .3, {scale: 1.01, transformOrigin:'50% 0%'});
+		TweenMax.to(selected_experience, .3, {scale: 1, transformOrigin:'50% 0%', delay: .3});
+
 		//Nav control
 		$('#explore .nav-top').hide();
-		$('#explore .nav-top.experience-nav').show();
-		
-				
+		$('#explore .nav-top.experience-nav').show();	
 		$('#explore').addClass("detailed-view");
-		
-		
 		
 		//Show details
 		var selected_experience_details = selected_experience.find(".experience_details");
@@ -297,14 +287,13 @@ socket.on('reset', data => {
 			$("#playing-controls").hide();	
 			if(!selected_experience.hasClass("selected")) {
 				TweenMax.fromTo($("#play-controls"), tr_smooth, {y: 64}, {y: 0, display: "block", delay: tr_delay});	
-			}			
-			
-		}
-		
+			}					
+		}		
 		selected_experience.addClass("selected");
 		TweenMax.set($("#experiences li"), {scale: 1});
-
 	});
+	
+	
 	
 	$('[data-action=close-experience-details]').on("click", function() {
 				
@@ -313,9 +302,10 @@ socket.on('reset', data => {
 		
 		//Scroll to saved possition
 		window.scrollTo(0, scroll_save);
-		
-		TweenMax.set($("#experiences li"), {scale: 1});
-		
+
+		TweenMax.to($('#experiences li'), .3, {scale: 0.98, transformOrigin:'50% 0%'});
+		TweenMax.to($('#experiences li'), .3, {scale: 1, transformOrigin:'50% 0%', delay: .3});		
+
 		//Bring controls up if something is playing
 		if (selectedExperience !== undefined && selectedExperience !== null) {
 			$("#playing-controls").show();	
@@ -365,14 +355,14 @@ socket.on('reset', data => {
 	//Experiences feed touch
 	$('body').on("touchstart mouseover", "#experiences li", function() {		
 		if(!$(this).hasClass("selected")) {
-			TweenMax.to($(this), tr_in, {scale: 1.01});
-			//TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#121212"});	
+			TweenMax.to($(this), tr_in, {scale: 1.001});
+			TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#121212"});	
 		}
 	});	
 	$('body').on("touchend mouseleave", "#experiences li", function() {		
 		if(!$(this).hasClass("selected")) {
 			TweenMax.to($(this), tr_in, {scale: 1});
-			//TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#000"});
+			TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#000"});
 		}
 	});		
 		
