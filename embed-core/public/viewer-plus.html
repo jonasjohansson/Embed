@@ -4,18 +4,19 @@
 	<title>EMBED Viewer</title>
 	<script src="/socket.io/socket.io.js"></script>
     <script src="/assets/js/dat.gui.min.js"></script>
+	<link rel="stylesheet" href="/assets/css/viewer-dimensions.css">
 	<link rel="stylesheet" href="/assets/css/viewer.css">
 </head>
 <body>
 
-    <div class="system-overlay">
-	    <p>System Status: <b id="system-status">Default Welcome State</b></p>
-	    <p>Relay Status: <b id="relay-status">Default Wake</b></p>
-	    <p>Volume: <b id="volume-status">Undefined</b></p>
-    </div>
+	<div id="system-top" class="system-surface"></div>
+	<div id="system-center" class="system-surface"></div>
+	<div id="system-left" class="system-surface"></div>
+	<div id="system-right" class="system-surface"></div>	
 
     <script src="/assets/js/jquery.js"></script>
     <!--<script src="/assets/js/viewer.js"></script>-->
+    <script src="/assets/js/viewer-dimensions.js"></script>
     <script src="/assets/js/viewer-modules.js"></script>
     <script src="/assets/js/common.js"></script>
 </body>

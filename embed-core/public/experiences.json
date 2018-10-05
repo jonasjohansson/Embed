@@ -76,19 +76,6 @@
         "url": "https://jonasjohansson.github.io/embed/embed-experiences/003/",
         "flags": "",
         "format": "panorama"
-    },    
-    "005": {
-        "title": "Calculator",
-        "slug": "title-05",
-        "description": "Description 02…",
-        "author": "Vitali Poluzhnikov",
-        "author_url": "http://vitali.xyz/",
-        "cover_image": "",
-        "cover_video": "",
-        "type": "html",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/005/",
-        "flags": "",
-        "format": "panorama"
     }
     
 }

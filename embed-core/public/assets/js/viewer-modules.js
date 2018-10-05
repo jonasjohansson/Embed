@@ -29,6 +29,20 @@ play = experience => {
 		}`
 	);
 	gui.__folders.a.__controllers[1].setValue(true);
+	// let format = experience.format;
+	// switch (format) {
+	// 	case 'panorama':
+	// 		console.log(
+	// 			gui.__folders.a.__controllers[0].setValue(
+	// 				experience.url + '?render=normal'
+	// 			)
+	// 		);
+	// 		console.log(gui.__folders.a.__controllers[1].setValue(true));
+	// 		console.log(gui.__folders.a.__controllers[2].setValue(false));
+	// 		console.log(gui.__folders.a.__controllers[3].setValue(false));
+	// 		console.log(gui.__folders.a.__controllers[4].setValue(false));
+	// 		break;
+	// }
 };
 
 socket.on('update-rooms', data => {
