@@ -1,4 +1,5 @@
 var experiences;
+var rooms;
 var selectedExperience;
 
 document.addEventListener('click', e => {
@@ -18,8 +19,7 @@ document.addEventListener('click', e => {
         if (action === 'play') {
             let slug = selectedExperience.slug;
             if (slug !== 'default' && slug !== 'welcome') {
-                if (!confirm('You will loose your current progress, OK?'))
-                    return;
+                if (!confirm('You will loose your current progress, OK?')) return;
             }
         }
     }
@@ -48,7 +48,10 @@ removeChildren = el => {
 /* triggered when system is initiated */
 
 socket.on('update', data => {
-    experiences = data;
+    console.log(`Experiences: ${data.experiences}`);
+    console.log(`Rooms: ${data.rooms}`);
+    experiences = data.experiences;
+    rooms = data.rooms;
     display(experiences);
 });
 

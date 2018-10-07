@@ -1,11 +1,14 @@
 var socket = io();
 
-var rooms;
+var iframeObjects;
 
 display = () => {};
 
 setup = () => {
-	console.log('setup');
+	// iframeObjects['a'].iframe.width = '100';
+	// iframeObjects['b'].iframe.width = '100';
+	// iframeObjects['c'].iframe.width = '100';
+	// iframeObjects['d'].iframe.width = '100';
 	play(experiences['welcome']);
 };
 
@@ -22,100 +25,90 @@ stop = () => {
 };
 
 play = experience => {
-	console.log(experience);
-	gui.__folders.a.__controllers[0].setValue(
-		`${experience.url}?w=${rooms['001'].w}&h=${rooms['001'].h}&d=${
-			rooms['001'].d
-		}`
-	);
+	var w = rooms['001'].w;
+	var h = rooms['001'].h;
+	var d = rooms['001'].d;
+	gui.__folders.a.__controllers[0].setValue(`${experience.url}?w=${w}&h=${h}&d=${d}`);
 	gui.__folders.a.__controllers[1].setValue(true);
-	// let format = experience.format;
-	// switch (format) {
-	// 	case 'panorama':
-	// 		console.log(
-	// 			gui.__folders.a.__controllers[0].setValue(
-	// 				experience.url + '?render=normal'
-	// 			)
-	// 		);
-	// 		console.log(gui.__folders.a.__controllers[1].setValue(true));
-	// 		console.log(gui.__folders.a.__controllers[2].setValue(false));
-	// 		console.log(gui.__folders.a.__controllers[3].setValue(false));
-	// 		console.log(gui.__folders.a.__controllers[4].setValue(false));
-	// 		break;
-	// }
 };
 
-socket.on('update-rooms', data => {
-	rooms = data;
-});
+viewer = () => {
+	iframeObjects = createFrames();
+	createGui(iframeObjects);
+};
 
-const sources = {};
-for (id of ['a', 'b', 'c', 'd']) {
-	let el = document.createElement('iframe');
-	el.id = id;
-	document.body.appendChild(el);
-	sources[id] = {
-		url: 'about:blank',
-		left: false,
-		center: false,
-		right: false,
-		top: false,
-		index: 0,
-		iframe: el
-	};
-}
+createFrames = () => {
+	const obj = {};
+	for (id of ['a', 'b', 'c', 'd']) {
+		let el = document.createElement('iframe');
+		el.id = id;
+		document.body.appendChild(el);
+		obj[id] = {
+			url: 'about:blank',
+			left: false,
+			center: false,
+			right: false,
+			top: false,
+			index: 0,
+			iframe: el
+		};
+	}
+	return obj;
+};
 
-const iframes = document.querySelectorAll('iframe');
+createGui = obj => {
+	gui = new dat.GUI();
+	let len = Object.keys(obj).length;
 
-var gui = new dat.GUI();
-let size = Object.keys(sources).length;
+	for (let prop in obj) {
+		const folder = gui.addFolder(prop);
+		let iframeObject = obj[prop];
+		let iframe = iframeObject.iframe;
+		folder
+			.add(iframeObject, 'url')
+			.listen()
+			.onChange(val => {
+				iframe.src = val;
+			});
+		folder
+			.add(iframeObject, 'left')
+			.listen()
+			.onChange(val => {
+				iframe.classList.toggle('left', val);
+			});
+		folder
+			.add(iframeObject, 'center')
+			.listen()
+			.onChange(val => {
+				iframe.classList.toggle('center', val);
+			});
+		folder
+			.add(iframeObject, 'right')
+			.listen()
+			.onChange(val => {
+				iframe.classList.toggle('right', val);
+			});
+		folder
+			.add(iframeObject, 'top')
+			.listen()
+			.onChange(val => {
+				iframe.classList.toggle('top', val);
+			});
+		folder
+			.add(iframeObject, 'index', 0, len, 1)
+			.listen()
+			.onChange(val => {
+				iframe.style.zIndex = val;
+			});
+		iframe.src = iframeObject.url;
+		iframe.classList.toggle('left', iframeObject.left);
+		iframe.classList.toggle('center', iframeObject.center);
+		iframe.classList.toggle('right', iframeObject.right);
+		iframe.classList.toggle('top', iframeObject.top);
+		iframe.style.zIndex = iframeObject.index;
+		// folder.open();
+		if (prop === 'a') folder.open();
+	}
+};
 
-for (let prop in sources) {
-	const folder = gui.addFolder(prop);
-	let source = sources[prop];
-	let iframe = source.iframe;
-	folder
-		.add(source, 'url')
-		.listen()
-		.onChange(val => {
-			iframe.src = val;
-		});
-	folder
-		.add(source, 'left')
-		.listen()
-		.onChange(val => {
-			iframe.classList.toggle('left', val);
-		});
-	folder
-		.add(source, 'center')
-		.listen()
-		.onChange(val => {
-			iframe.classList.toggle('center', val);
-		});
-	folder
-		.add(source, 'right')
-		.listen()
-		.onChange(val => {
-			iframe.classList.toggle('right', val);
-		});
-	folder
-		.add(source, 'top')
-		.listen()
-		.onChange(val => {
-			iframe.classList.toggle('top', val);
-		});
-	folder
-		.add(source, 'index', 0, size, 1)
-		.listen()
-		.onChange(val => {
-			iframe.style.zIndex = val;
-		});
-	iframe.src = source.url;
-	iframe.classList.toggle('left', source.left);
-	iframe.classList.toggle('center', source.center);
-	iframe.classList.toggle('right', source.right);
-	iframe.classList.toggle('top', source.top);
-	iframe.style.zIndex = source.index;
-	// folder.open();
-	if (prop === 'a') folder.open();
-}
+viewer();

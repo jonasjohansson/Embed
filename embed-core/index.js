@@ -8,31 +8,27 @@ const axios = require('axios');
 const loudness = require('loudness');
 const five = require('johnny-five');
 
+const experiencesPath = 'http://localhost:3000/experiences.json';
+const roomsPath = 'http://localhost:3000/rooms.json';
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 server.listen(3000);
 
 io.on('connection', function(socket) {
-	console.log('Socket connected');
+	console.log(`Socket connected: ${socket}`);
 
 	axios
-		.get('http://localhost:3000/experiences.json')
-		.then(response => {
-			socket.emit('update', response.data);
-			socket.emit('reset');
-		})
-		.catch(error => {
-			console.log(error);
-		});
-
-	axios
-		.get('http://localhost:3000/rooms.json')
-		.then(response => {
-			socket.emit('update-rooms', response.data);
-		})
-		.catch(error => {
-			console.log(error);
-		});
+		.all([axios.get(experiencesPath), axios.get(roomsPath)])
+		.then(
+			axios.spread((experiencesResponse, roomsResponse) => {
+				console.log(`Experiences: ${experiencesResponse.data}`);
+				console.log(`Rooms: ${roomsResponse.data}`);
+				socket.emit('update', { experiences: experiencesResponse.data, rooms: roomsResponse.data });
+				socket.emit('reset');
+			})
+		)
+		.catch(error => console.log(error));
 
 	socket.on('enter', data => emit('enter'));
 	socket.on('error', data => emit('error'));
