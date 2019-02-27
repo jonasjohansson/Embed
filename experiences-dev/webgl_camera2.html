@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - cameras</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #808080;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+
+				background-color: #000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 5px; width: 100%;
+				z-index: 100;
+			}
+
+			a {color: #0080ff; }
+			b { color: lightgreen }
+
+		</style>
+	</head>
+	<body>
+		<div id="info"><a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - cameras<br/>
+		<b>O</b> orthographic <b>P</b> perspective
+		</div>
+
+		<script src="three.js"></script>
+		<script>
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+			group2 = new THREE.Group();
+		</script>
+		<script src="constellations.js"></script>
+
+		<script>
+
+			var SCREEN_WIDTH = window.innerWidth;
+			var SCREEN_HEIGHT = window.innerHeight;
+			var aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+
+			var camera, scene, renderer, mesh;
+			var cameraRig, activeCamera, activeHelper;
+			var cameraPerspective, cameraOrtho;
+			var cameraPerspectiveHelper, cameraOrthoHelper;
+			var frustumSize = 600;
+
+			init();
+			animate();
+
+			function init() {
+
+
+				scene = new THREE.Scene();
+
+				//
+
+				camera = new THREE.PerspectiveCamera( 50, aspect, 1, 10000 );
+				camera.position.z = 2500;
+
+				cameraPerspective = new THREE.PerspectiveCamera( 50,aspect, 150, 1000 );
+
+				cameraPerspectiveHelper = new THREE.CameraHelper( cameraPerspective );
+				scene.add( cameraPerspectiveHelper );
+
+				//
+				cameraOrtho = new THREE.OrthographicCamera( 0.5 * frustumSize * aspect / - 2, 0.5 * frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 150, 1000 );
+
+				cameraOrthoHelper = new THREE.CameraHelper( cameraOrtho );
+				scene.add( cameraOrthoHelper );
+
+				//
+
+				activeCamera = cameraPerspective;
+				activeHelper = cameraPerspectiveHelper;
+
+				// counteract different front orientation of cameras vs rig
+
+				cameraOrtho.rotation.y = Math.PI;
+				cameraPerspective.rotation.y = Math.PI;
+
+				cameraRig = new THREE.Group();
+
+				cameraRig.add( cameraPerspective );
+				cameraRig.add( cameraOrtho );
+
+				scene.add( cameraRig );
+
+				//
+
+				mesh = new THREE.Mesh(
+					new THREE.SphereBufferGeometry( 100, 16, 8 ),
+					new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} )
+				);
+				scene.add( mesh );
+
+				var mesh2 = new THREE.Mesh(
+					new THREE.SphereBufferGeometry( 50, 16, 8 ),
+					new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true } )
+				);
+				mesh2.position.y = 150;
+				mesh.add( mesh2 );
+
+				var mesh3 = new THREE.Mesh(
+					new THREE.SphereBufferGeometry( 5, 16, 8 ),
+					new THREE.MeshBasicMaterial( { color: 0x0000ff, wireframe: true } )
+				);
+				mesh3.position.z = 150;
+				cameraRig.add( mesh3 );
+
+				//
+					vnh = new THREE.VertexNormalsHelper( mesh2, 5 );
+					mesh.add( vnh );
+					scene.add( new THREE.BoxHelper( mesh2 ) );
+
+
+				var gridHelper = new THREE.GridHelper( 400, 40, 0x0000ff, 0x808080 );
+				gridHelper.position.y = - 150;
+				gridHelper.position.x = - 150;
+				scene.add( gridHelper );
+
+				var polarGridHelper = new THREE.PolarGridHelper( 200, 16, 8, 64, 0x0000ff, 0x808080 );
+				polarGridHelper.position.y = - 150;
+				polarGridHelper.position.x = 200;
+				scene.add( polarGridHelper );
+
+				//
+
+				var geometry = new THREE.BufferGeometry();
+				var vertices = [];
+
+				for ( var i = 0; i < 10000; i ++ ) {
+
+					vertices.push( THREE.Math.randFloatSpread( 2000 ) ); // x
+					vertices.push( THREE.Math.randFloatSpread( 2000 ) ); // y
+					vertices.push( THREE.Math.randFloatSpread( 2000 ) ); // z
+
+				}
+
+				geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+
+				var particles = new THREE.Points( geometry, new THREE.PointsMaterial( { color: 0x888888 } ) );
+				scene.add( particles );
+
+				//
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+				container.appendChild( renderer.domElement );
+
+				renderer.autoClear = false;
+
+				//
+
+				// stats = new Stats();
+				// container.appendChild( stats.dom );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+				// document.addEventListener( 'keydown', onKeyDown, false );
+
+				addConstellations();
+
+			}
+
+
+
+
+			function addConstellations(){
+		scene.add(group2);
+
+
+
+		var material = new THREE.MeshNormalMaterial(
+		{
+			color: 0x242424,
+			transparent: true,
+			opacity: 0
+		});
+
+		var pyrmaidGeom = new THREE.CylinderGeometry(0, r / 2, r / 2, 4, false);
+		var pyramid = new THREE.Mesh(pyrmaidGeom, material);
+		pyramid.points = [];
+
+		var boxGeom = new THREE.BoxGeometry(r / 2, r / 2, r / 2);
+		var box = new THREE.Mesh(boxGeom, material);
+		box.points = [];
+
+		var sphereGeom = new THREE.SphereGeometry(300, 32, 32);
+		var sphere = new THREE.Mesh(sphereGeom, material);
+		sphere.points = [];
+
+		targetShapes = [sphere, box, pyramid];
+
+		var segments = maxParticleCount * maxParticleCount;
+
+		positions = new Float32Array(segments * 3);
+		colors = new Float32Array(segments * 3);
+
+		var pMaterial = new THREE.PointsMaterial(
+		{
+			color: 0xFFFFFF,
+			size: 3,
+			blending: THREE.AdditiveBlending,
+			transparent: true,
+			sizeAttenuation: false
+		});
+
+		particles = new THREE.BufferGeometry();
+		particlePositions = new Float32Array(maxParticleCount * 3);
+
+		for (var i = 0; i < maxParticleCount; i++)
+		{
+
+			var x = Math.random() * r - r / 2;
+			var y = Math.random() * r - r / 2;
+			var z = Math.random() * r - r / 2;
+
+			particlePositions[i * 3] = x;
+			particlePositions[i * 3 + 1] = y;
+			particlePositions[i * 3 + 2] = z;
+
+
+			particlesData.push(
+			{
+				velocity: new THREE.Vector3(-1 + Math.random() * 2, -1 + Math.random() * 2, -1 + Math.random() * 2),
+				numConnections: 0
+			});
+		}
+
+		particles.setDrawRange(0, particleCount);
+		particles.addAttribute('position', new THREE.BufferAttribute(particlePositions, 3).setDynamic(true));
+
+
+		pointCloud = new THREE.Points(particles, pMaterial);
+		group2.add(pointCloud);
+
+
+		var geometry = new THREE.BufferGeometry();
+
+		geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3).setDynamic(true));
+		geometry.addAttribute('color', new THREE.BufferAttribute(colors, 3).setDynamic(true));
+
+		geometry.computeBoundingSphere();
+
+		geometry.setDrawRange(0, 0);
+
+		var material = new THREE.LineBasicMaterial(
+		{
+			vertexColors: THREE.VertexColors,
+			blending: THREE.AdditiveBlending,
+			transparent: true
+		});
+
+		linesMesh = new THREE.LineSegments(geometry, material);
+		group2.add(linesMesh);
+
+
+			}
+
+			//
+
+			// function onKeyDown( event ) {
+
+			// 	switch ( event.keyCode ) {
+
+			// 		case 79: /*O*/
+
+			// 			activeCamera = cameraOrtho;
+			// 			activeHelper = cameraOrthoHelper;
+
+			// 			break;
+
+			// 		case 80: /*P*/
+
+			// 			activeCamera = cameraPerspective;
+			// 			activeHelper = cameraPerspectiveHelper;
+
+			// 			break;
+
+			// 	}
+
+			// }
+
+			//
+
+			function onWindowResize() {
+
+				SCREEN_WIDTH = window.innerWidth;
+				SCREEN_HEIGHT = window.innerHeight;
+				aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+
+				renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+
+				// camera.aspect = 0.5 * aspect;
+				camera.updateProjectionMatrix();
+
+				// cameraPerspective.aspect = 0.5 * aspect;
+				cameraPerspective.updateProjectionMatrix();
+
+				// cameraOrtho.left = - 0.5 * frustumSize * aspect / 2;
+				// cameraOrtho.right = 0.5 * frustumSize * aspect / 2;
+				// cameraOrtho.top = frustumSize / 2;
+				// cameraOrtho.bottom = - frustumSize / 2;
+				// cameraOrtho.updateProjectionMatrix();
+
+			}
+
+			//
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				render();
+				// stats.update();
+
+
+
+
+
+
+
+		var vertexpos = 0;
+		var colorpos = 0;
+		var numConnected = 0;
+
+		for (var i = 0; i < particleCount; i++)
+			particlesData[i].numConnections = 0;
+
+		for (var i = 0; i < particleCount; i++)
+		{
+
+
+			var particleData = particlesData[i];
+
+			var zero = new THREE.Vector3(0, 0, 0);
+			var cur_pos = new THREE.Vector3(particlePositions[i * 3], particlePositions[i * 3 + 1], particlePositions[i * 3 + 2]);
+
+
+			if (anim)
+			{
+
+
+				if (startMorph)
+				{
+
+					if (counter - morphStartedAt > 20 * (0.1 / effectController.morphing_speed)) startMorph = false;
+
+					particlePositions[i * 3] = cur_pos.x * (1 - effectController.morphing_speed) + particlesData[i].cur_pos.x * effectController.morphing_speed;
+					particlePositions[i * 3 + 1] = cur_pos.y * (1 - effectController.morphing_speed) + particlesData[i].cur_pos.y * effectController.morphing_speed;
+					particlePositions[i * 3 + 2] = cur_pos.z * (1 - effectController.morphing_speed) + particlesData[i].cur_pos.z * effectController.morphing_speed;
+
+				}
+				else
+				{
+
+					particlePositions[i * 3] -= particleData.velocity.x * effectController.anim_speed;
+					particlePositions[i * 3 + 1] -= particleData.velocity.y * effectController.anim_speed;
+					particlePositions[i * 3 + 2] -= particleData.velocity.z * effectController.anim_speed;
+
+				}
+
+			}
+
+			if (effectController.limitConnections && particleData.numConnections >= effectController.maxConnections)
+				continue;
+
+			// Check collision
+			for (var j = i + 1; j < particleCount; j++)
+			{
+
+				var particleDataB = particlesData[j];
+				if (effectController.limitConnections && particleDataB.numConnections >= effectController.maxConnections)
+					continue;
+
+				var dx = particlePositions[i * 3] - particlePositions[j * 3];
+				var dy = particlePositions[i * 3 + 1] - particlePositions[j * 3 + 1];
+				var dz = particlePositions[i * 3 + 2] - particlePositions[j * 3 + 2];
+
+
+
+				var dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+				if (dist < effectController.minDistance)
+				{
+
+					particleData.numConnections++;
+					particleDataB.numConnections++;
+
+					var alpha = 1.0 - dist / effectController.minDistance;
+
+					positions[vertexpos++] = particlePositions[i * 3];
+					positions[vertexpos++] = particlePositions[i * 3 + 1];
+					positions[vertexpos++] = particlePositions[i * 3 + 2];
+
+					positions[vertexpos++] = particlePositions[j * 3];
+					positions[vertexpos++] = particlePositions[j * 3 + 1];
+					positions[vertexpos++] = particlePositions[j * 3 + 2];
+
+					colors[colorpos++] = alpha;
+					colors[colorpos++] = alpha;
+					colors[colorpos++] = alpha;
+
+					colors[colorpos++] = alpha;
+					colors[colorpos++] = alpha;
+					colors[colorpos++] = alpha;
+
+					numConnected++;
+				}
+			}
+		}
+
+
+		linesMesh.geometry.setDrawRange(0, numConnected * 2);
+		linesMesh.geometry.attributes.position.needsUpdate = true;
+		linesMesh.geometry.attributes.color.needsUpdate = true;
+
+		pointCloud.geometry.attributes.position.needsUpdate = true;
+
+			}
+
+			var frame = 0;
+			var frame_num = 0;
+			var counter = 0;
+			var current_shape = 0;
+
+			function render() {
+
+				var r = Date.now() * 0.0005;
+
+				mesh.position.x = 700 * Math.cos( r );
+				mesh.position.z = 700 * Math.sin( r );
+				mesh.position.y = 700 * Math.sin( r );
+
+				mesh.children[ 0 ].position.x = 70 * Math.cos( 2 * r );
+				mesh.children[ 0 ].position.z = 70 * Math.sin( r );
+
+				// if ( activeCamera === cameraPerspective ) {
+
+					cameraPerspective.fov = 35 + 30 * Math.sin( 0.5 * r );
+					cameraPerspective.far = mesh.position.length();
+					cameraPerspective.updateProjectionMatrix();
+
+					cameraPerspectiveHelper.update();
+					cameraPerspectiveHelper.visible = true;
+
+					cameraOrthoHelper.visible = false;
+
+				// } else {
+
+				// 	cameraOrtho.far = mesh.position.length();
+				// 	cameraOrtho.updateProjectionMatrix();
+
+				// 	cameraOrthoHelper.update();
+				// 	cameraOrthoHelper.visible = true;
+
+				// 	cameraPerspectiveHelper.visible = false;
+
+				// }
+
+			var spotLight1 = createSpotlight( 0xFF7F00 );
+			var spotLight2 = createSpotlight( 0x00FF7F );
+			var spotLight3 = createSpotlight( 0x7F00FF );
+			var lightHelper1, lightHelper2, lightHelper3;
+				spotLight1.position.set( 15, 40, 45 );
+				spotLight2.position.set( 0, 40, 35 );
+				spotLight3.position.set( - 15, 40, 45 );
+				lightHelper1 = new THREE.SpotLightHelper( spotLight1 );
+				lightHelper2 = new THREE.SpotLightHelper( spotLight2 );
+				lightHelper3 = new THREE.SpotLightHelper( spotLight3 );
+				// scene.add( spotLight1, spotLight2, spotLight3 );
+				// // scene.add( lightHelper1, lightHelper2, lightHelper3 );
+
+				cameraRig.lookAt( mesh.position );
+
+
+				activeHelper.visible = true;
+
+				// renderer.setViewport( 0, 0, SCREEN_WIDTH / 2, SCREEN_HEIGHT );
+				renderer.setViewport( 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT );
+				renderer.render( scene, activeCamera );
+				renderer.render( scene, camera );
+
+				// activeHelper.visible = true;
+
+				// renderer.setViewport( SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2, SCREEN_HEIGHT );
+				// renderer.render( scene, camera );
+
+
+				frame++;
+				counter++;
+
+				if (frame == 1)
+				{
+					for (var i = 0; i < targetShapes.length; i++)
+					{
+
+						getObjectPoints(targetShapes[i], targetShapes[i].points);
+					}
+				}
+
+				var time = Date.now() * 0.001;
+				group2.rotation.y += 1 * Math.PI / 180;
+
+				// renderer.render(scene, camera);
+
+
+				if (frame % 120 == 0)
+				{
+					morphTarget = targetShapes[current_shape].points.slice(0);
+
+					getClosest();
+					morphStartedAt = counter;
+					startMorph = true;
+					var prev_shape = current_shape;
+					while (current_shape == prev_shape)
+					{
+						current_shape = Math.floor(Math.random() * targetShapes.length);
+					}
+					console.log(current_shape);
+				}
+			}
+
+			function createSpotlight( color ) {
+				var newObj = new THREE.SpotLight( color, 2 );
+				newObj.castShadow = true;
+				newObj.angle = 0.3;
+				newObj.penumbra = 0.2;
+				newObj.decay = 2;
+				newObj.distance = 1150;
+				newObj.shadow.mapSize.width = 1024;
+				newObj.shadow.mapSize.height = 1024;
+				return newObj;
+			}
+
+
+		</script>
+
+	</body>
+</html>
