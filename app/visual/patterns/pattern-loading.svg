@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="64px" viewBox="0 0 96 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>pattern-loading</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="pattern-loading" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Rectangle-9-Copy-11" fill="#04A64B" fill-rule="nonzero" points="64 0 48.0079792 64 32 64 47.9920208 0"></polygon>
+        <polygon id="Rectangle-9-Copy-12" fill="transparent" fill-rule="nonzero" points="48 0 32.0079792 64 16 64 31.9920208 0"></polygon>
+        <polygon id="Rectangle-9-Copy-13" fill="transparent" fill-rule="nonzero" points="80 0 64.0079792 64 48 64 63.9920208 0"></polygon>
+        <polygon id="Rectangle-9-Copy-14" fill="#00006B" fill-rule="nonzero" points="96 0 80.0079792 64 64 64 79.9920208 0"></polygon>
+        <polygon id="Rectangle-9-Copy-15" fill="#00006B" fill-rule="nonzero" points="32 0 16.0079792 64 0 64 15.9920208 0"></polygon>
+    </g>
+</svg>

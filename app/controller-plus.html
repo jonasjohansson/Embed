@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Embed Controller</title>
+	<script src="/socket.io/socket.io.js"></script>
+	<link rel="stylesheet" href="../visual/css/style.css">
+	
+	<!-- Mobile Safari Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-title" content="Embed" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+	
+</head>
+<body class="controller welcome-state controller-plus">
+
+	<!--
+	<div id="system-status-plus">
+		<p class="state">default-welcome</p>
+		<p class="relay">Relay on</p>
+	</div>
+	-->
+	
+	<!-- Welcome -->
+	<section id="welcome">
+		<div class="nav-top">
+			<div class="logo"></div>
+			<button class="medium align-right launch-overlay" data-action="show-overlay-presleep-welcome" >
+				<i class="icon-sleep"></i>
+				<span>Sleep</span>
+			</button>		
+		</div>		
+		<div class="content-notice">
+			<h1>Hi there!<br>Welcome to your Embed room</h1>
+			<h3>This is your controller. You can surround yourself with diverse experiences… This is your controller.</h3>
+		</div>	
+		<div class="pattern pattern-welcome"></div>
+		<div class="nav-bottom">
+			<button class="large align-middle" data-action="enter">
+				<i class="icon-power-green"></i>
+				<span>Start</span>
+			</button>
+		</div>		
+	</section>
+	
+	<!-- Explore feed -->
+	<section id="explore">
+	
+		<div class="nav-top experience-nav">
+			<button class="medium align-left launch-overlay" data-action="close-experience-details">
+				<i class="icon-prev"></i>
+				<span>Back</span>
+			</button>		
+		</div>				
+		<div class="content-feed">
+		<div class="nav-top main">
+			<h2 class="header">Explore</h2>
+			<button class="medium align-right launch-overlay" data-action="show-overlay-presleep-explore">
+				<i class="icon-sleep"></i>
+				<span>Sleep</span>
+			</button>		
+		</div>			
+			<ul id="experiences">
+				<!-- JSON FEED -->
+			</ul>
+		</div>	
+		<div class="nav-bottom" id="playing-controls" style="display: none;">
+			<div class="playing-controls-wrap-outer">
+				<div class="playing-controls-wrap">
+					<div class="flex-item current-experience">
+						<div id="current-experience-title"><p>Current Title</p></div>
+						<div class="current-experience-image-wrap">
+							<div class="default-image"></div>
+							<div id="current-experience-image"></div>
+							<i class="icon-play"></i>
+							<div class="gradient"></div>
+						</div>
+					</div>
+					<button class="flex-item large-middle" data-action="stop">
+						<i class="icon-stop-red"></i>
+						<span>Stop</span>
+					</button>
+					<div class="flex-item volume-wrap">
+						<i class="icon-volume"></i>
+						<input type="range" id="volume-slider" class="rangeslider" value="0" min="0" max="100">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="nav-bottom-play" id="play-controls">
+			<button class="large align-middle" data-action="play" data-data="">
+			<i class="icon-play"></i>
+			<span>Play</span>
+			</button>
+		</div>	
+	</section>		
+
+	<!-- Pre-sleep (Welcome) -->
+	<section id="overlay-presleep-welcome" class="overlay-block">
+		<div class="nav-top">
+			<div class="logo"></div>
+			<button class="medium align-right" data-action="close-overlay-presleep-welcome">
+				<i class="icon-close-grey"></i>
+				<span>Cancel</span>
+			</button>		
+		</div>		
+		<div class="content-notice">
+			<h1>Are you sure you want to shut it all off?</h1>
+			<h3>You are about to turn off all the projectors and you will loose your current experience.</h3>
+		</div>	
+		<div class="pattern pattern-confirm"></div>
+		<div class="nav-bottom">
+			<button class="large align-middle" data-action="sleep">
+				<i class="icon-power-red"></i>
+				<span>Go to sleep</span>
+			</button>
+		</div>		
+	</section>
+	
+	<!-- Pre-sleep (Explore) -->
+	<section id="overlay-presleep-explore" class="overlay-block">
+		<div class="nav-top">
+			<div class="logo"></div>
+			<button class="medium align-right" data-action="close-overlay-presleep-explore">
+				<i class="icon-close-grey"></i>
+				<span>Cancel</span>
+			</button>		
+		</div>		
+		<div class="content-notice">
+			<h1>Are you sure you want to shut it all off? (Explore)</h1>
+			<h3>You are about to turn off all the projectors and you will loose your current experience.</h3>
+		</div>	
+		<div class="pattern pattern-confirm"></div>
+		<div class="nav-bottom">
+			<button class="large align-middle" data-action="sleep">
+				<i class="icon-power-red"></i>
+				<span>Go to sleep</span>
+			</button>
+			<div class="left-trigger">
+				<p class="caption">Want to start it all over?</p>
+				<button class="small align-middle" data-action="show-overlay-prereset">
+					<span>Reset</span>
+				</button>			
+			</div>
+		</div>		
+	</section>	
+	
+	<!-- Pre-reset (Explore) -->
+	<section id="overlay-prereset" class="overlay-block">
+		<div class="nav-top">
+			<div class="logo"></div>
+			<button class="medium align-right" data-action="close-overlay-prereset">
+				<i class="icon-close-grey"></i>
+				<span>Cancel</span>
+			</button>		
+		</div>		
+		<div class="content-notice">
+			<h1>This will reset it all completely.<br> Are you sure?</h1>
+			<h3>You'll return to the welcome state.</h3>
+		</div>	
+		<div class="pattern pattern-confirm"></div>
+		<div class="nav-bottom">
+			<button class="large align-middle" data-action="reset">
+				<i class="icon-confirm-red"></i>
+				<span>Confirm</span>
+			</button>
+		</div>		
+	</section>		
+	
+	
+	<section id="overlay-sleeping" class="overlay-block">
+		<div class="content-notice">
+			<h1>The system is sleeping.<br>Bzzz…</h1>
+			<h3>You can always just turn it back on.</h3>
+		</div>	
+		<div class="pattern pattern-sleeping"></div>
+		<div class="nav-bottom">
+			<button class="large align-middle" data-action="wake">
+				<i class="icon-power-green"></i>
+				<span>Wake up</span>
+			</button>
+		</div>		
+	</section>	
+
+
+	<section id="loading" class="overlay-block">
+		<div class="nav-top">
+			<div class="logo"></div>
+			<!--
+			<button class="medium align-right launch-overlay" id="show-overlay-presleep-welcome">
+				<i class="icon-sleep"></i>
+			</button>		
+			-->
+		</div>		
+		<div class="content-notice">
+			<h1>One moment, please…</h1>
+			<h3>Let's see what the internet can offer.</h3>
+		</div>	
+		<div class="default-image"></div>
+		<div class="pattern pattern-loading"></div>
+		<div class="nav-bottom">
+			<button class="large align-middle loading">
+				<i class="icon-loading"></i>
+			</button>
+		</div>		
+	</section>
+	
+
+	<div class="nav-bottom transparent" id="global-loader">
+		<button class="large align-middle loading">
+			<i class="icon-loading"></i>
+		</button>
+	</div>		
+   
+	
+	<script src="../assets/js/jquery.js"></script>
+	<script src="../assets/js/rangeslider.min.js"></script>
+	<script src="../assets/js/TweenMax.js"></script>
+	<!--<script src="../assets/js/controller.js"></script>-->
+	<script src="../assets/js/controller-modules.js"></script>
+	<script src="../assets/js/common.js"></script>
+	
+	
+</body>
+</html>

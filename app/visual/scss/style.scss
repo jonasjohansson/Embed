@@ -1,0 +1,498 @@
+@import "defaults";
+@import "variables";
+@import "typography";
+@import "buttons";
+@import "controller";
+//@import "creatorcontent";
+
+
+
+
+/*
+	Temp
+*/
+
+	.temp {
+		display: none;
+	}
+	
+	body, body * {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	 -khtml-user-select: none; /* Konqueror HTML */
+	   -moz-user-select: none; /* Firefox */
+	    -ms-user-select: none; /* Internet Explorer/Edge */
+	        user-select: none; /* Non-prefixed version, currently
+	                              supported by Chrome and Opera */
+	}
+
+/*
+	General
+*/
+
+
+	body {
+		background-color:$c_n;
+		//background-color:black;
+		&.controller {
+			background-color: $c_e2;
+			background-color:black;
+		}
+		&.welcome-state {
+			#welcome {
+				display: block;
+				.pattern {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	
+	// Gloabal loader
+	#global-loader {
+		display: none;
+	}
+
+/*
+	Nav – Top
+*/
+	
+	.nav-top {
+		z-index: 1000;
+		position: fixed;
+		width: 100%;
+		height: 80px;
+		top: 0;
+		//background-color: blue;
+		padding: 16px;
+		
+		.logo {
+			position: relative;
+			float: left;
+			background-image: url(../img/logo-white.svg);
+			height: 32px;
+			width: 106px;
+			margin-top: 8px;
+		}
+		
+		.header {
+			color: $c_d2;	
+			float: left;
+			margin-top: 4px;
+		}
+		
+		// Layer two
+		&.experience-nav {
+			display: none;	
+		}
+	}
+	
+	
+/*
+	Nav – Bottom
+*/	
+
+	.nav-bottom	{
+		//display: none;
+	}
+	
+	.nav-bottom, .nav-bottom-play {
+		position: fixed;
+		width: 100%;
+		height: 112px;
+		bottom: 0;
+		background-color: red;
+		@include linearGradient($c_black_transparent, $c_black_50);
+		z-index: 1000;
+		
+		.left-trigger {
+			position: absolute;
+			left: 16px;
+			bottom: 16px;
+			button {
+				float: left;
+				//margin-bottom: 32px;
+			}	
+			.caption {
+				color: $c_c1;
+				margin-bottom: 8px;
+			}
+		}
+		&.transparent {
+			@include noGradient;
+			pointer-events: none;	
+		}
+	}	
+	
+	// Detailed view – Play
+	#play-controls {
+		display: none;
+		z-index: 900;
+	}
+
+
+/*
+	Sections
+*/
+		
+	section {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		display: none;
+		z-index: 100;
+		background-color: $c_e2;
+		
+		&.overlay-block {
+			z-index: 200;
+		}
+		
+		//content 
+		.content-notice {
+			@include basicfloat();
+			z-index: 101;
+			padding: 160px 64px;
+			padding-top: 256px;
+			height: 100%;		
+			h1 {
+				color: $c_d1;
+				margin-bottom: 16px;
+			}
+			h3 {
+				color: $c_c2;
+				max-width: 384px;
+			}			
+		}
+		
+		//Experiences
+		.content-feed{
+			@include basicfloat();
+			z-index: 101;
+			padding: 24px 16px;
+			padding-top: 104px;
+			height: auto;
+			color: white;	
+		}		
+		
+		//Patterns
+		.pattern {
+			width: 100%;
+			height: 100%;
+			display: block;
+			position: absolute;
+			top: 0;		
+			background-position: 50% center;
+			background-size: auto 100%;
+			z-index: 100;
+			opacity: 0;
+			
+			&.pattern-welcome {
+				background-image: url(../patterns/pattern-welcome.svg);
+			}
+			&.pattern-confirm {
+				background-image: url(../patterns/pattern-confirm.svg);
+			}	
+			&.pattern-sleeping {
+				background-image: url(../patterns/pattern-sleeping.svg);
+			}
+			&.pattern-loading {
+				background-image: url(../patterns/pattern-loading.svg);
+			}	
+			&.pattern-confirm {
+				background-image: url(../patterns/pattern-confirm.svg);
+			}
+			&.pattern-notice {
+				background-image: url(../patterns/pattern-notice.svg);
+			}										
+			
+		}
+	}
+
+
+/*
+	Experiencees feed
+*/
+	
+	
+	#explore {
+		height: auto;
+		position: relative;
+		
+		.nav-top.main {
+			position: relative;
+			float: left;
+			padding: 16px 0;
+		}
+		.content-feed {
+			padding: 24px 16px;
+			padding-top: 0;
+			background-color: black;
+			//background-color: $c_d1;
+		}		
+	}
+	
+
+	#explore.detailed-view {
+		.content-feed {
+			padding: 0;
+			//background-color: $c_d1;
+		}
+		.experience_overview {
+			.description {
+				font-size: 32px;
+				line-height: 40px;
+				max-width: none;
+				width: 100%;
+				padding-right: 80px;
+			}
+		}
+		
+	}
+
+	ul#experiences {
+		@include basicfloat();
+		
+		li {
+			@include basicfloat();
+			z-index: 100;
+			height: auto;
+			margin: 0;
+			padding: 0;
+			margin-bottom: 32px;
+			box-shadow: 0px 0px 32px rgba(255,255,255,0.15);
+			&.selected {
+				margin-bottom: 0;
+				box-shadow: none;
+				padding-bottom: 112px;
+				//height: 100%;
+				//position: fixed;
+				top: 0;
+				left: 0;	
+				background-color: $c_e2;			
+			}
+			&.playing {
+				span.playing {
+					display: block !important;
+				}
+			}
+			.experience_overview {
+				@include basicfloat();
+				z-index: 100;
+				background-color: $c_black;
+				height: auto;
+				.cover {
+					@include basicfloat();
+					//height: 400px;
+					padding-bottom: 56%;
+					background-image: url("../img/buzz.gif");
+					background-color: $c_e2;
+					background-size: 500px auto;
+					overflow: hidden;
+					video {
+						position: absolute;
+						width: 100%;
+						background-position: center center;
+						background-size: cover;
+						min-width: 100%; 
+						min-height: 100%;
+						width: auto;
+						height: auto;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%,-50%);
+					}	
+				}
+				.info-wrap {
+					@include basicfloat();
+					padding: 32px;
+					.attributes {
+						@include basicfloat();
+						margin-top: 8px;
+						margin-bottom: 24px;
+						span {
+							color: $c_c1;
+							margin-right: 16px;
+							float: left;
+							&.playing {
+								color: $c_green;
+								display: none;
+							}
+						}	
+					}
+				}
+				.description {
+					max-width: 420px;
+					color: $c_d1;
+					padding-bottom: 16px;
+				}
+			}
+			.experience_details {
+				@include basicfloat();
+				z-index: 100;
+				//background-color: $c_black;
+				height: auto;
+				display: none;
+				overflow: visible;
+				//height: 700px;
+				.inner {
+					h2 {
+						color: $c_c1;
+						margin-bottom: 8px;
+						margin-top: 32px;
+						margin-bottom: 16px;
+					}
+					padding: 48px 32px;
+					p.long-description {
+						color: #999999;
+						max-width: 496px;
+					}
+					.helper {
+						color: $c_c2;	
+					}
+				}
+			}	
+			/*		
+			&:before {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				right: 10px;
+				bottom: 10px;
+				background-color: black;
+				z-index: 90;
+				border-radius: 16px;
+				box-shadow: 0px 0px 32px rgba(255,255,255,0.15);
+			}
+			*/
+			&:not(.selected):hover {
+				.experience_overview {
+					//background-color: $c_e2;
+				}
+				cursor: pointer;
+			}	
+		}	
+	}
+
+
+
+
+/*
+	Playing Controls Wrap
+*/
+
+	.playing-controls-wrap-outer {
+		position: relative;
+		max-width: 768px;
+		padding: 0 32px;
+		margin: 0 auto;
+	}
+	
+	.playing-controls-wrap {
+		position: relative;
+		width: 100%;
+		background-color: gray;
+		display: flex;
+		justify-content: space-between;
+		
+		
+		//Visual
+		background-color: $c_e3;
+		color: $c_d1;
+		font-family: 'Grot-Medium';
+		padding: 0;
+		overflow: hidden;
+		width: auto;
+		@include buttonshadow();
+		@include unselectable();	
+		
+		//Details
+		height: 96px;
+		border-radius: 48px;
+		.flex-item {
+			flex-grow: 1;
+			max-width: 224px;
+			&.current-experience {
+				position: relative;
+				min-width: 96px;
+				overflow: hidden;
+			}
+		}
+		#current-experience-title {
+			position: absolute;
+			display: table;
+			height: 100%;
+			width: auto;
+			padding-left: 48px;
+			z-index: 100;
+			p {
+				display: table-cell;
+				vertical-align: middle;
+				white-space: normal;
+				font-size: 20px;
+				line-height: 24px;
+			}
+		}
+	}	
+	
+	.current-experience-image-wrap {
+		height: 96px;
+		width: 96px;
+		position: absolute;
+		left: 0;
+		top: 0;	
+		z-index: 90;
+		.icon-play {
+			position: absolute;
+			width: 24px;
+			height: 24px;
+			top: 50%;
+			left: 50%;
+			margin-left: -12px;
+			margin-top: -12px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-image: url(../icons/icon-play-green.svg);
+			z-index: 4;
+			display: block;
+			display: none;
+		}
+		.gradient {
+			z-index: 3;
+			@include linearGradientHorizontal(rgba(36,36,36,0), $c_e3);
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;				
+		}
+		#current-experience-image {
+			height: 96px;
+			width: 96px;
+			position: absolute;
+			left: 0;
+			top: 0;	
+			background-position: center center;
+			background-size: cover;
+			z-index: 2;
+		}		
+		.default-image {
+			z-index: 1;
+		}
+	}
+	
+
+/*
+	Default bizz
+	
+*/		
+	.default-image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-image: url("../img/buzz.gif");
+	}
+
+	

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EMBED Controller</title>
+	<script src="/socket.io/socket.io.js"></script>
+	<link href="/assets/css/controller.css" rel="stylesheet">
+</head>
+<body>
+
+	<menu>
+		<button data-action="enter">enter</button>
+		<!-- <button data-action="sleep">sleep</button> -->
+		<button data-action="reset">reset</button>
+		<!-- <button data-action="restart">restart</button> -->
+		<!-- <button data-action="wake">wake</button> -->
+		<!-- <button data-action="error">error</button> -->
+		<input type="range" id="volume-slider" class="rangeslider" value="0" min="0" max="100">
+	</menu>
+		
+	<section id="error">
+		<h3>Error</h3>
+		<h1>Something went wrong. Sorry.</h1>
+		<p>Let's restart and hope for the best.</p>
+	</section>
+
+	<section id="loading"></section>
+
+	<section id="welcome">
+		<h1>Hi there!<br>Welcome to your Embed room</h1>
+		<p>Description about Embed…</p>
+	</section>
+		
+	<section id="experiences">
+		<h3>Experiences</h3>
+	</section>
+	
+	<script src="/assets/js/controller.js"></script>
+	<script src="/assets/js/common.js"></script>
+	
+</body>
+</html>

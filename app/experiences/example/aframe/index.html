@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="aframe-master.js"></script>
+</head>
+<body>
+	<script>
+		AFRAME.registerComponent('update-cam', {
+			init() {
+				var camEl = this.el;
+				var camObj = this.el.object3D;
+				var cam = camObj.children[0];
+
+				var dims = {
+					w: 3530,
+					h: 2570,
+					d: 2660
+				};
+
+				var r1 = dims.d / dims.h;
+				var r2 = dims.w / dims.h;
+				r1 = 1.0350194552529184;
+				r2 = 1.3735408560311284;
+
+				let p = {
+					nx: {
+						x: 0,
+						y: 0,
+						z: (100 * (r2 - 1)),
+					},
+					pz: {
+						x: (-100 * (r1 - 1)),
+						y: 0,
+						z: 0,
+					},
+					px: {
+						x: 0,
+						y: 0,
+						z: (-100 * (r2 - 1)),
+					},
+					ny: {
+						x: (-100 * (r1 - 1)),
+						y: 0,
+						z: 0,
+					},
+				}
+				switch (camEl.id){
+					case 'nx':
+						camEl.setAttribute('position',`${p.nx.x} ${p.nx.y} ${p.nx.z}`);
+						camEl.setAttribute('camera',`fov:90;far:100;aspect:${r1}`);
+					break;
+					case 'pz':
+						camEl.setAttribute('position',`${p.pz.x} ${p.pz.y} ${p.pz.z}`);
+						camEl.setAttribute('camera',`fov:90;far:100;aspect:${r2}`);
+					break;
+					case 'px':
+						camEl.setAttribute('position',`${p.px.x} ${p.px.y} ${p.px.z}`);
+						camEl.setAttribute('camera',`fov:90;far:100;aspect:${r1}`);
+					break;
+					case 'ny':
+						camEl.setAttribute('position',`${p.ny.x} ${p.ny.y} ${p.ny.z}`);
+						camEl.setAttribute('camera',`fov:90;far:100;aspect:${r2}`);
+					break;
+				}
+				console.log(cam.aspect);
+				cam.updateProjectionMatrix();
+			}
+		});
+	</script>
+	<a-scene embed>
+		<a-entity id="nx" camera rotation="-180 0 0" update-cam></a-entity>
+		<a-entity id="pz" camera position="-100 0 0" rotation="0 90 0" update-cam></a-entity>
+		<a-entity id="px" camera rotation="0 0 0" update-cam></a-entity>
+		<a-entity id="ny" camera="fov:90;aspect:1.5;far:100;" rotation="90 0 -90" update-cam></a-entity>
+	</a-scene>
+</body>
+</html>

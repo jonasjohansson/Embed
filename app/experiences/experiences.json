@@ -1,0 +1,90 @@
+{
+	"default": {
+		"title": "Default",
+		"description": "",
+		"author": "Embed",
+		"author_url": "https://embedproject.io/",
+		"cover_image": "",
+		"cover_video": "",
+		"url": "experiences/default/",
+		"flags": "",
+		"format": ""
+	},
+	"welcome": {
+		"title": "Welcome",
+		"description": "",
+		"author": "Embed",
+		"author_url": "https://embedproject.io/",
+		"cover_image": "",
+		"cover_video": "",
+		"url": "experiences/welcome/",
+		"flags": "",
+		"format": ""
+	},
+	"video": {
+		"title": "Video",
+		"description": "",
+		"author": "",
+		"author_url": "",
+		"cover_image": "",
+		"cover_video": "",
+		"url": "experiences/example/video/",
+		"flags": "",
+		"format": "panorama"
+	},
+	"image": {
+		"title": "Image",
+		"description": "",
+		"author": "",
+		"author_url": "",
+		"cover_image": "",
+		"cover_video": "",
+		"url": "experiences/example/image/",
+		"flags": "",
+		"format": "panorama"
+	},
+	"fbx": {
+		"title": "FBX",
+		"description": "",
+		"author": "",
+		"author_url": "",
+		"cover_image": "",
+		"cover_video": "",
+		"url": "experiences/example/fbx/",
+		"flags": "",
+		"format": "panorama"
+	},
+	"three": {
+		"title": "Three",
+		"description": "",
+		"author": "",
+		"author_url": "",
+		"cover_image": "",
+		"cover_video": "",
+		"url": "experiences/example/three/",
+		"flags": "",
+		"format": "panorama"
+	},
+	"aframe": {
+		"title": "A-Frame",
+		"description": "",
+		"author": "",
+		"author_url": "",
+		"cover_image": "",
+		"cover_video": "",
+		"url": "experiences/example/aframe/",
+		"flags": "",
+		"format": "panorama"
+	},
+	"dev": {
+		"title": "Dev",
+		"description": "",
+		"author": "",
+		"author_url": "",
+		"cover_image": "",
+		"cover_video": "",
+		"url": "experiences/example/dev/",
+		"flags": "",
+		"format": "panorama"
+	}
+}

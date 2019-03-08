@@ -1,0 +1,85 @@
+body.loading {
+    background-color: blue;
+}
+
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    margin: 0;
+}
+
+iframe {
+    position: absolute;
+    width: 0;
+    height: 100%;
+    border: 0;
+    z-index: 1;
+}
+iframe:nth-of-type(1) {
+    background-color: red;
+}
+iframe:nth-of-type(2) {
+    /*left:100%;*/
+    background-color: green;
+}
+iframe:nth-of-type(3) {
+    /*left:200%;*/
+    background-color: blue;
+}
+iframe:nth-of-type(4) {
+    /*left:300%;*/
+    background-color: yellow;
+}
+iframe.left:not(.center):not(.right):not(.top) {
+    left: 0;
+}
+iframe.center:not(.left):not(.right):not(.top) {
+    left: 100%;
+}
+iframe.right:not(.left):not(.center):not(.top) {
+    left: 200%;
+}
+iframe.top:not(.left):not(.center):not(.right) {
+    left: 300%;
+}
+iframe.left,
+.center,
+.right,
+.top {
+    width: 100%;
+}
+iframe.left.center,
+.left.right,
+.center.right {
+    width: 200%;
+}
+iframe.left.center.right {
+    width: 300%;
+}
+iframe:not(.left):not(.center):not(.right):not(.top) {
+    /*display:none;*/
+}
+.dg.ac {
+    right: auto !important;
+    z-index: 99 !important;
+}
+
+/* Viewer */
+
+.system-overlay {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    color: blue;
+    font-size: 10px;
+    z-index: 100;
+}
+
+/* Controller */
+
+body.controller {
+    padding: 24px;
+}

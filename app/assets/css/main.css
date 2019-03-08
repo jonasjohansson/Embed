@@ -1,0 +1,13 @@
+:root {
+	--base: 16px;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+	margin: 0;
+	font: 18px/1.666 system-ui;
+}
