@@ -56,6 +56,7 @@ createFrames = () => {
 	return obj;
 };
 
+
 createGui = obj => {
 	gui = new dat.GUI();
 	let len = Object.keys(obj).length;
@@ -112,3 +113,15 @@ createGui = obj => {
 };
 
 viewer();
+
+// Interactive
+
+
+
+
+socket.on('arrow-right', data => {
+  	var current_iframe_button = $("iframe").contents().find("#remote_right").click();
+});
+socket.on('arrow-up', data => {
+  	var current_iframe_button = $("iframe").contents().find("#remote_up").click();
+});

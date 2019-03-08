@@ -37,8 +37,13 @@ io.on('connection', function(socket) {
 	socket.on('play', data => emit('play', data));
 	socket.on('stop', data => emit('stop'));
 	socket.on('reset', data => emit('reset'));
-
+	socket.on('arrow-right', data => emit('arrow-right'));
+	socket.on('arrow-left', data => emit('arrow-left'));
+	socket.on('arrow-up', data => emit('arrow-up'));
+	socket.on('arrow-down', data => emit('arrow-down'));
+	
 	socket.on('state-update', data => emit('state-update', data));
+
 
 	/* Volume */
 

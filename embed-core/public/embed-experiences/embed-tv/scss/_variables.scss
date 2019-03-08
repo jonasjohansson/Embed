@@ -1,0 +1,57 @@
+// Dimensions
+
+// Colors
+$white: #FFFFFF;
+$black: #000000;
+
+// Aquanobel
+$an_light: #F0F0F0;
+$an_grey: #707070;
+$an_dark: #1D1D1B;
+$an_green: #62C58E;
+
+// Layout
+@mixin basicfloat() {
+	position: relative;
+	width: 100%;
+	float: left;
+}
+
+@mixin basiccover() {
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+@mixin noselect() {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+
+// Max Width
+
+$maxwidth: 1170px;
+$maxwidth-grid: 1200px;
+$maxwidth-large: 1270px;
+
+// Responsive breakpoints
+
+@mixin breakpoint($point) {
+  @if $point == mobile {
+    @media (max-width: 700px) { @content; }
+  }
+  @else if $point == tablet {
+    @media (max-width: 960px) { @content; }
+  } 
+  @else if $point == maxwidth {
+    @media (max-width: 1280px) { @content; }
+  }      
+}
+
+
+

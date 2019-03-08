@@ -1,0 +1,91 @@
+
+@font-face {
+    font-family: 'Flare';
+    src: url('../fonts/Flareserif821BT-Bold.woff2') format('woff2'),
+        url('../fonts/Flareserif821BT-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Flare';
+    src: url('../fonts/Flareserif821BT-Roman.woff2') format('woff2'),
+        url('../fonts/Flareserif821BT-Roman.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Flare';
+    src: url('../fonts/Flareserif821BT-Light.woff2') format('woff2'),
+        url('../fonts/Flareserif821BT-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+
+
+
+/* Typography */
+
+body {
+	font-family: 'Flare';
+	font-size: 14px;
+	font-weight: normal;
+	font-weight: normal;
+	@include breakpoint(mobile) {
+		//font-size: 20px;
+	}		
+}
+
+
+.courier {
+	font-family: "Courier", Courier, "Courier New", monospace;
+	line-height: 25px;
+	&.bold {
+		//font-weight: bold;
+	}
+	a {
+		&:hover {
+			color: $an_dark;
+		}
+	}
+}
+
+h1 {
+	font-weight: normal;
+	font-size: 36px;
+	letter-spacing: 4.95px;
+	line-height: 57px;
+	@include breakpoint(mobile) {
+		font-size: 24px;
+		line-height: 32px;
+		letter-spacing: 3.3px;		
+	}
+}
+
+
+h2 {
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 32px;
+	letter-spacing: 3.3px;
+}
+
+
+
+/* Forms */
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $an_grey;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $an_grey;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $an_grey;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $an_grey;
+}	

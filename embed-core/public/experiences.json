@@ -8,7 +8,7 @@
         "cover_image": "",
         "cover_video": "",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/default/",
+        "url": "http://localhost:3000/embed-experiences/default/",
         "flags": "",
         "format": ""
     },
@@ -21,7 +21,7 @@
         "cover_image": "",
         "cover_video": "",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/welcome/",
+        "url": "http://localhost:3000/embed-experiences/welcome/",
         "flags": "",
         "format": ""
     },
@@ -34,7 +34,7 @@
         "cover_image": "https://freight.cargocollective.com/t/original/i/02eeed4a592fe5dff7692daa5a7ff0c4bf00a69be8a90ebcfdc2104b64254cb1/Romain_Tardy_The_Ark_14_o.jpg",
         "cover_video": "http://vitali.xyz/randomuploads/test-video.mp4",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/001/",
+        "url": "http://localhost:8000/embed-experiences/001/",
         "flags": "",
         "format": "panorama"
     },
@@ -47,9 +47,22 @@
         "cover_image": "https://jonasjohansson.se/assets/images/jonas_johansson-glommen.jpg",
         "cover_video": "",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/002/",
+        "url": "http://localhost:3000/embed-experiences/002/",
         "flags": "",
         "format": "panorama"
+    },
+    "embed-tv": {
+        "title": "Embed TV",
+        "slug": "title-embed-tv",
+        "description": "Embed TV is a ...",
+        "author": "Barkas",
+        "author_url": "https://thebarkas.com/",
+        "cover_image": "",
+        "cover_video": "",
+        "type": "webgl",
+        "url": "http://localhost:3000/embed-experiences/embed-tv/index.html",
+        "flags": "",
+        "format": "html"
     },
     "003": {
         "title": "Title 03",
@@ -60,7 +73,7 @@
         "cover_image": "",
         "cover_video": "",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/003/",
+        "url": "http://localhost:3000/embed-experiences/003/",
         "flags": "",
         "format": "panorama"
     },
@@ -73,7 +86,7 @@
         "cover_image": "",
         "cover_video": "",
         "type": "webgl",
-        "url": "https://jonasjohansson.github.io/embed/embed-experiences/003/",
+        "url": "http://localhost:3000/embed-experiences/003/",
         "flags": "",
         "format": "panorama"
     }

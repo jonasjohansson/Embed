@@ -84,3 +84,18 @@ socket.on('stop', data => {
 });
 
 socket.on('state-update', data => setState(data.name, data.state));
+
+
+// Interactive
+socket.on('arrow-right', data => {
+	console.log("arrow-right");
+});
+socket.on('arrow-left', data => {
+	console.log("arrow-left");
+});
+socket.on('arrow-up', data => {
+	console.log("arrow-up");
+});
+socket.on('arrow-down', data => {
+	console.log("arrow-down");
+});

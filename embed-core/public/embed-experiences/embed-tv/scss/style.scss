@@ -1,0 +1,199 @@
+//@import "defaults";
+//@import "variables";
+
+
+// Project – Embed TV
+
+	
+	.remote_button {
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: block;
+		width: 40px;
+		height: 40px;	
+		z-index: 9999;	
+		opacity: 0;
+		&:hover {
+			cursor: pointer;
+			background-color: yellow;
+		}
+	}
+	
+	#remote_up {
+		background-color: aqua;	
+	}
+	#remote_right {
+		background-color: yellow;
+		left: 40px;	
+	}	
+
+	
+
+// THE BG
+	.surface.panorama {
+		background-color: #bfbfbf;
+	}
+	
+	h1 {
+		font-size: 4em;
+	}
+
+
+// THE TV
+
+	.surface {
+		pointer-events: none;
+	}
+
+
+	#tv-base {
+		width: 40%;
+		left: 30%;
+		padding-bottom: 40%;
+		top: 0;
+		//border: 1px solid black;
+		display: block;
+		position: absolute;
+		
+		
+		.overlay, .base {
+			position: absolute;
+			width: 100%;
+			height: 100%;	
+			display: block;			
+			
+			background-size: contain;
+			background-position: center center;
+			background-repeat: no-repeat;
+			
+			z-index: 3;
+			pointer-events: none;
+		} 
+		
+		.overlay {
+			z-index: 2;	
+			opacity: 0;
+			//mix-blend-mode: darken;
+		}
+		
+		.player {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: block;			
+			background-image: url(../assets/ui/buzz.gif);
+			z-index: 1;
+			overflow: hidden;
+			pointer-events: all;
+			
+			video {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;	
+			}
+		} 
+		
+		
+		// Skins
+		&.philips {
+			.base {background-image: url(../assets/skins/01-base.png);}
+			.overlay {
+				background-image: url(../assets/skins/01-overlay.png);
+				
+				opacity: 0.5;
+				//mix-blend-mode: screen;
+			}
+			
+			.player {
+				top: 28.5%;
+				width: 50%;
+				height: 40%;
+			}
+		}	
+		
+		&.braun {
+			.base {background-image: url(../assets/skins/02-base.png);}
+			.overlay {
+				background-image: url(../assets/skins/02-overlay.png);
+				
+				opacity: 0.3;
+			}
+			
+			.player {
+				top: 28.5%;
+				width: 38%;
+				height: 29%;
+			}
+		}	
+		
+		&.sony {
+			.base {background-image: url(../assets/skins/03-base.png);}
+			.overlay {
+				background-image: url(../assets/skins/03-overlay.png);
+				
+				opacity: 0.1;
+			}
+			
+			.player {
+				top: 30%;
+				width: 53%;
+				height: 38%;
+			}
+		}	
+		
+		&.sharp {
+			.base {background-image: url(../assets/skins/04-base.png);}
+			.overlay {
+				background-image: url(../assets/skins/04-overlay.png);
+				
+				opacity: 0.01;
+			}
+			
+			.player {
+				top: 24%;
+				width: 84%;
+				height: 47.5%;
+			}
+		}	
+		
+		&.optoma {
+			.base {background-image: url(../assets/skins/05-base.png);}
+			.overlay {
+				background-image: url(../assets/skins/05-overlay.png);
+				
+				opacity: 0;
+			}
+			
+			.player {
+				top: 27%;
+				width: 65%;
+				height: 36%;
+				z-index: 4;
+			}
+		}
+		
+		&.future {
+			width: 100%;
+			height: 100%;
+			left: 0;
+			padding-bottom: 0;
+			top: 0;
+			
+			.base, .overlay {
+				display: none;
+			}
+			
+			.player {
+				top: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}											
+
+			
+	}
+	
+	

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Embed TV</title>
+		
+		<!-- Include Embed Ratios -->
+		<link rel="stylesheet" type="text/css" href="legacy/style.css"/>  
+		
+		<!-- Include Project Styles -->
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>  
+		 
+	</head>
+	<body>		
+		
+		<div class="surface panorama">
+			<!-- Place your content here -->	
+			<div id="tv-base" class="philips">
+					
+				<div class="overlay"></div>
+				<div class="base"></div>
+				<div class="player">
+					<video class="video-id" autoplay loop playsinline  preload="auto">
+						<source src="videos/files/01.mp4" type="video/mp4">
+					</video>
+				</div>
+
+			</div>	
+		
+		</div>			
+		<div class="surface left">
+			<!-- Place your content here -->
+		</div>
+		<div class="surface center">
+			<!-- Place your content here -->		
+		</div>			
+		<div class="surface right">
+			<!-- Place your content here -->	
+		</div>	
+		<div class="surface top">
+			<!-- Place your content here -->		
+		</div>				
+		
+		
+		<!-- Non-surface content -->
+
+		<div class="remote_button" id="remote_up"></div>
+		<div class="remote_button" id="remote_right"></div>
+
+		
+		<!-- Include Embed Ratios -->
+		<script src="legacy/jquery.js"></script>	
+		<script src="legacy/dat.gui.min.js"></script>			
+		<script src="legacy/scripts.js"></script>
+		
+		<!-- Include Project Scripts -->
+		<script src="js/TweenMax.min.js"></script>		
+		<script src="js/scripts.js"></script>		
+
+	</body>
+</html>

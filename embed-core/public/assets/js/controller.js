@@ -60,3 +60,6 @@ $volume_slider.addEventListener('change', e => {
 	var volume_new = e.target.value;
 	socket.emit('volume-new', volume_new);
 });
+
+
+//Interactive
