@@ -291,6 +291,7 @@ $volume_slider.addEventListener('change', e => {
 		}		
 		selected_experience.addClass("selected");
 		TweenMax.set($("#experiences li"), {scale: 1});
+		TweenMax.set($("#experiences li .experience_overview .cover"), {scale: 1});
 	});
 	
 	
@@ -356,13 +357,13 @@ $volume_slider.addEventListener('change', e => {
 	$('body').on("touchstart mouseover", "#experiences li", function() {		
 		if(!$(this).hasClass("selected")) {
 			TweenMax.to($(this), tr_in, {scale: 1.001});
-			TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#121212"});	
+			TweenMax.to($(this).find(".experience_overview .cover"), tr_in, {scale: 0.98});	
 		}
 	});	
 	$('body').on("touchend mouseleave", "#experiences li", function() {		
 		if(!$(this).hasClass("selected")) {
 			TweenMax.to($(this), tr_in, {scale: 1});
-			TweenMax.to($(this).find(".experience_overview"), tr_in, {backgroundColor: "#000"});
+			TweenMax.to($(this).find(".experience_overview .cover"), tr_in, {scale: 1});
 		}
 	});		
 		

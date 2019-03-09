@@ -88,47 +88,6 @@ button {
 		//background-image: url("../img/buzz.gif");
 	} 
 	
-	//icons 
-	i {
-		position: relative;
-		float: left;
-		//background-color: red;
-		display: block;
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-size: 24px 24px;
-		
-		&.icon-power-green {
-			background-image: url(../icons/icon-power-green.svg);
-		}
-		&.icon-power-red {
-			background-image: url(../icons/icon-power-red.svg);
-		}		
-		&.icon-sleep {
-			background-image: url(../icons/icon-sleep.svg);
-		}		
-		&.icon-close-grey {
-			background-image: url(../icons/icon-close-grey.svg);
-		}	
-		&.icon-stop-grey {
-			background-image: url(../icons/icon-stop-grey.svg);
-		}	
-		&.icon-stop-red {
-			background-image: url(../icons/icon-stop-red.svg);
-		}
-		&.icon-loading {
-			background-image: url(../icons/icon-loading.svg);
-		}
-		&.icon-confirm-red {
-			background-image: url(../icons/icon-confirm.svg);	
-		}	
-		&.icon-prev {
-			background-image: url(../icons/icon-prev.svg);	
-		}
-		&.icon-play {
-			background-image: url(../icons/icon-play-green.svg);										}
-	}
-	
 	//align 
 	
 	&.align-middle {
@@ -137,6 +96,49 @@ button {
 	&.align-right {
 		float: right;
 	}	
+}
+
+
+//icons 
+i {
+	position: relative;
+	float: left;
+	//background-color: red;
+	display: block;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+	
+	&.icon-power-green {
+		background-image: url(../icons/icon-power-green.svg);
+	}
+	&.icon-power-red {
+		background-image: url(../icons/icon-power-red.svg);
+	}		
+	&.icon-sleep {
+		background-image: url(../icons/icon-sleep.svg);
+	}		
+	&.icon-close-grey {
+		background-image: url(../icons/icon-close-grey.svg);
+	}	
+	&.icon-stop-grey {
+		background-image: url(../icons/icon-stop-grey.svg);
+	}	
+	&.icon-stop-red {
+		background-image: url(../icons/icon-stop-red.svg);
+	}
+	&.icon-loading {
+		background-image: url(../icons/icon-loading.svg);
+	}
+	&.icon-confirm-red {
+		background-image: url(../icons/icon-confirm.svg);	
+	}	
+	&.icon-prev {
+		background-image: url(../icons/icon-prev.svg);	
+	}
+	&.icon-play {
+		background-image: url(../icons/icon-play-green.svg);
+	}
 }
 
 

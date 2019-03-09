@@ -260,8 +260,26 @@
 			margin: 0;
 			padding: 0;
 			margin-bottom: 32px;
-			box-shadow: 0px 0px 32px rgba(255,255,255,0.15);
+			
+			
+			//New
+			width: 33.33%;
+			padding: 16px;
+			//border-radius: 16px;
+			overflow: hidden;
+			
+			.attributes, .description {
+				display: none;
+			}
+			
 			&.selected {
+				//New – Reset
+				width: 100%;
+				padding: 0;	
+				border-radius: 0;
+				overflow: auto;			
+				
+				//Old
 				margin-bottom: 0;
 				box-shadow: none;
 				padding-bottom: 112px;
@@ -269,11 +287,46 @@
 				//position: fixed;
 				top: 0;
 				left: 0;	
-				background-color: $c_e2;			
+				background-color: $c_e2;	
+				
+				
+				// New
+				.attributes, .description {
+					display: block;
+				}		
+				
+				.experience_overview .cover {
+					padding-bottom: 56%;	
+				}	
+
+				.experience_overview .cover {
+					border-radius: 0;
+					overflow: auto;	
+					box-shadow: none;
+					border: 0;
+					-webkit-mask-image: none;
+					mask-image: none;					
+				}		
 			}
+			&:not(.selected) {
+				.experience_overview .info-wrap {
+					padding: 8px 8px;
+					h2.bold {
+						font-size: 12px;
+						text-align: center;
+						line-height: 12px;
+					}
+				}
+			}
+			
 			&.playing {
 				span.playing {
 					display: block !important;
+				}
+				&:not(.selected) {
+					h2.bold {
+						color: $c_green;
+					}					
 				}
 			}
 			.experience_overview {
@@ -281,31 +334,42 @@
 				z-index: 100;
 				background-color: $c_black;
 				height: auto;
+				
+				
 				.cover {
 					@include basicfloat();
 					//height: 400px;
 					padding-bottom: 56%;
-					background-image: url("../img/buzz.gif");
+					//background-image: url("../img/buzz.gif");
 					background-color: $c_e2;
 					background-size: 500px auto;
 					overflow: hidden;
+					
+					padding-bottom: 100%;
+
+					//New
+					//overflow: hidden;	
+					//box-shadow: 0px 8px 16px rgba(255,255,255,0.15);		
+					border-radius: 0;
+					border: 0;
+					-webkit-mask-image: url(../img/ios-mask.svg);
+					-webkit-mask-size: cover;
+					mask-image: url(/shared/img/ios-mask.svg);
+					mask-size: cover;		
+					
 					video {
 						position: absolute;
 						width: 100%;
+						height: 100%;
 						background-position: center center;
 						background-size: cover;
-						min-width: 100%; 
-						min-height: 100%;
-						width: auto;
-						height: auto;
-						top: 50%;
-						left: 50%;
-						transform: translate(-50%,-50%);
+						object-fit: cover;
 					}	
 				}
 				.info-wrap {
 					@include basicfloat();
 					padding: 32px;
+
 					.attributes {
 						@include basicfloat();
 						margin-top: 8px;
@@ -352,21 +416,6 @@
 					}
 				}
 			}	
-			/*		
-			&:before {
-				content: "";
-				display: block;
-				position: absolute;
-				top: 10px;
-				left: 10px;
-				right: 10px;
-				bottom: 10px;
-				background-color: black;
-				z-index: 90;
-				border-radius: 16px;
-				box-shadow: 0px 0px 32px rgba(255,255,255,0.15);
-			}
-			*/
 			&:not(.selected):hover {
 				.experience_overview {
 					//background-color: $c_e2;
@@ -376,8 +425,49 @@
 		}	
 	}
 
+/*
+	Interactive Controls Wrap
+*/
 
-
+	.interactive-controls-wrap {		
+		position: absolute;
+		height: 288px;
+		width: 288px;
+		bottom: 96px;
+		left: 50%;
+		margin-left: -144px;
+		margin-bottom: 32px;
+		//background-color: $c_c1;
+		
+		.interactive-button {
+			position: relative;
+			display: block;
+			width: 96px;
+			height: 96px;
+			float: left;
+			cursor: pointer;
+			background-color: $c_a;
+			border-radius: 50%;
+			i {
+				position: absolute;
+				float: none;
+				top: 50%;
+				left: 50%;
+				margin-top: -12px;
+				margin-left: -12px;
+				height: 24px;
+				width: 24px;
+				&.up {transform: rotate(90deg);}
+				&.right {transform: rotate(180deg);}
+				&.down {transform: rotate(-90deg);}
+			}
+			&.blank {
+				pointer-events: none;
+				background-color: transparent;
+			}
+		}
+		
+	}
 
 /*
 	Playing Controls Wrap
